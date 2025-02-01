@@ -35,9 +35,9 @@ export const Header: React.FC = () => {
   }, [isMobileMenuOpen])
 
   const navItems = [
-    { name: "Solutions", href: "#solutions" },
-    { name: "Process", href: "#process" },
-    { name: "Portfolio", href: "#portfolio" },
+    { name: "Solutions", href: "solutions" },
+    { name: "Process", href: "process" },
+    { name: "Portfolio", href: "portfolio" },
   ]
 
   return (
