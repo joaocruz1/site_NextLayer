@@ -12,9 +12,9 @@ const navigation = {
   ],
   company: [
     { name: "About", href: "#" },
-    { name: "Process", href: "#" },
-    { name: "Portfolio", href: "#" },
-    { name: "Careers", href: "#" },
+    { name: "Process", href: "/process" },
+    { name: "Portfolio", href: "/portfolio" },
+    { name: "Solutions", href: "solutions" },
   ],
   legal: [
     { name: "Privacy", href: "#" },
@@ -32,7 +32,7 @@ const navigation = {
     },
     {
       name: "GitHub",
-      href: "#",
+      href: "https://github.com/joaocruz1",
       icon: (props: any) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -45,7 +45,7 @@ const navigation = {
     },
     {
       name: "Instagram",
-      href: "#",
+      href: "https://www.instagram.com/nextlayer9/",
       icon: (props: any) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path

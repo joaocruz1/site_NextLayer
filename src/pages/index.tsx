@@ -8,6 +8,7 @@ import { FeaturesSection } from "../components/home/FeaturesSection"
 import { AboutSection } from "../components/home/AboutSection"
 import { ContactSection } from "../components/home/ContactSection"
 import  Footer  from "../components/Footer" 
+import Head from "next/head"
 
 export default function HomePage() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -20,6 +21,10 @@ export default function HomePage() {
   const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.2])
 
   return (
+    <>
+    <Head>
+      <title>NextLayer | Home</title>
+    </Head>
     <div ref={containerRef} className="relative min-h-screen bg-[#0D0620]">
       {/* Enhanced animated background with purple effects */}
       <motion.div
@@ -151,6 +156,7 @@ export default function HomePage() {
         />
       </div>
     </div>
+    </>
   )
 }
 

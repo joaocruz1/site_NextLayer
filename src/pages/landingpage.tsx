@@ -10,6 +10,7 @@ import { ContactSection } from "../components/landingpage/ContactSection"
 import Footer from "../components/Footer"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
+import Head from "next/head"
 
 export default function Page() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -22,6 +23,10 @@ export default function Page() {
   const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.2])
 
   return (
+  <>
+    <Head>
+      <title>NextLayer | LandingPage</title>
+    </Head>
     <div ref={containerRef} className="relative min-h-screen bg-[#0D0620]">
       {/* Enhanced animated background with purple effects */}
       <motion.div
@@ -155,6 +160,7 @@ export default function Page() {
         />
       </div>
     </div>
+  </>
   )
 }
 

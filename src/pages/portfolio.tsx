@@ -8,6 +8,7 @@ import HeroSection from "../components/portfolio/HeroSection"
 import ProjectGrid from "../components/portfolio/ProjectGrid"
 import Testimonials from "../components/portfolio/Testimonials"
 import Stats from "../components/portfolio/Stats"
+import Head from "next/head"
 
 const PortfolioPage = () => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -20,6 +21,10 @@ const PortfolioPage = () => {
   const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.2])
 
   return (
+    <>
+    <Head>
+      <title>NextLayer | Portfolio</title>
+    </Head>
     <div ref={containerRef} className="relative min-h-screen bg-[#0D0620]">
       {/* Background Effects */}
       <motion.div
@@ -75,6 +80,7 @@ const PortfolioPage = () => {
         }}
       />
     </div>
+    </>
   )
 }
 

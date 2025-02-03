@@ -8,6 +8,7 @@ import HeroSection from "../components/process/HeroSection"
 import Methodology from "../components/process/Methodology"
 import Timeline from "../components/process/Timeline"
 import Collaboration from "../components/process/Collaboration"
+import Head from "next/head"
 
 const ProcessPage = () => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -20,6 +21,10 @@ const ProcessPage = () => {
   const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.2])
 
   return (
+    <>
+    <Head>
+      <title>NextLayer | Process</title>
+    </Head>
     <div ref={containerRef} className="relative min-h-screen bg-[#0D0620]">
       {/* Background Effects */}
       <motion.div
@@ -75,6 +80,7 @@ const ProcessPage = () => {
         }}
       />
     </div>
+    </>
   )
 }
 

@@ -8,6 +8,7 @@ import HeroSection from "../components/solutions/HeroSection"
 import SolutionsGrid from "@/components/solutions/SolutionsGrid"
 import TechStack from "../components/solutions/TechStack"
 import CaseStudies from "../components/solutions/CaseStudies"
+import Head from "next/head"
 
 export default function SolutionsPage() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -20,6 +21,10 @@ export default function SolutionsPage() {
   const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.2])
 
   return (
+    <>
+    <Head>
+      <title>NextLayer | Solutions</title>
+    </Head>
     <div ref={containerRef} className="relative min-h-screen bg-[#0D0620]">
       {/* Background Effects */}
       <motion.div
@@ -75,6 +80,7 @@ export default function SolutionsPage() {
         }}
       />
     </div>
+    </>
   )
 }
 
