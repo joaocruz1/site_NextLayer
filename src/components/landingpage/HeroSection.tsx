@@ -3,8 +3,10 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 import Link from "next/link"
+import { useLanguage } from "@/context/LanguageContext"
 
 export const HeroSection = () => {
+  const {t} = useLanguage()
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -34,9 +36,9 @@ export const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <span className="block text-white mb-2 sm:mb-4">We Build</span>
+                <span className="block text-white mb-2 sm:mb-4">{t.landing.hero.title.line1}</span>
                 <span className="block bg-gradient-to-r from-purple-300 via-purple-400 to-purple-500 bg-clip-text text-transparent pb-2 sm:pb-4">
-                  Digital Excellence
+                  {t.landing.hero.title.line2}
                 </span>
               </motion.h1>
 

@@ -5,8 +5,10 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
 export const Header: React.FC = () => {
+  const {t} = useLanguage()
   const [isHovered, setIsHovered] = useState<string | null>(null)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -35,9 +37,9 @@ export const Header: React.FC = () => {
   }, [isMobileMenuOpen])
 
   const navItems = [
-    { name: "Solutions", href: "solutions" },
-    { name: "Process", href: "process" },
-    { name: "Portfolio", href: "portfolio" },
+    { name: `${t.nav.solutions}`, href: "solutions" },
+    { name: `${t.nav.process}`, href: "process" },
+    { name: `${t.nav.portfolio}`, href: "portfolio" },
   ]
 
   return (
@@ -140,7 +142,7 @@ export const Header: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Contact
+                {t.nav.contact}
               </motion.div>
             </Link>
             <Link href="/start-project" className="group relative inline-flex items-center justify-center">
@@ -153,7 +155,7 @@ export const Header: React.FC = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Start Project
+                {t.nav.startProject}
                 <svg
                   viewBox="0 0 24 24"
                   className="w-4 h-4 ml-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
