@@ -4,9 +4,10 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, MessageSquare, Phone } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
 export function ContactSection() {
+  const {t} = useLanguage()
   return (
     <section className="py-20 md:py-28">
       <div className="container px-4 md:px-6">
@@ -19,35 +20,15 @@ export function ContactSection() {
             className="space-y-6"
           >
             <div className="inline-flex items-center rounded-full border border-purple-200/10 bg-purple-500/5 px-3 py-1 text-sm text-purple-200">
-              Contact Us
+              {t.landing.contact.header}
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">Let's Build Something Amazing Together</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">{t.landing.contact.title}</h2>
             <p className="text-zinc-400 md:text-lg">
-              Have a project in mind? We'd love to hear about it. Drop us a message and we'll get back to you as soon as
-              possible.
+              {t.landing.contact.description}
             </p>
 
             <div className="grid gap-6">
-              {[
-                {
-                  icon: Phone,
-                  title: "Phone",
-                  value: "+1 (234) 567-8901",
-                  href: "tel:+12345678901",
-                },
-                {
-                  icon: Mail,
-                  title: "Email",
-                  value: "hello@nextlayer.com",
-                  href: "mailto:hello@nextlayer.com",
-                },
-                {
-                  icon: MessageSquare,
-                  title: "Live Chat",
-                  value: "Available 24/7",
-                  href: "#",
-                },
-              ].map((item, i) => (
+              {t.landing.contact.items.map((item, i) => (
                 <motion.a
                   key={item.title}
                   href={item.href}
@@ -77,14 +58,14 @@ export function ContactSection() {
             <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 via-purple-400/10 to-blue-500/20 rounded-3xl blur-2xl" />
             <div className="relative space-y-6 p-6 sm:p-8 rounded-3xl border border-purple-200/10 bg-purple-500/[0.02]">
               <div className="space-y-2">
-                <h3 className="text-xl font-semibold">Send us a message</h3>
-                <p className="text-sm text-zinc-400">Fill out the form below and we'll get back to you shortly.</p>
+                <h3 className="text-xl font-semibold">{t.landing.contact.send.title}</h3>
+                <p className="text-sm text-zinc-400">{t.landing.contact.send.subtitle}</p>
               </div>
               <form className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-zinc-200">
-                      Name
+                      {t.landing.contact.form.name}
                     </label>
                     <Input
                       id="name"
@@ -94,7 +75,7 @@ export function ContactSection() {
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="email" className="text-sm font-medium text-zinc-200">
-                      Email
+                     {t.landing.contact.form.email}
                     </label>
                     <Input
                       id="email"
@@ -106,7 +87,7 @@ export function ContactSection() {
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-medium text-zinc-200">
-                    Message
+                    {t.landing.contact.form.message}
                   </label>
                   <Textarea
                     id="message"
@@ -115,7 +96,7 @@ export function ContactSection() {
                   />
                 </div>
                 <Button size="lg" className="w-full">
-                  Send Message
+                  {t.landing.contact.form.submit}
                 </Button>
               </form>
             </div>

@@ -48,8 +48,7 @@ export const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Custom software solutions that transform businesses. From concept to deployment, we create exceptional
-                digital experiences.
+                {t.landing.hero.description}
               </motion.p>
             </div>
 
@@ -72,13 +71,13 @@ export const HeroSection = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Start Your Project
+                  {t.landing.hero.cta.primary}
                   <motion.span
                     className="absolute inset-x-0 -bottom-8 sm:-bottom-10 text-purple-300/70 text-xs sm:text-sm opacity-0 group-hover:opacity-100 transition-all duration-300"
                     initial={{ y: -5 }}
                     whileHover={{ y: 0 }}
                   >
-                    Free consultation
+                    {t.landing.hero.consult}
                   </motion.span>
                 </motion.div>
               </Link>
@@ -90,11 +89,7 @@ export const HeroSection = () => {
               transition={{ delay: 1, duration: 0.8 }}
               className="pt-16 sm:pt-20 flex flex-wrap sm:flex-nowrap justify-center gap-8 sm:gap-16 px-4 sm:px-0"
             >
-              {[
-                { value: "50+", label: "Projects Delivered" },
-                { value: "100%", label: "Client Satisfaction" },
-                { value: "24/7", label: "Support" },
-              ].map((stat, index) => (
+              {t.landing.hero.features.map((feature, index) => (
                 <motion.div
                   key={index}
                   className="text-center relative group w-full sm:w-auto"
@@ -112,7 +107,7 @@ export const HeroSection = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2 + index * 0.1 }}
                   >
-                    {stat.value}
+                    {feature.value}
                   </motion.div>
                   <motion.div
                     className="text-xs sm:text-sm text-purple-300/60 relative"
@@ -120,7 +115,7 @@ export const HeroSection = () => {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.4 + index * 0.1 }}
                   >
-                    {stat.label}
+                    {feature.label}
                   </motion.div>
                 </motion.div>
               ))}

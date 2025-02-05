@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 import Image from "next/image"
+import { useLanguage } from "@/context/LanguageContext"
 
 const testimonials = [
   {
@@ -83,6 +84,7 @@ const TestimonialCard = ({ testimonial, index }: { testimonial: (typeof testimon
 }
 
 export const TestimonialsSection = () => {
+  const {t} = useLanguage()
   return (
     <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
       <div className="container px-4 sm:px-6 mx-auto">
@@ -99,19 +101,19 @@ export const TestimonialsSection = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              Testimonials
+              {t.landing.testimonials.header}
             </motion.div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white px-4 sm:px-0">
-              What Clients Say
+              {t.landing.testimonials.title}
             </h2>
             <p className="text-sm sm:text-base text-zinc-400 max-w-md mx-auto px-4 sm:px-0">
-              Don't just take our word for it. Here's what our clients have to say about working with us.
+              {t.landing.testimonials.subtitle}
             </p>
           </motion.div>
         </motion.div>
 
         <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
-          {testimonials.map((testimonial, index) => (
+          {t.landing.testimonials.items.map((testimonial, index) => (
             <TestimonialCard key={index} testimonial={testimonial} index={index} />
           ))}
         </div>

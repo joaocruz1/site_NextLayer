@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { useLanguage } from "@/context/LanguageContext"
 
 const navigation = {
   solutions: [
@@ -73,6 +74,7 @@ const navigation = {
 }
 
 export default function Footer() {
+  const {t} = useLanguage()
   return (
     <footer className="relative mt-32 border-t border-zinc-800" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -96,10 +98,10 @@ export default function Footer() {
               <span className="text-xl font-bold text-white">NextLayer</span>
             </Link>
             <p className="text-sm text-zinc-400 max-w-xs">
-              Creating innovative digital solutions that help businesses thrive in the modern world.
+              {t.footer.title}
             </p>
             <div className="flex space-x-6">
-              {navigation.social.map((item) => (
+              {t.footer.social.map((item) => (
                 <Link key={item.name} href={item.href} className="text-zinc-400 hover:text-zinc-300 transition-colors">
                   <span className="sr-only">{item.name}</span>
                   <item.icon className="h-6 w-6" aria-hidden="true" />
@@ -112,7 +114,7 @@ export default function Footer() {
               <div>
                 <h3 className="text-sm font-semibold text-white">Solutions</h3>
                 <ul role="list" className="mt-4 space-y-4">
-                  {navigation.solutions.map((item) => (
+                  {t.footer.solutions.map((item) => (
                     <li key={item.name}>
                       <Link href={item.href} className="text-sm text-zinc-400 hover:text-white transition-colors">
                         {item.name}
@@ -124,7 +126,7 @@ export default function Footer() {
               <div className="mt-10 md:mt-0">
                 <h3 className="text-sm font-semibold text-white">Company</h3>
                 <ul role="list" className="mt-4 space-y-4">
-                  {navigation.company.map((item) => (
+                  {t.footer.company.map((item) => (
                     <li key={item.name}>
                       <Link href={item.href} className="text-sm text-zinc-400 hover:text-white transition-colors">
                         {item.name}
@@ -138,7 +140,7 @@ export default function Footer() {
               <div>
                 <h3 className="text-sm font-semibold text-white">Legal</h3>
                 <ul role="list" className="mt-4 space-y-4">
-                  {navigation.legal.map((item) => (
+                  {t.footer.legal.map((item) => (
                     <li key={item.name}>
                       <Link href={item.href} className="text-sm text-zinc-400 hover:text-white transition-colors">
                         {item.name}

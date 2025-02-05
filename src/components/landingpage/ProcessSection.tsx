@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
+import { useLanguage } from "@/context/LanguageContext"
 
 const processes = [
   {
@@ -31,6 +32,8 @@ const processes = [
 ]
 
 const ProcessCard = ({ process, index }: { process: (typeof processes)[0]; index: number }) => {
+
+  const {t} = useLanguage()
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -107,6 +110,7 @@ const ProcessCard = ({ process, index }: { process: (typeof processes)[0]; index
 }
 
 export const ProcessSection = () => {
+  const {t} = useLanguage()
   return (
     <section className="relative py-12 sm:py-24 lg:py-32 overflow-hidden" id="process">
       <div className="container px-4 sm:px-6 mx-auto">
@@ -123,17 +127,17 @@ export const ProcessSection = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              How We Work
+              {t.landing.process.header}
             </motion.div>
-            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-white">Our Development Process</h2>
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-white">{t.landing.process.title}</h2>
             <p className="text-xs sm:text-sm text-zinc-400 max-w-md mx-auto px-4 sm:px-0">
-              A streamlined approach to turning your ideas into reality.
+            {t.landing.process.subtitle}
             </p>
           </motion.div>
         </motion.div>
 
         <div className="grid gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto">
-          {processes.map((process, index) => (
+          {t.landing.process.items.map((process, index) => (
             <ProcessCard key={process.step} process={process} index={index} />
           ))}
         </div>

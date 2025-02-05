@@ -4,27 +4,8 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 import Link from "next/link"
 import type React from "react" // Import React
+import { useLanguage } from "@/context/LanguageContext"
 
-const features = [
-  {
-    title: "Custom Development",
-    description: "Tailored solutions with cutting-edge tech stack.",
-    metrics: ["Modern Stack", "Custom Design", "Scalable"],
-    gradient: "from-blue-500/20 via-indigo-500/20 to-purple-500/20",
-  },
-  {
-    title: "UX Excellence",
-    description: "User-centric design for engaging experiences.",
-    metrics: ["Responsive", "Accessible", "Intuitive"],
-    gradient: "from-emerald-500/20 via-teal-500/20 to-cyan-500/20",
-  },
-  {
-    title: "Agile Process",
-    description: "Efficient development with continuous updates.",
-    metrics: ["Fast Delivery", "Transparency", "Flexibility"],
-    gradient: "from-orange-500/20 via-red-500/20 to-pink-500/20",
-  },
-]
 
 const ParallaxCard = ({ children, index }: { children: React.ReactNode; index: number }) => {
   const ref = useRef<HTMLDivElement>(null)
@@ -45,6 +26,8 @@ const ParallaxCard = ({ children, index }: { children: React.ReactNode; index: n
 }
 
 export const FeaturesSection = () => {
+  const {t} = useLanguage()
+
   return (
     <section className="relative py-12 sm:py-24 lg:py-32 overflow-hidden">
       <div className="container px-4 sm:px-6 mx-auto">
@@ -61,17 +44,17 @@ export const FeaturesSection = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              Our Expertise
+              {t.landing.features.header}
             </motion.div>
-            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-white">Crafting Digital Solutions</h2>
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-white">{t.landing.features.title}</h2>
             <p className="text-xs sm:text-sm text-zinc-400 max-w-md mx-auto px-4 sm:px-0">
-              We combine technical expertise with creative innovation.
+              {t.landing.features.subtitle}
             </p>
           </motion.div>
         </motion.div>
 
         <div className="grid gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
-          {features.map((feature, index) => (
+          {t.landing.features.items.map((feature, index) => (
             <ParallaxCard key={feature.title} index={index}>
               <div className="group relative h-full">
                 <div
@@ -128,7 +111,7 @@ export const FeaturesSection = () => {
                         href={`/services#${feature.title.toLowerCase().replace(/\s+/g, "-")}`}
                         className="inline-flex items-center text-xs sm:text-sm text-white/70 hover:text-white transition-colors duration-200"
                       >
-                        Learn more
+                        {t.landing.features.button}
                         <svg
                           viewBox="0 0 24 24"
                           className="w-3 h-3 sm:w-4 sm:h-4 ml-1"

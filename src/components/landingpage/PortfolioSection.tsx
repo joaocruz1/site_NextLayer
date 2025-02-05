@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { useLanguage } from "@/context/LanguageContext"
 
 const projects = [
   {
@@ -107,6 +108,7 @@ const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index:
 }
 
 export const PortfolioSection = () => {
+  const {t} = useLanguage()
   return (
     <section className="relative py-12 sm:py-24 lg:py-32 overflow-hidden" id="portfolio">
       <div className="container px-4 sm:px-6 mx-auto">
@@ -123,17 +125,17 @@ export const PortfolioSection = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              Our Work
+              {t.landing.portfolio.header}
             </motion.div>
-            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-white">Featured Projects</h2>
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-white">{t.landing.portfolio.title}</h2>
             <p className="text-xs sm:text-sm text-zinc-400 max-w-md mx-auto px-4 sm:px-0">
-              Explore our portfolio of successful projects.
+              {t.landing.portfolio.subtitle}
             </p>
           </motion.div>
         </motion.div>
 
         <div className="grid gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
-          {projects.map((project, index) => (
+          {t.landing.portfolio.items.map((project, index) => (
             <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
@@ -149,7 +151,7 @@ export const PortfolioSection = () => {
             href="/portfolio"
             className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 rounded-lg border border-zinc-800 text-sm text-white hover:bg-zinc-800 transition-colors duration-200"
           >
-            View All Projects
+            {t.landing.portfolio.view}
           </Link>
         </motion.div>
       </div>
