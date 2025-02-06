@@ -4,8 +4,10 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
+import { useLanguage } from "@/context/LanguageContext"
 
 export function AboutSection() {
+  const {t} = useLanguage()
   return (
     <section className="py-20 md:py-28">
       <div className="container px-4 md:px-6">
@@ -18,15 +20,14 @@ export function AboutSection() {
             className="space-y-6"
           >
             <div className="inline-flex items-center rounded-full border border-purple-200/10 bg-purple-500/5 px-3 py-1 text-sm text-purple-200">
-              About Us
+              {t.home.about.header}
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">We Build More Than Just Software</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">{t.home.about.title}</h2>
             <p className="text-zinc-400 md:text-lg">
-              NextLayer is a team of passionate developers, designers, and digital craftsmen. We believe in creating
-              software that not only meets technical requirements but also delivers exceptional user experiences.
+              {t.home.about.description}
             </p>
             <ul className="grid gap-4">
-              {["10+ Years of Experience", "Award-winning Team", "Global Client Base", "24/7 Support"].map(
+              {t.home.about.items.map(
                 (item, i) => (
                   <motion.li
                     key={item}
@@ -54,12 +55,12 @@ export function AboutSection() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/about">
                 <Button variant="outline" size="lg">
-                  Learn More
+                  {t.home.about.buttons.primary}
                 </Button>
               </Link>
               <Link href="/careers">
                 <Button variant="ghost" size="lg">
-                  Join Our Team
+                  {t.home.about.buttons.second}
                 </Button>
               </Link>
             </div>

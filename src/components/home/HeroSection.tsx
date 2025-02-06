@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { useLanguage } from "@/context/LanguageContext"
 
 export function HeroSection() {
+  const {t} = useLanguage()
   return (
     <section className="relative min-h-[90vh] flex items-center">
       <div className="container px-4 sm:px-6 py-20 sm:py-32">
@@ -16,7 +18,7 @@ export function HeroSection() {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center rounded-full border border-purple-500/10 bg-purple-500/5 px-3 py-1 text-xs sm:text-sm text-purple-200 backdrop-blur-sm"
             >
-              Welcome to NextLayer Studio
+              {t.home.hero.header}
             </motion.div>
 
             <motion.h1
@@ -25,9 +27,9 @@ export function HeroSection() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter"
             >
-              <span className="block text-white mb-4">Crafting Digital</span>
+              <span className="block text-white mb-4">{t.home.hero.title}</span>
               <span className="block bg-gradient-to-r from-purple-300 via-purple-400 to-purple-500 bg-clip-text text-transparent pb-4">
-                Excellence
+                {t.home.hero.title2}
               </span>
             </motion.h1>
 
@@ -37,8 +39,7 @@ export function HeroSection() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-sm sm:text-base md:text-lg text-purple-200/70"
             >
-              We create exceptional software solutions that transform businesses. From concept to deployment, we bring
-              your digital vision to life with cutting-edge technology.
+              {t.home.hero.description}
             </motion.p>
 
             <motion.div
@@ -57,13 +58,13 @@ export function HeroSection() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Start Your Project
+                  {t.home.hero.buttons.primary.text}
                   <motion.span
                     className="absolute -bottom-8 sm:-bottom-10 text-purple-300/70 text-xs sm:text-sm opacity-0 group-hover:opacity-100 transition-all duration-300"
                     initial={{ y: -5 }}
                     whileHover={{ y: 0 }}
                   >
-                    Free consultation
+                    {t.home.hero.buttons.primary.hover}
                   </motion.span>
                 </motion.div>
               </Link>
@@ -77,7 +78,7 @@ export function HeroSection() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  View Our Work
+                  {t.home.hero.buttons.second}
                 </motion.div>
               </Link>
             </motion.div>
@@ -89,12 +90,7 @@ export function HeroSection() {
               transition={{ duration: 1, delay: 0.6 }}
               className="grid grid-cols-2 gap-6 sm:gap-8 pt-12 sm:pt-16"
             >
-              {[
-                { value: "50+", label: "Projects Delivered" },
-                { value: "100%", label: "Client Satisfaction" },
-                { value: "10+", label: "Team Members" },
-                { value: "24/7", label: "Support" },
-              ].map((stat, i) => (
+              {t.home.hero.items.map((stat, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}

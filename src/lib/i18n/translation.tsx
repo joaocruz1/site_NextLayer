@@ -1,6 +1,7 @@
 import { footer, header } from "framer-motion/client"
 import { features, title } from "process"
 import { Mail, MessageSquare, Phone } from "lucide-react"
+import { Code2, Smartphone, Globe, Shield, Zap, Users } from "lucide-react"
 
 export const translations = {
     en: {
@@ -219,14 +220,6 @@ export const translations = {
                 ],
                 view: "View All Projects"
             },
-            stats: {
-                items: [
-                { label: "Projects Delivered", value: "200+" },
-                { label: "Happy Clients", value: "100+" },
-                { label: "Team Members", value: "50+" },
-                { label: "Years Experience", value: "10+" },
-                ],
-            },
             contact: {
                 header:"Contact Us",
                 title: "Let's Build Something Amazing Together",
@@ -261,7 +254,71 @@ export const translations = {
                 submit: "Send Message",
                 },
             },
-        }
+        },
+        home: {
+          hero:{
+            header: "Welcome to NextLayer Studio",
+            title:"Crafting Digital ",
+            title2:"Excellence",
+            description: "We create exceptional software solutions that transform businesses. From concept to deployment, we bring your digital vision to life with cutting-edge technology.",
+            buttons:{
+              primary:{text:"Star Your Project", hover: "Free Consultation"},
+              second: "View Our Work"
+            },
+            items:[
+              { value: "50+", label: "Projects Delivered" },
+              { value: "100%", label: "Client Satisfaction" },
+              { value: "10+", label: "Team Members" },
+              { value: "24/7", label: "Support" },
+            ],
+          },
+          about : {
+            header:"About Us",
+            title:"We Build More Than Just Software",
+            description:"NextLayer is a team of passionate developers, designers, and digital craftsmen. We believe in creating software that not only meets technical requirements but also delivers exceptional user experiences.",
+            items:["10+ Years of Experience", "Award-winning Team", "Global Client Base", "24/7 Support"],
+            buttons:{
+              primary:"Learn More",
+              second: "Join Your Team"
+            }
+          },
+          features :{
+            title: "Our Services",
+            subtitle: "We offer a comprehensive range of digital solutions to help your business succeed",
+            items :  [
+              {
+                icon: Code2,
+                title: "Web Development",
+                description: "Custom web applications built with modern technologies.",
+              },
+              {
+                icon: Smartphone,
+                title: "Mobile Apps",
+                description: "Native and cross-platform mobile applications.",
+              },
+              {
+                icon: Globe,
+                title: "Cloud Solutions",
+                description: "Scalable cloud infrastructure and deployments.",
+              },
+              {
+                icon: Shield,
+                title: "Secure Systems",
+                description: "Enterprise-grade security implementations.",
+              },
+              {
+                icon: Zap,
+                title: "Fast Performance",
+                description: "Optimized for speed and efficiency.",
+              },
+              {
+                icon: Users,
+                title: "User-Centric",
+                description: "Intuitive interfaces and experiences.",
+              },
+            ],
+          }
+        },
         },
         pt: {
         
@@ -465,14 +522,6 @@ export const translations = {
                 ],
                 view: "Ver Todos os Projetos"
             },            
-            stats: {
-                items: [
-                { label: "Projetos Entregues", value: "200+" },
-                { label: "Clientes Satisfeitos", value: "100+" },
-                { label: "Membros na Equipe", value: "50+" },
-                { label: "Anos de Experiência", value: "10+" },
-                ],
-            },
             contact: {
                 header: "Fale Conosco",
                 title: "Vamos Construir Algo Incrível Juntos",
@@ -506,7 +555,71 @@ export const translations = {
                     submit: "Enviar Mensagem",
                 },
             },            
+        },
+        home: {
+          hero: {
+            header: "Bem-vindo a NextLayer Studio",
+            title: "Excelência ",
+            title2: "Digital",
+            description: "Criamos soluções de software excepcionais que transformam negócios. Do conceito à implementação, damos vida à sua visão digital com tecnologia de ponta.",
+            buttons: {
+              primary: { text: "Inicie Seu Projeto", hover: "Consultoria Gratuita" },
+              second: "Veja Nossos Trabalhos"
             },
+            items: [
+              { value: "50+", label: "Projetos Entregues" },
+              { value: "100%", label: "Satisfação dos Clientes" },
+              { value: "10+", label: "Membros da Equipe" },
+              { value: "24/7", label: "Suporte" }
+            ]
+          },          
+          about: {
+            header: "Quem Somos",
+            title: "Construímos Mais do que Apenas Software",
+            description: "A NextLayer é uma equipe de desenvolvedores, designers e artesãos digitais apaixonados. Acreditamos em criar software que não apenas atenda aos requisitos técnicos, mas que também proporcione experiências excepcionais aos usuários.",
+            items: ["Mais de 10 Anos de Experiência", "Equipe Premiada", "Clientes em Todo o Mundo", "Suporte 24/7"],
+            buttons: {
+              primary: "Saiba Mais",
+              second: "Junte-se à Nossa Equipe"
+            }
+          },
+          features: {
+            title: "Nossos Serviços",
+            subtitle: "Oferecemos uma ampla gama de soluções digitais para impulsionar o sucesso do seu negócio",
+            items: [
+              {
+                icon: Code2,
+                title: "Desenvolvimento Web",
+                description: "Aplicações web personalizadas com tecnologias modernas.",
+              },
+              {
+                icon: Smartphone,
+                title: "Aplicativos Mobile",
+                description: "Apps nativos e multiplataforma para dispositivos móveis.",
+              },
+              {
+                icon: Globe,
+                title: "Soluções em Nuvem",
+                description: "Infraestrutura em nuvem escalável e eficiente.",
+              },
+              {
+                icon: Shield,
+                title: "Sistemas Seguros",
+                description: "Implementações de segurança de nível empresarial.",
+              },
+              {
+                icon: Zap,
+                title: "Alta Performance",
+                description: "Otimização para velocidade e eficiência.",
+              },
+              {
+                icon: Users,
+                title: "Foco no Usuário",
+                description: "Interfaces intuitivas e experiências envolventes.",
+              },
+            ],
+          }          
+        },        
      },
   }
   

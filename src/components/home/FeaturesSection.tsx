@@ -1,42 +1,11 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Code2, Smartphone, Globe, Shield, Zap, Users } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
-const features = [
-  {
-    icon: Code2,
-    title: "Web Development",
-    description: "Custom web applications built with modern technologies.",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile Apps",
-    description: "Native and cross-platform mobile applications.",
-  },
-  {
-    icon: Globe,
-    title: "Cloud Solutions",
-    description: "Scalable cloud infrastructure and deployments.",
-  },
-  {
-    icon: Shield,
-    title: "Secure Systems",
-    description: "Enterprise-grade security implementations.",
-  },
-  {
-    icon: Zap,
-    title: "Fast Performance",
-    description: "Optimized for speed and efficiency.",
-  },
-  {
-    icon: Users,
-    title: "User-Centric",
-    description: "Intuitive interfaces and experiences.",
-  },
-]
 
 export function FeaturesSection() {
+  const {t} = useLanguage()
   return (
     <section className="py-20 md:py-28">
       <div className="container px-4 md:px-6">
@@ -48,7 +17,7 @@ export function FeaturesSection() {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-4xl font-bold tracking-tighter"
           >
-            Our Services
+            {t.home.features.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -57,12 +26,12 @@ export function FeaturesSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-zinc-400 max-w-[600px] mx-auto"
           >
-            We offer a comprehensive range of digital solutions to help your business succeed
+            {t.home.features.subtitle}
           </motion.p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, i) => (
+          {t.home.features.items.map((feature, i) => (
             <motion.div
               key={feature.title}
               initial={{ opacity: 0, y: 20 }}
