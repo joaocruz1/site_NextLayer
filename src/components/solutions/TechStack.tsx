@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useLanguage } from "@/context/LanguageContext"
 
 const technologies = [
   {
@@ -22,6 +23,7 @@ const technologies = [
 ]
 
 const TechStack = () => {
+  const {t} = useLanguage()
   return (
     <section className="py-20 md:py-28 relative overflow-hidden">
       <div className="container px-4 md:px-6">
@@ -33,7 +35,7 @@ const TechStack = () => {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-4xl font-bold tracking-tighter"
           >
-            Our Tech Stack
+            {t.solutions.techstack.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -42,12 +44,12 @@ const TechStack = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-zinc-400 max-w-[600px] mx-auto"
           >
-            We use cutting-edge technologies to build modern solutions
+            {t.solutions.techstack.subtitle}
           </motion.p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {technologies.map((tech, i) => (
+          {t.solutions.techstack.items.map((tech, i) => (
             <motion.div
               key={tech.category}
               initial={{ opacity: 0, y: 20 }}

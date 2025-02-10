@@ -1,8 +1,10 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useLanguage } from "@/context/LanguageContext"
 
 const HeroSection = () => {
+  const {t} = useLanguage()
   return (
     <section className="relative min-h-[90vh] flex items-center">
       <div className="container px-4 sm:px-6 py-20 sm:py-32">
@@ -14,7 +16,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center rounded-full border border-purple-500/10 bg-purple-500/5 px-3 py-1 text-xs sm:text-sm text-purple-200 backdrop-blur-sm"
             >
-              Our Solutions
+              {t.solutions.hero.header}
             </motion.div>
 
             <motion.h1
@@ -23,9 +25,9 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter"
             >
-              <span className="block text-white mb-4">Innovative Solutions</span>
+              <span className="block text-white mb-4">{t.solutions.hero.title}</span>
               <span className="block bg-gradient-to-r from-purple-300 via-purple-400 to-purple-500 bg-clip-text text-transparent pb-4">
-                For Modern Business
+                {t.solutions.hero.title2}
               </span>
             </motion.h1>
 
@@ -35,8 +37,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-sm sm:text-base md:text-lg text-purple-200/70 max-w-xl"
             >
-              We deliver cutting-edge solutions that drive digital transformation and business growth. Our expertise
-              spans across multiple industries and technologies.
+              {t.solutions.hero.description}
             </motion.p>
           </div>
 
@@ -49,7 +50,7 @@ const HeroSection = () => {
             <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 via-purple-400/10 to-blue-500/20 rounded-3xl blur-2xl" />
             <div className="relative h-full w-full rounded-3xl border border-purple-200/10 bg-purple-500/[0.02] overflow-hidden p-8">
               <div className="grid grid-cols-2 grid-rows-2 gap-4 h-full">
-                {["Web Development", "Mobile Solutions", "Cloud Infrastructure", "AI Integration"].map((title, i) => (
+                {t.solutions.hero.items.map((title, i) => (
                   <motion.div
                     key={title}
                     className="relative rounded-2xl overflow-hidden bg-purple-500/[0.02] border border-purple-200/10 p-6"

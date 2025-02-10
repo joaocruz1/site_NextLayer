@@ -1,7 +1,7 @@
 import { footer, header } from "framer-motion/client"
 import { features, title } from "process"
 import { Mail, MessageSquare, Phone } from "lucide-react"
-import { Code2, Smartphone, Globe, Shield, Zap, Users } from "lucide-react"
+import { Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain } from "lucide-react"
 
 export const translations = {
     en: {
@@ -319,6 +319,107 @@ export const translations = {
             ],
           }
         },
+        solutions : {
+          hero : {
+            header : "Our Solutions",
+            title : "Innovative Solutions",
+            title2 : "For Modern Business",
+            description : "We deliver cutting-edge solutions that drive digital transformation and business growth. Our expertise spans across multiple industries and technologies.",
+            items : ["Web Development", "Mobile Solutions", "Cloud Infrastructure", "AI Integration"]
+          },
+          solutions_grid : {
+            title : "Our Solutions",
+            subtitle : "Comprehensive digital solutions tailored to your business needs",
+            items: [
+              {
+                icon: Code2,
+                title: "Custom Software Development",
+                description: "Tailored solutions built with cutting-edge technology to meet your specific business needs.",
+              },
+              {
+                icon: Smartphone,
+                title: "Mobile App Development",
+                description: "Native and cross-platform mobile applications that deliver exceptional user experiences.",
+              },
+              {
+                icon: Cloud,
+                title: "Cloud Solutions",
+                description: "Scalable and secure cloud infrastructure designed for optimal performance.",
+              },
+              {
+                icon: Brain,
+                title: "AI & Machine Learning",
+                description: "Intelligent solutions that leverage the latest advancements in AI technology.",
+              },
+              {
+                icon: Shield,
+                title: "Cybersecurity",
+                description: "Comprehensive security solutions to protect your digital assets and data.",
+              },
+              {
+                icon: Globe,
+                title: "Web Applications",
+                description: "Modern web applications built for scale and performance.",
+              },
+              {
+                icon: Zap,
+                title: "DevOps & Automation",
+                description: "Streamlined development and deployment processes for faster delivery.",
+              },
+              {
+                icon: Users,
+                title: "Digital Transformation",
+                description: "End-to-end digital transformation strategies and implementation.",
+              },
+            ]
+          },
+          techstack:{
+            title:"Our Tech Stack",
+            subtitle:"We use cutting-edge technologies to build modern solutions",
+            items:[
+              {
+                category: "Frontend",
+                techs: ["React", "Next.js", "Vue", "Angular", "TypeScript"],
+              },
+              {
+                category: "Backend",
+                techs: ["Node.js", "Python", "Java", "Go", ".NET"],
+              },
+              {
+                category: "Mobile",
+                techs: ["React Native", "Flutter", "iOS", "Android", "Kotlin"],
+              },
+              {
+                category: "Cloud",
+                techs: ["AWS", "Azure", "GCP", "Vercel", "Docker"],
+              },
+            ]
+          },
+          casestudies : {
+            title : "Case Studies",
+            subtitle : "Explore some of our successful project implementations",
+            items : [
+              {
+                title: "E-commerce Platform",
+                description: "Built a scalable e-commerce solution handling millions of transactions",
+                category: "Web Development",
+                image: "/placeholder.svg?height=400&width=600",
+              },
+              {
+                title: "Mobile Banking App",
+                description: "Secure and user-friendly mobile banking application",
+                category: "Mobile Development",
+                image: "/placeholder.svg?height=400&width=600",
+              },
+              {
+                title: "AI-Powered Analytics",
+                description: "Advanced analytics platform with machine learning capabilities",
+                category: "AI & Analytics",
+                image: "/placeholder.svg?height=400&width=600",
+              },
+            ]
+          }
+        }
         },
         pt: {
         
@@ -618,8 +719,109 @@ export const translations = {
                 description: "Interfaces intuitivas e experiências envolventes.",
               },
             ],
-          }          
-        },        
+          },         
+        },
+        solutions :{
+          hero: {
+            header: "Nossas Soluções",
+            title: "Soluções Inovadoras",
+            title2: "Para Negócios Modernos",
+            description: "Oferecemos soluções de ponta que impulsionam a transformação digital e o crescimento dos negócios. Nossa expertise abrange diversos setores e tecnologias.",
+            items: ["Desenvolvimento Web", "Soluções Mobile", "Infraestrutura em Nuvem", "Integração de IA"]
+          },
+          solutions_grid: {
+            title: "Nossas Soluções",
+            subtitle: "Soluções digitais abrangentes adaptadas às necessidades do seu negócio",
+            items: [
+              {
+                icon: Code2,
+                title: "Desenvolvimento de Software Personalizado",
+                description: "Soluções sob medida com tecnologia de ponta para atender às necessidades específicas do seu negócio.",
+              },
+              {
+                icon: Smartphone,
+                title: "Desenvolvimento de Apps Mobile",
+                description: "Aplicativos nativos e multiplataforma que oferecem experiências excepcionais aos usuários.",
+              },
+              {
+                icon: Cloud,
+                title: "Soluções em Nuvem",
+                description: "Infraestrutura em nuvem escalável e segura, projetada para desempenho ideal.",
+              },
+              {
+                icon: Brain,
+                title: "IA e Machine Learning",
+                description: "Soluções inteligentes que aproveitam os avanços mais recentes em tecnologia de IA.",
+              },
+              {
+                icon: Shield,
+                title: "Cibersegurança",
+                description: "Soluções de segurança abrangentes para proteger seus ativos digitais e dados.",
+              },
+              {
+                icon: Globe,
+                title: "Aplicações Web",
+                description: "Aplicações web modernas, desenvolvidas para escalabilidade e alto desempenho.",
+              },
+              {
+                icon: Zap,
+                title: "DevOps e Automação",
+                description: "Processos de desenvolvimento e implantação otimizados para entregas mais rápidas.",
+              },
+              {
+                icon: Users,
+                title: "Transformação Digital",
+                description: "Estratégias e implementação de transformação digital de ponta a ponta.",
+              },
+            ]
+          },
+          techstack: {
+            title: "Nossa Stack de Tecnologias",
+            subtitle: "Utilizamos tecnologias de ponta para desenvolver soluções modernas",
+            items: [
+              {
+                category: "Frontend",
+                techs: ["React", "Next.js", "Vue", "Angular", "TypeScript"],
+              },
+              {
+                category: "Backend",
+                techs: ["Node.js", "Python", "Java", "Go", ".NET"],
+              },
+              {
+                category: "Mobile",
+                techs: ["React Native", "Flutter", "iOS", "Android", "Kotlin"],
+              },
+              {
+                category: "Nuvem",
+                techs: ["AWS", "Azure", "GCP", "Vercel", "Docker"],
+              },
+            ]
+          },
+          casestudies: {
+            title: "Estudos de Caso",
+            subtitle: "Explore alguns de nossos projetos de sucesso",
+            items: [
+              {
+                title: "Plataforma de E-commerce",
+                description: "Desenvolvemos uma solução de e-commerce escalável, capaz de processar milhões de transações",
+                category: "Desenvolvimento Web",
+                image: "/placeholder.svg?height=400&width=600",
+              },
+              {
+                title: "App de Banco Digital",
+                description: "Aplicativo de banco digital seguro e fácil de usar",
+                category: "Desenvolvimento Mobile",
+                image: "/placeholder.svg?height=400&width=600",
+              },
+              {
+                title: "Análises com IA",
+                description: "Plataforma avançada de análises com recursos de machine learning",
+                category: "IA e Análises",
+                image: "/placeholder.svg?height=400&width=600",
+              },
+            ]
+          }            
+        }      
      },
   }
   

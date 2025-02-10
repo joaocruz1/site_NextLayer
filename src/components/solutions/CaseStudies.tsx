@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
+import { useLanguage } from "@/context/LanguageContext"
 
 const caseStudies = [
   {
@@ -26,6 +27,7 @@ const caseStudies = [
 ]
 
 const CaseStudies = () => {
+  const {t} = useLanguage()
   return (
     <section className="py-20 md:py-28">
       <div className="container px-4 md:px-6">
@@ -37,7 +39,7 @@ const CaseStudies = () => {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-4xl font-bold tracking-tighter"
           >
-            Case Studies
+            {t.solutions.casestudies.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -46,12 +48,12 @@ const CaseStudies = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-zinc-400 max-w-[600px] mx-auto"
           >
-            Explore some of our successful project implementations
+            {t.solutions.casestudies.subtitle}
           </motion.p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {caseStudies.map((study, i) => (
+          {t.solutions.casestudies.items.map((study, i) => (
             <motion.div
               key={study.title}
               initial={{ opacity: 0, y: 20 }}

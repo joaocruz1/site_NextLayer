@@ -2,51 +2,11 @@
 
 import { motion } from "framer-motion"
 import { Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
-const solutions = [
-  {
-    icon: Code2,
-    title: "Custom Software Development",
-    description: "Tailored solutions built with cutting-edge technology to meet your specific business needs.",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile App Development",
-    description: "Native and cross-platform mobile applications that deliver exceptional user experiences.",
-  },
-  {
-    icon: Cloud,
-    title: "Cloud Solutions",
-    description: "Scalable and secure cloud infrastructure designed for optimal performance.",
-  },
-  {
-    icon: Brain,
-    title: "AI & Machine Learning",
-    description: "Intelligent solutions that leverage the latest advancements in AI technology.",
-  },
-  {
-    icon: Shield,
-    title: "Cybersecurity",
-    description: "Comprehensive security solutions to protect your digital assets and data.",
-  },
-  {
-    icon: Globe,
-    title: "Web Applications",
-    description: "Modern web applications built for scale and performance.",
-  },
-  {
-    icon: Zap,
-    title: "DevOps & Automation",
-    description: "Streamlined development and deployment processes for faster delivery.",
-  },
-  {
-    icon: Users,
-    title: "Digital Transformation",
-    description: "End-to-end digital transformation strategies and implementation.",
-  },
-]
 
 const SolutionsGrid = () => {
+  const {t} = useLanguage()
   return (
     <section className="py-20 md:py-28">
       <div className="container px-4 md:px-6">
@@ -58,7 +18,7 @@ const SolutionsGrid = () => {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-4xl font-bold tracking-tighter"
           >
-            Our Solutions
+            {t.solutions.solutions_grid.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -67,12 +27,12 @@ const SolutionsGrid = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-zinc-400 max-w-[600px] mx-auto"
           >
-            Comprehensive digital solutions tailored to your business needs
+              {t.solutions.solutions_grid.subtitle}
           </motion.p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {solutions.map((solution, i) => (
+          {t.solutions.solutions_grid.items.map((solution, i) => (
             <motion.div
               key={solution.title}
               initial={{ opacity: 0, y: 20 }}
