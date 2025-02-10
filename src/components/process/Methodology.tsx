@@ -2,41 +2,11 @@
 
 import { motion } from "framer-motion"
 import { Code2, Users, Rocket, RefreshCw, Shield, Zap } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
-const methodologies = [
-  {
-    icon: Code2,
-    title: "Agile Development",
-    description: "Iterative approach with regular feedback and adaptable planning",
-  },
-  {
-    icon: Users,
-    title: "User-Centered Design",
-    description: "Focus on user needs and experiences throughout development",
-  },
-  {
-    icon: Rocket,
-    title: "Rapid Prototyping",
-    description: "Quick iteration of ideas and concepts for faster validation",
-  },
-  {
-    icon: RefreshCw,
-    title: "Continuous Integration",
-    description: "Regular code integration and automated testing",
-  },
-  {
-    icon: Shield,
-    title: "Security First",
-    description: "Built-in security measures from the ground up",
-  },
-  {
-    icon: Zap,
-    title: "Performance Optimization",
-    description: "Continuous monitoring and improvement of performance",
-  },
-]
 
 const Methodology = () => {
+  const {t} = useLanguage()
   return (
     <section id="methodology" className="py-20 md:py-28">
       <div className="container px-4 md:px-6">
@@ -48,7 +18,7 @@ const Methodology = () => {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-4xl font-bold tracking-tighter"
           >
-            Our Methodology
+            {t.process.methodology.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -57,12 +27,12 @@ const Methodology = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-zinc-400 max-w-[600px] mx-auto"
           >
-            A comprehensive approach to software development that ensures quality and success
+            {t.process.methodology.subtitle}
           </motion.p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {methodologies.map((method, i) => (
+          {t.process.methodology.items.map((method, i) => (
             <motion.div
               key={method.title}
               initial={{ opacity: 0, y: 20 }}

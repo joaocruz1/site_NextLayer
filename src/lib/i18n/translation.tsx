@@ -1,7 +1,7 @@
 import { footer, header } from "framer-motion/client"
 import { features, title } from "process"
 import { Mail, MessageSquare, Phone } from "lucide-react"
-import { Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain } from "lucide-react"
+import { Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
 
 export const translations = {
     en: {
@@ -419,9 +419,121 @@ export const translations = {
               },
             ]
           }
-        }
         },
-        pt: {
+        process : {
+          hero:{
+            header:"Our Process",
+            title:"From Concept",
+            title2:"To Reality",
+            description:"Our proven development process ensures successful project delivery through careful planning, iterative development, and continuous collaboration.",
+            button:"Explore Our Methodology",
+            items:["Discovery", "Planning", "Development", "Testing", "Deployment", "Maintenance"]
+          },
+          methodology:{
+            title:"Our Methodology",
+            subtitle:"A comprehensive approach to software development that ensures quality and success",
+            items:[
+              {
+                icon: Code2,
+                title: "Agile Development",
+                description: "Iterative approach with regular feedback and adaptable planning",
+              },
+              {
+                icon: Users,
+                title: "User-Centered Design",
+                description: "Focus on user needs and experiences throughout development",
+              },
+              {
+                icon: Rocket,
+                title: "Rapid Prototyping",
+                description: "Quick iteration of ideas and concepts for faster validation",
+              },
+              {
+                icon: RefreshCw,
+                title: "Continuous Integration",
+                description: "Regular code integration and automated testing",
+              },
+              {
+                icon: Shield,
+                title: "Security First",
+                description: "Built-in security measures from the ground up",
+              },
+              {
+                icon: Zap,
+                title: "Performance Optimization",
+                description: "Continuous monitoring and improvement of performance",
+              },
+            ]
+          },
+          timeline : {
+            title : "Project Timeline",
+            subtitle : "A typical project timeline from start to finish",
+            items : [
+              {
+                title: "Discovery & Planning",
+                duration: "Week 1-2",
+                description:
+                  "Initial consultation, requirement gathering, and project planning. We define goals, scope, and timeline.",
+              },
+              {
+                title: "Design & Architecture",
+                duration: "Week 3-4",
+                description:
+                  "Creating wireframes, design mockups, and technical architecture. Establishing the foundation for development.",
+              },
+              {
+                title: "Development Sprint 1",
+                duration: "Week 5-8",
+                description: "Core feature development begins. Regular updates and demos for feedback and iterations.",
+              },
+              {
+                title: "Development Sprint 2",
+                duration: "Week 9-12",
+                description: "Advanced feature implementation and integration. Continuous testing and optimization.",
+              },
+              {
+                title: "Testing & QA",
+                duration: "Week 13-14",
+                description:
+                  "Comprehensive testing, bug fixing, and performance optimization. Ensuring everything works as intended.",
+              },
+              {
+                title: "Deployment & Launch",
+                duration: "Week 15-16",
+                description: "Final preparations, deployment to production, and launch support. Ready for the world.",
+              },
+            ]
+          },
+          collaboration :{
+            title:"Team Collaboration",
+            description:"We believe in transparent and efficient collaboration. Our team uses the latest tools and methodologies to ensure smooth communication and project delivery.",
+            items:[
+              {
+                icon: MessageSquare,
+                title: "Communication",
+                description: "Regular updates and open channels for seamless communication",
+              },
+              {
+                icon: Video,
+                title: "Virtual Meetings",
+                description: "Face-to-face discussions and demos via video conferencing",
+              },
+              {
+                icon: GitBranch,
+                title: "Version Control",
+                description: "Organized code management and collaboration",
+              },
+              {
+                icon: Users,
+                title: "Team Collaboration",
+                description: "Cross-functional teams working together efficiently",
+              },
+            ]
+          }
+        },
+        },
+
+    pt: {
         
         nav: {
             solutions: "Soluções",
@@ -821,7 +933,118 @@ export const translations = {
               },
             ]
           }            
-        }      
+        },
+        process: {
+          hero: {
+            header: "Nosso Processo",
+            title: "Do Conceito",
+            title2: "À Realidade",
+            description: "Nosso processo de desenvolvimento comprovado garante a entrega de projetos de sucesso por meio de um planejamento cuidadoso, desenvolvimento iterativo e colaboração contínua.",
+            button: "Explore Nossa Metodologia",
+            items: ["Descoberta", "Planejamento", "Desenvolvimento", "Testes", "Implantação", "Manutenção"]
+          },
+          methodology: {
+            title: "Nossa Metodologia",
+            subtitle: "Uma abordagem abrangente para o desenvolvimento de software que garante qualidade e sucesso",
+            items: [
+              {
+                icon: Code2,
+                title: "Desenvolvimento Ágil",
+                description: "Abordagem iterativa com feedback regular e planejamento adaptável",
+              },
+              {
+                icon: Users,
+                title: "Design Centrado no Usuário",
+                description: "Foco nas necessidades e experiências do usuário durante todo o desenvolvimento",
+              },
+              {
+                icon: Rocket,
+                title: "Prototipagem Rápida",
+                description: "Iteração ágil de ideias e conceitos para validação mais rápida",
+              },
+              {
+                icon: RefreshCw,
+                title: "Integração Contínua",
+                description: "Integração regular de código e testes automatizados",
+              },
+              {
+                icon: Shield,
+                title: "Segurança em Primeiro Lugar",
+                description: "Medidas de segurança incorporadas desde o início",
+              },
+              {
+                icon: Zap,
+                title: "Otimização de Performance",
+                description: "Monitoramento contínuo e aprimoramento do desempenho",
+              },
+            ]
+          },
+          timeline: {
+            title: "Cronograma do Projeto",
+            subtitle: "Um cronograma típico de projeto do início ao fim",
+            items: [
+              {
+                title: "Descoberta & Planejamento",
+                duration: "Semana 1-2",
+                description:
+                  "Consulta inicial, levantamento de requisitos e planejamento do projeto. Definimos objetivos, escopo e cronograma.",
+              },
+              {
+                title: "Design & Arquitetura",
+                duration: "Semana 3-4",
+                description:
+                  "Criação de wireframes, mockups de design e arquitetura técnica. Estabelecendo a base para o desenvolvimento.",
+              },
+              {
+                title: "Sprint de Desenvolvimento 1",
+                duration: "Semana 5-8",
+                description: "Início do desenvolvimento das funcionalidades principais. Atualizações regulares e demonstrações para feedback e iterações.",
+              },
+              {
+                title: "Sprint de Desenvolvimento 2",
+                duration: "Semana 9-12",
+                description: "Implementação de funcionalidades avançadas e integração. Testes contínuos e otimização.",
+              },
+              {
+                title: "Testes & Garantia de Qualidade",
+                duration: "Semana 13-14",
+                description:
+                  "Testes abrangentes, correção de bugs e otimização de desempenho. Garantindo que tudo funcione conforme o esperado.",
+              },
+              {
+                title: "Implantação & Lançamento",
+                duration: "Semana 15-16",
+                description: "Preparações finais, implantação em produção e suporte ao lançamento. Pronto para o mundo.",
+              },
+            ]
+          },
+          collaboration: {
+            title: "Colaboração em Equipe",
+            description: "Acreditamos em uma colaboração transparente e eficiente. Nossa equipe utiliza as ferramentas e metodologias mais recentes para garantir uma comunicação fluida e a entrega de projetos com excelência.",
+            items: [
+              {
+                icon: MessageSquare,
+                title: "Comunicação",
+                description: "Atualizações regulares e canais abertos para uma comunicação contínua",
+              },
+              {
+                icon: Video,
+                title: "Reuniões Virtuais",
+                description: "Discussões e demonstrações presenciais por videoconferência",
+              },
+              {
+                icon: GitBranch,
+                title: "Controle de Versão",
+                description: "Gestão de código organizada e colaboração eficiente",
+              },
+              {
+                icon: Users,
+                title: "Trabalho em Equipe",
+                description: "Equipes multidisciplinares trabalhando em conjunto de forma eficiente",
+              },
+            ]
+          }                           
+        }              
      },
   }
   

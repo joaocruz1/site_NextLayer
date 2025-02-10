@@ -3,31 +3,11 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { MessageSquare, Video, GitBranch, Users } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
-const tools = [
-  {
-    icon: MessageSquare,
-    title: "Communication",
-    description: "Regular updates and open channels for seamless communication",
-  },
-  {
-    icon: Video,
-    title: "Virtual Meetings",
-    description: "Face-to-face discussions and demos via video conferencing",
-  },
-  {
-    icon: GitBranch,
-    title: "Version Control",
-    description: "Organized code management and collaboration",
-  },
-  {
-    icon: Users,
-    title: "Team Collaboration",
-    description: "Cross-functional teams working together efficiently",
-  },
-]
 
 const Collaboration = () => {
+  const {t} = useLanguage()
   return (
     <section className="py-12 sm:py-20 md:py-28">
       <div className="container px-4 sm:px-6">
@@ -39,14 +19,13 @@ const Collaboration = () => {
             transition={{ duration: 0.5 }}
             className="space-y-8"
           >
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">Team Collaboration</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">{t.process.collaboration.title}</h2>
             <p className="text-zinc-400">
-              We believe in transparent and efficient collaboration. Our team uses the latest tools and methodologies to
-              ensure smooth communication and project delivery.
+              {t.process.collaboration.description}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              {tools.map((tool, i) => (
+              {t.process.collaboration.items.map((tool, i) => (
                 <motion.div
                   key={tool.title}
                   initial={{ opacity: 0, y: 20 }}
