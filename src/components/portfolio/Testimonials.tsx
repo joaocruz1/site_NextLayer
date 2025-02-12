@@ -2,31 +2,11 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { useLanguage } from "@/context/LanguageContext"
 
-const testimonials = [
-  {
-    quote:
-      "Working with NextLayer was a game-changer for our business. Their expertise and dedication delivered exceptional results.",
-    author: "Sarah Johnson",
-    role: "CEO, TechCorp",
-    image: "/placeholder.svg?height=100&width=100",
-  },
-  {
-    quote:
-      "The team's attention to detail and innovative solutions helped us achieve our digital transformation goals.",
-    author: "Michael Chen",
-    role: "CTO, InnovateCo",
-    image: "/placeholder.svg?height=100&width=100",
-  },
-  {
-    quote: "Outstanding service and technical expertise. They truly understand modern business needs.",
-    author: "Emma Williams",
-    role: "Product Manager, StartupX",
-    image: "/placeholder.svg?height=100&width=100",
-  },
-]
 
 const Testimonials = () => {
+  const {t} = useLanguage()
   return (
     <section className="py-20 md:py-28">
       <div className="container px-4 md:px-6">
@@ -38,7 +18,7 @@ const Testimonials = () => {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-4xl font-bold tracking-tighter"
           >
-            Client Testimonials
+            {t.portfolio.testimonials.header}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -47,12 +27,12 @@ const Testimonials = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-zinc-400 max-w-[600px] mx-auto"
           >
-            What our clients say about working with us
+            {t.portfolio.testimonials.title}
           </motion.p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((testimonial, i) => (
+          {t.portfolio.testimonials.items.map((testimonial, i) => (
             <motion.div
               key={testimonial.author}
               initial={{ opacity: 0, y: 20 }}

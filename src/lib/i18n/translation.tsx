@@ -531,6 +531,95 @@ export const translations = {
             ]
           }
         },
+        portfolio: {
+          hero : {
+            header:"Our Portfolio",
+            title:"Showcasing Our",
+            title2:"Best Work",
+            description:"Explore our collection of successful projects and see how we've helped businesses transform their digital presence with innovative solutions."
+          },
+          projectgrid:{
+            categories:["All", "Web", "Mobile", "E-commerce", "Enterprise"],
+            items:[
+              {
+                title: "E-commerce Platform",
+                category: "E-commerce",
+                description: "A modern e-commerce platform with advanced features",
+                image: "/placeholder.svg?height=400&width=600",
+                link: "/portfolio/e-commerce-platform",
+              },
+              {
+                title: "Mobile Banking App",
+                category: "Mobile",
+                description: "Secure and user-friendly mobile banking solution",
+                image: "/placeholder.svg?height=400&width=600",
+                link: "/portfolio/mobile-banking",
+              },
+              {
+                title: "Enterprise Dashboard",
+                category: "Enterprise",
+                description: "Comprehensive analytics and management dashboard",
+                image: "/placeholder.svg?height=400&width=600",
+                link: "/portfolio/enterprise-dashboard",
+              },
+              {
+                title: "Social Platform",
+                category: "Web",
+                description: "Community-driven social networking platform",
+                image: "/placeholder.svg?height=400&width=600",
+                link: "/portfolio/social-platform",
+              },
+              {
+                title: "Retail Mobile App",
+                category: "Mobile",
+                description: "Feature-rich retail management application",
+                image: "/placeholder.svg?height=400&width=600",
+                link: "/portfolio/retail-app",
+              },
+              {
+                title: "B2B Platform",
+                category: "Enterprise",
+                description: "Business-to-business trading platform",
+                image: "/placeholder.svg?height=400&width=600",
+                link: "/portfolio/b2b-platform",
+              },
+            ]
+          },
+          stats:{
+            items:[
+              { label: "Projects Completed", value: "100+" },
+              { label: "Happy Clients", value: "50+" },
+              { label: "Team Members", value: "25+" },
+              { label: "Years Experience", value: "10+" },
+            ]
+          },
+          testimonials:{
+            header:"Client Testimonials",
+            title:" What our clients say about working with us",
+            items:[
+              {
+                quote:
+                  "Working with NextLayer was a game-changer for our business. Their expertise and dedication delivered exceptional results.",
+                author: "Sarah Johnson",
+                role: "CEO, TechCorp",
+                image: "/placeholder.svg?height=100&width=100",
+              },
+              {
+                quote:
+                  "The team's attention to detail and innovative solutions helped us achieve our digital transformation goals.",
+                author: "Michael Chen",
+                role: "CTO, InnovateCo",
+                image: "/placeholder.svg?height=100&width=100",
+              },
+              {
+                quote: "Outstanding service and technical expertise. They truly understand modern business needs.",
+                author: "Emma Williams",
+                role: "Product Manager, StartupX",
+                image: "/placeholder.svg?height=100&width=100",
+              },
+            ]            
+          }
+        }
         },
 
     pt: {
@@ -1044,7 +1133,99 @@ export const translations = {
               },
             ]
           }                           
-        }              
+        },
+        portfolio: {
+          hero: {
+            header: "Nosso Portfólio",
+            title: "Apresentando Nosso",
+            title2: "Melhor Trabalho",
+            description:
+              "Explore nossa coleção de projetos de sucesso e veja como ajudamos empresas a transformar sua presença digital com soluções inovadoras.",
+          },
+          projectgrid: {
+            categories: ["Todos", "Web", "Mobile", "E-commerce", "Corporativo"],
+            items: [
+              {
+                title: "Plataforma de E-commerce",
+                category: "E-commerce",
+                description: "Uma plataforma de e-commerce moderna com recursos avançados",
+                image: "/placeholder.svg?height=400&width=600",
+                link: "/portfolio/e-commerce-platform",
+              },
+              {
+                title: "App de Banco Mobile",
+                category: "Mobile",
+                description: "Solução de banco mobile segura e fácil de usar",
+                image: "/placeholder.svg?height=400&width=600",
+                link: "/portfolio/mobile-banking",
+              },
+              {
+                title: "Dashboard Corporativo",
+                category: "Corporativo",
+                description: "Dashboard completo para análise e gestão de dados",
+                image: "/placeholder.svg?height=400&width=600",
+                link: "/portfolio/enterprise-dashboard",
+              },
+              {
+                title: "Plataforma Social",
+                category: "Web",
+                description: "Plataforma de rede social focada na comunidade",
+                image: "/placeholder.svg?height=400&width=600",
+                link: "/portfolio/social-platform",
+              },
+              {
+                title: "App de Varejo Mobile",
+                category: "Mobile",
+                description: "Aplicativo de gestão de varejo com diversos recursos",
+                image: "/placeholder.svg?height=400&width=600",
+                link: "/portfolio/retail-app",
+              },
+              {
+                title: "Plataforma B2B",
+                category: "Corporativo",
+                description: "Plataforma de negociação entre empresas (B2B)",
+                image: "/placeholder.svg?height=400&width=600",
+                link: "/portfolio/b2b-platform",
+              },
+            ],
+          },
+          stats: {
+            items: [
+              { label: "Projetos Concluídos", value: "100+" },
+              { label: "Clientes Satisfeitos", value: "50+" },
+              { label: "Membros da Equipe", value: "25+" },
+              { label: "Anos de Experiência", value: "10+" },
+            ],
+          },
+          testimonials: {
+            header: "Depoimentos de Clientes",
+            title: "O que nossos clientes dizem sobre trabalhar conosco",
+            items: [
+              {
+                quote:
+                  "Trabalhar com a NextLayer foi um divisor de águas para o nosso negócio. Sua experiência e dedicação trouxeram resultados excepcionais.",
+                author: "Sarah Johnson",
+                role: "CEO, TechCorp",
+                image: "/placeholder.svg?height=100&width=100",
+              },
+              {
+                quote:
+                  "A atenção aos detalhes e as soluções inovadoras da equipe nos ajudaram a alcançar nossos objetivos de transformação digital.",
+                author: "Michael Chen",
+                role: "CTO, InnovateCo",
+                image: "/placeholder.svg?height=100&width=100",
+              },
+              {
+                quote:
+                  "Serviço excepcional e expertise técnica. Eles realmente entendem as necessidades dos negócios modernos.",
+                author: "Emma Williams",
+                role: "Gerente de Produto, StartupX",
+                image: "/placeholder.svg?height=100&width=100",
+              },
+            ],
+          },
+        }
+                      
      },
   }
   
