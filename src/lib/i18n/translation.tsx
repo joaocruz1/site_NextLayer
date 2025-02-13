@@ -1,7 +1,6 @@
 import { footer, header } from "framer-motion/client"
 import { features, title } from "process"
-import { Mail, MessageSquare, Phone } from "lucide-react"
-import { Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
+import { Mail, MessageCircle, Phone, MessageSquare, Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
 
 export const translations = {
     en: {
@@ -196,26 +195,26 @@ export const translations = {
                 title: "Featured Projects",
                 subtitle: " Explore our portfolio of successful projects.",
                 items:[
-                    {
+                      {
                         title: "E-Commerce Platform",
-                        description: "Full-stack e-commerce with AI recommendations.",
+                        description: "A platform that consolidates marketplace data like Mercado Livre and Amazon, with product and sales management.",
                         image: "/placeholder.svg?height=400&width=600",
-                        tags: ["Next.js", "React", "Node.js"],
-                        link: "/portfolio/e-commerce",
+                        tags: ["Python", "JavaScript", "Jinja"],
+                        link: "/portfolio/e-commerce"
                       },
                       {
-                        title: "FinTech Dashboard",
-                        description: "Real-time financial data visualization platform.",
+                        title: "Websites and Landing Pages",
+                        description: "Creation of high-converting websites and landing pages optimized for performance and user experience.",
                         image: "/placeholder.svg?height=400&width=600",
-                        tags: ["React", "TypeScript", "D3.js"],
-                        link: "/portfolio/fintech",
+                        tags: ["React", "TypeScript", "Python"],
+                        link: "/portfolio/fintech"
                       },
                       {
-                        title: "Healthcare App",
-                        description: "HIPAA-compliant telehealth platform.",
+                        title: "Scheduling System",
+                        description: "Platform for booking buses, vans, and other means of transportation.",
                         image: "/placeholder.svg?height=400&width=600",
-                        tags: ["React Native", "Node.js", "WebRTC"],
-                        link: "/portfolio/healthcare",
+                        tags: ["React", "Python", "WebRTC"],
+                        link: "/portfolio/transport"
                       }
                 ],
                 view: "View All Projects"
@@ -228,20 +227,20 @@ export const translations = {
                     {
                         icon: Phone,
                         title: "Phone",
-                        value: "+1 (234) 567-8901",
-                        href: "tel:+12345678901",
+                        value: "+1 (407) 280-7888",
+                        href: "tel:+14072807888",
                       },
                       {
                         icon: Mail,
                         title: "Email",
-                        value: "hello@nextlayer.com",
-                        href: "mailto:hello@nextlayer.com",
+                        value: "nextlayer99@gmail.com",
+                        href: "mailto:nextlayer99@gmail.com",
                       },
                       {
-                        icon: MessageSquare,
-                        title: "Live Chat",
+                        icon: MessageCircle,
+                        title: "Whatsapp Chat",
                         value: "Available 24/7",
-                        href: "#",
+                        href: "https://wa.me/14072807888",
                       }
                 ],
 
@@ -801,25 +800,25 @@ export const translations = {
                 subtitle: "Explore nosso portfólio de projetos de sucesso.",
                 items: [
                     {
-                        title: "Plataforma de E-Commerce",
-                        description: "E-commerce full-stack com recomendações baseadas em IA.",
-                        image: "/placeholder.svg?height=400&width=600",
-                        tags: ["Next.js", "React", "Node.js"],
-                        link: "/portfolio/e-commerce",
+                      title: "Plataforma de E-Commerce",
+                      description: "Plataforma que unifica informações de marketplaces como Mercado Livre e Amazon, com gerenciamento de produtos e vendas.",
+                      image: "/placeholder.svg?height=400&width=600",
+                      tags: ["Python", "JavaScript", "Jinja"],
+                      link: "/portfolio/e-commerce"
                     },
                     {
-                        title: "Dashboard FinTech",
-                        description: "Plataforma de visualização de dados financeiros em tempo real.",
-                        image: "/placeholder.svg?height=400&width=600",
-                        tags: ["React", "TypeScript", "D3.js"],
-                        link: "/portfolio/fintech",
+                      title: "Sites e Landing Pages",
+                      description: "Criação de sites e landing pages otimizadas para conversão, performance e experiência do usuário.",
+                      image: "/placeholder.svg?height=400&width=600",
+                      tags: ["React", "TypeScript", "Python"],
+                      link: "/portfolio/fintech"
                     },
                     {
-                        title: "Aplicativo de Saúde",
-                        description: "Plataforma de telemedicina compatível com a HIPAA.",
+                        title: "Sistema de Agendamento",
+                        description: "Plataforma para agendamento de ônibus, vans e outros meios de transporte.",
                         image: "/placeholder.svg?height=400&width=600",
-                        tags: ["React Native", "Node.js", "WebRTC"],
-                        link: "/portfolio/healthcare",
+                        tags: ["React", "Python", "WebRTC"],
+                        link: "/portfolio/transport"
                     }
                 ],
                 view: "Ver Todos os Projetos"
@@ -832,20 +831,20 @@ export const translations = {
                     {
                         icon: Phone,
                         title: "Telefone",
-                        value: "+1 (234) 567-8901",
+                        value: "+55 (35) 99747-8472",
                         href: "tel:+12345678901",
                     },
                     {
                         icon: Mail,
                         title: "E-mail",
-                        value: "hello@nextlayer.com",
-                        href: "mailto:hello@nextlayer.com",
+                        value: "nextlayer99@gmail.com",
+                        href: "nextlayer99@gmail.com",
                     },
                     {
-                        icon: MessageSquare,
-                        title: "Chat ao Vivo",
+                        icon: MessageCircle,
+                        title: "Chat Whatsapp",
                         value: "Disponível 24/7",
-                        href: "#",
+                        href: "https://wa.me/5535997478472",
                     }
                 ],
                 send : { title :"Envie-nos uma mensagem", subtitle : "Preencha o formulário abaixo e retornaremos em breve."},
