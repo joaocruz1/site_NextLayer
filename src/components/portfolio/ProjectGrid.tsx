@@ -10,9 +10,9 @@ import { useLanguage } from "@/context/LanguageContext"
 
 const ProjectGrid = () => {
   const {t} = useLanguage()
-  const [activeCategory, setActiveCategory] = useState("All")
+  const [activeCategory, setActiveCategory] = t.portfolio.projectgrid.all === "All" ? useState("All") : useState("Todos")
 
-  const filteredProjects = activeCategory === "All" ? t.portfolio.projectgrid.items : t.portfolio.projectgrid.items.filter((p) => p.category === activeCategory)
+  const filteredProjects = activeCategory === t.portfolio.projectgrid.all ? t.portfolio.projectgrid.items : t.portfolio.projectgrid.items.filter((p) => p.category === activeCategory)
 
   return (
     <section className="py-20 md:py-28">

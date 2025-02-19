@@ -164,30 +164,26 @@ export const translations = {
                 title: "Client Success Stories",
                 subtitle: "Hear what our clients say about working with us",
                 items:[
-                    {
-                        quote:
-                          "NextLayer transformed our business with their innovative solutions. Their expertise and dedication to quality are unmatched.",
-                        author: "Sarah Johnson",
-                        role: "CTO",
-                        company: "TechCorp",
-                        image: "/placeholder.svg?height=100&width=100",
-                      },
-                      {
-                        quote:
-                          "Working with NextLayer was a game-changer. They delivered our project on time and exceeded all expectations.",
-                        author: "Michael Chen",
-                        role: "Founder",
-                        company: "StartupX",
-                        image: "/placeholder.svg?height=100&width=100",
-                      },
-                      {
-                        quote:
-                          "Their attention to detail and technical expertise helped us create a scalable solution that our users love.",
-                        author: "Emily Rodriguez",
-                        role: "Product Manager",
-                        company: "InnovateCo",
-                        image: "/placeholder.svg?height=100&width=100",
-                      },
+                  {
+                    quote:
+                      "Working with NextLayer was a game-changer for our business. Their expertise and dedication delivered exceptional results.",
+                    author: "Sarah Johnson",
+                    role: "CEO, TechCorp",
+                    image: "/testimonials-2.png?height=100&width=100",
+                  },
+                  {
+                    quote:
+                      "The team's attention to detail and innovative solutions helped us achieve our digital transformation goals.",
+                    author: "Michael Chen",
+                    role: "CTO, InnovateCo",
+                    image: "/testimonials-1.png?height=100&width=100",
+                  },
+                  {
+                    quote: "Outstanding service and technical expertise. They truly understand modern business needs.",
+                    author: "Emma Williams",
+                    role: "Product Manager, StartupX",
+                    image: "/testimonials-3.png?height=100&width=100",
+                  },
                 ]
             },
             portfolio: {
@@ -195,28 +191,28 @@ export const translations = {
                 title: "Featured Projects",
                 subtitle: " Explore our portfolio of successful projects.",
                 items:[
-                      {
-                        title: "E-Commerce Platform",
-                        description: "A platform that consolidates marketplace data like Mercado Livre and Amazon, with product and sales management.",
-                        image: "/placeholder.svg?height=400&width=600",
-                        tags: ["Python", "JavaScript", "Jinja"],
-                        link: "/portfolio/e-commerce"
-                      },
-                      {
-                        title: "Websites and Landing Pages",
-                        description: "Creation of high-converting websites and landing pages optimized for performance and user experience.",
-                        image: "/placeholder.svg?height=400&width=600",
-                        tags: ["React", "TypeScript", "Python"],
-                        link: "/portfolio/fintech"
-                      },
-                      {
-                        title: "Scheduling System",
-                        description: "Platform for booking buses, vans, and other means of transportation.",
-                        image: "/placeholder.svg?height=400&width=600",
-                        tags: ["React", "Python", "WebRTC"],
-                        link: "/portfolio/transport"
-                      }
-                ],
+                  {
+                      title: "E-Commerce Platform",
+                      description: "E-commerce control system for Mercado Livre, centralizing all store information. Allows inventory management, adding, removing, and updating products, as well as managing ads. Developed with Python and Jinja for a robust and efficient experience.",
+                      image: "/e-commerce.png?height=400&width=600",
+                      tags: ["Python", "Jinja", "CSS", "HTML"],
+                      link: "/portfolio/e-commerce"
+                  },
+                  {
+                      title: "Websites and Landing Pages",
+                      description: "Creation of highly compatible and interactive websites and landing pages, focused on customer conversion, with visually appealing design and optimized performance. Developed using Next.js to ensure a modern and responsive experience.",
+                      image: "/site.png?height=400&width=600",
+                      tags: ["Next.js", "React", "CSS", "HTML"],
+                      link: "/portfolio/fintech"
+                  },
+                  {
+                      title: "Scheduling System",
+                      description: "Transport scheduling and management system, focused on companies that need to manage bus and other transportation schedules. Provides complete control over schedules and those responsible for carrying them out. Developed with Python and React for a scalable and efficient solution.",
+                      image: "/scheduling.png?height=400&width=600",
+                      tags: ["Python", "React", "CSS", "HTML"],
+                      link: "/portfolio/transport"
+                  }
+              ],
                 view: "View All Projects"
             },
             contact: {
@@ -262,7 +258,7 @@ export const translations = {
             description: "We create exceptional software solutions that transform businesses. From concept to deployment, we bring your digital vision to life with cutting-edge technology.",
             buttons:{
               primary:{text:"Star Your Project", hover: "Free Consultation"},
-              second: "View Our Work"
+              second: "View Our Projects"
             },
             items:[
               { value: "50+", label: "Projects Delivered" },
@@ -399,24 +395,27 @@ export const translations = {
             subtitle : "Explore some of our successful project implementations",
             items : [
               {
-                title: "E-commerce Platform",
-                description: "Built a scalable e-commerce solution handling millions of transactions",
-                category: "Web Development",
-                image: "/placeholder.svg?height=400&width=600",
+                  title: "E-Commerce Platform",
+                  description: "E-commerce management system for Mercado Livre, centralizing all store information. Allows inventory management, product addition, removal, and updates, as well as ad management. Developed with Python and Jinja for a robust and efficient experience.",
+                  image: "/e-commerce.png?height=400&width=600",
+                  category: "Web Development",
+                  link: "/portfolio/e-commerce"
               },
               {
-                title: "Mobile Banking App",
-                description: "Secure and user-friendly mobile banking application",
-                category: "Mobile Development",
-                image: "/placeholder.svg?height=400&width=600",
+                  title: "Websites and Landing Pages",
+                  description: "Creation of highly compatible and interactive websites and landing pages, focused on customer conversion, with visually appealing design and optimized performance. Developed using Next.js to ensure a modern and responsive experience.",
+                  image: "/site.png?height=400&width=600",
+                  category: "Web Development",
+                  link: "/portfolio/fintech"
               },
               {
-                title: "AI-Powered Analytics",
-                description: "Advanced analytics platform with machine learning capabilities",
-                category: "AI & Analytics",
-                image: "/placeholder.svg?height=400&width=600",
-              },
-            ]
+                  title: "Scheduling System",
+                  description: "Scheduling and transportation management system, designed for companies that need to manage bus schedules and other means of transport. Provides full control over bookings and the responsible personnel. Developed with Python and React for a scalable and efficient solution.",
+                  image: "/scheduling.png?height=400&width=600",
+                  category: "Enterprise Development",
+                  link: "/portfolio/transport"
+              }
+          ]          
           }
         },
         process : {
@@ -538,51 +537,31 @@ export const translations = {
             description:"Explore our collection of successful projects and see how we've helped businesses transform their digital presence with innovative solutions."
           },
           projectgrid:{
-            categories:["All", "Web", "Mobile", "E-commerce", "Enterprise"],
+            categories:["All", "Web", "E-commerce", "Enterprise"],
+            all: "All",
             items:[
               {
-                title: "E-commerce Platform",
-                category: "E-commerce",
-                description: "A modern e-commerce platform with advanced features",
-                image: "/placeholder.svg?height=400&width=600",
-                link: "/portfolio/e-commerce-platform",
+                  title: "E-Commerce Platform",
+                  description: "E-commerce control system for Mercado Livre, centralizing all store information. Allows inventory management, adding, removing, and updating products, as well as managing ads. Developed with Python and Jinja for a robust and efficient experience.",
+                  image: "/e-commerce.png?height=400&width=600",
+                  category: "E-commerce",
+                  link: "/portfolio/e-commerce"
               },
               {
-                title: "Mobile Banking App",
-                category: "Mobile",
-                description: "Secure and user-friendly mobile banking solution",
-                image: "/placeholder.svg?height=400&width=600",
-                link: "/portfolio/mobile-banking",
+                  title: "Websites and Landing Pages",
+                  description: "Creation of highly compatible and interactive websites and landing pages, focused on customer conversion, with visually appealing design and optimized performance. Developed using Next.js to ensure a modern and responsive experience.",
+                  image: "/site.png?height=400&width=600",
+                  category: "Web",
+                  link: "/portfolio/fintech"
               },
               {
-                title: "Enterprise Dashboard",
-                category: "Enterprise",
-                description: "Comprehensive analytics and management dashboard",
-                image: "/placeholder.svg?height=400&width=600",
-                link: "/portfolio/enterprise-dashboard",
-              },
-              {
-                title: "Social Platform",
-                category: "Web",
-                description: "Community-driven social networking platform",
-                image: "/placeholder.svg?height=400&width=600",
-                link: "/portfolio/social-platform",
-              },
-              {
-                title: "Retail Mobile App",
-                category: "Mobile",
-                description: "Feature-rich retail management application",
-                image: "/placeholder.svg?height=400&width=600",
-                link: "/portfolio/retail-app",
-              },
-              {
-                title: "B2B Platform",
-                category: "Enterprise",
-                description: "Business-to-business trading platform",
-                image: "/placeholder.svg?height=400&width=600",
-                link: "/portfolio/b2b-platform",
-              },
-            ]
+                  title: "Scheduling System",
+                  description: "Transport scheduling and management system, focused on companies that need to manage bus and other transportation schedules. Provides complete control over schedules and those responsible for carrying them out. Developed with Python and React for a scalable and efficient solution.",
+                  image: "/scheduling.png?height=400&width=600",
+                  category: "Enterprise",
+                  link: "/portfolio/transport"
+              }
+          ]
           },
           stats:{
             items:[
@@ -601,20 +580,20 @@ export const translations = {
                   "Working with NextLayer was a game-changer for our business. Their expertise and dedication delivered exceptional results.",
                 author: "Sarah Johnson",
                 role: "CEO, TechCorp",
-                image: "/placeholder.svg?height=100&width=100",
+                image: "/testimonials-2.png?height=100&width=100",
               },
               {
                 quote:
                   "The team's attention to detail and innovative solutions helped us achieve our digital transformation goals.",
                 author: "Michael Chen",
                 role: "CTO, InnovateCo",
-                image: "/placeholder.svg?height=100&width=100",
+                image: "/testimonials-1.png?height=100&width=100",
               },
               {
                 quote: "Outstanding service and technical expertise. They truly understand modern business needs.",
                 author: "Emma Williams",
                 role: "Product Manager, StartupX",
-                image: "/placeholder.svg?height=100&width=100",
+                image: "/testimonials-3.png?height=100&width=100",
               },
             ]            
           }
@@ -768,30 +747,27 @@ export const translations = {
                 title: "Histórias de Sucesso dos Clientes",
                 subtitle: "Veja o que nossos clientes dizem sobre trabalhar conosco",
                 items: [
-                    {
-                        quote:
-                            "A NextLayer transformou nosso negócio com suas soluções inovadoras. Sua expertise e dedicação à qualidade são incomparáveis.",
-                        author: "Sarah Johnson",
-                        role: "CTO",
-                        company: "TechCorp",
-                        image: "/placeholder.svg?height=100&width=100",
-                    },
-                    {
-                        quote:
-                            "Trabalhar com a NextLayer foi um divisor de águas. Eles entregaram nosso projeto no prazo e superaram todas as expectativas.",
-                        author: "Michael Chen",
-                        role: "Fundador",
-                        company: "StartupX",
-                        image: "/placeholder.svg?height=100&width=100",
-                    },
-                    {
-                        quote:
-                            "A atenção aos detalhes e a expertise técnica deles nos ajudaram a criar uma solução escalável que nossos usuários adoram.",
-                        author: "Emily Rodriguez",
-                        role: "Gerente de Produto",
-                        company: "InnovateCo",
-                        image: "/placeholder.svg?height=100&width=100",
-                    },
+                  {
+                    quote:
+                      "Trabalhar com a NextLayer foi um divisor de águas para o nosso negócio. Sua experiência e dedicação trouxeram resultados excepcionais.",
+                    author: "Sarah Johnson",
+                    role: "CEO, TechCorp",
+                    image: "/testimonials-2.png?height=100&width=100",
+                  },
+                  {
+                    quote:
+                      "A atenção aos detalhes e as soluções inovadoras da equipe nos ajudaram a alcançar nossos objetivos de transformação digital.",
+                    author: "Michael Chen",
+                    role: "CTO, InnovateCo",
+                    image: "/testimonials-1.png?height=100&width=100",
+                  },
+                  {
+                    quote:
+                      "Serviço excepcional e expertise técnica. Eles realmente entendem as necessidades dos negócios modernos.",
+                    author: "Emma Williams",
+                    role: "Gerente de Produto, StartupX",
+                    image: "/testimonials-3.png?height=100&width=100",
+                  },
                 ]
             },            
             portfolio: {
@@ -799,28 +775,28 @@ export const translations = {
                 title: "Pronto para Transformar Seu Negócio?",
                 subtitle: "Explore nosso portfólio de projetos de sucesso.",
                 items: [
-                    {
+                  {
                       title: "Plataforma de E-Commerce",
-                      description: "Plataforma que unifica informações de marketplaces como Mercado Livre e Amazon, com gerenciamento de produtos e vendas.",
-                      image: "/placeholder.svg?height=400&width=600",
-                      tags: ["Python", "JavaScript", "Jinja"],
+                      description: "Sistema de controle de e-commerce para o Mercado Livre, centralizando todas as informações da loja. Permite o gerenciamento de estoque, adição, remoção e atualização de produtos, além de gerenciar anúncios. Desenvolvido com Python e Jinja para uma experiência robusta e eficiente.",
+                      image: "/e-commerce.png?height=400&width=600",
+                      tags: ["Python", "Jinja", "CSS", "HTML"],
                       link: "/portfolio/e-commerce"
-                    },
-                    {
+                  },
+                  {
                       title: "Sites e Landing Pages",
-                      description: "Criação de sites e landing pages otimizadas para conversão, performance e experiência do usuário.",
-                      image: "/placeholder.svg?height=400&width=600",
-                      tags: ["React", "TypeScript", "Python"],
+                      description: "Criação de sites e landing pages altamente compatíveis e interativos, focados em conversão de clientes, com design visualmente atraente e desempenho otimizado. Desenvolvido usando Next.js para garantir uma experiência moderna e responsiva.",
+                      image: "/site.png?height=400&width=600",
+                      tags: ["Next.js", "React", "CSS", "HTML"],
                       link: "/portfolio/fintech"
-                    },
-                    {
-                        title: "Sistema de Agendamento",
-                        description: "Plataforma para agendamento de ônibus, vans e outros meios de transporte.",
-                        image: "/placeholder.svg?height=400&width=600",
-                        tags: ["React", "Python", "WebRTC"],
-                        link: "/portfolio/transport"
-                    }
-                ],
+                  },
+                  {
+                      title: "Sistema de Agendamento",
+                      description: "Sistema de agendamento e gestão de transporte, focado em empresas que precisam gerenciar horários de ônibus e outros meios de transporte. Oferece controle completo sobre os agendamentos e os responsáveis por realizá-los. Desenvolvido com Python e React para uma solução escalável e eficiente.",
+                      image: "/scheduling.png?height=400&width=600",
+                      tags: ["Python", "React", "CSS", "HTML"],
+                      link: "/portfolio/transport"
+                  }
+              ],
                 view: "Ver Todos os Projetos"
             },            
             contact: {
@@ -865,7 +841,7 @@ export const translations = {
             description: "Criamos soluções de software excepcionais que transformam negócios. Do conceito à implementação, damos vida à sua visão digital com tecnologia de ponta.",
             buttons: {
               primary: { text: "Inicie Seu Projeto", hover: "Consultoria Gratuita" },
-              second: "Veja Nossos Trabalhos"
+              second: "Veja Nossos Projetos"
             },
             items: [
               { value: "50+", label: "Projetos Entregues" },
@@ -1002,24 +978,27 @@ export const translations = {
             subtitle: "Explore alguns de nossos projetos de sucesso",
             items: [
               {
-                title: "Plataforma de E-commerce",
-                description: "Desenvolvemos uma solução de e-commerce escalável, capaz de processar milhões de transações",
-                category: "Desenvolvimento Web",
-                image: "/placeholder.svg?height=400&width=600",
+                  title: "Plataforma de E-Commerce",
+                  description: "Sistema de controle de e-commerce para o Mercado Livre, centralizando todas as informações da loja. Permite o gerenciamento de estoque, adição, remoção e atualização de produtos, além de gerenciar anúncios. Desenvolvido com Python e Jinja para uma experiência robusta e eficiente.",
+                  image: "/e-commerce.png?height=400&width=600",
+                  category: "Desenvolvimento Web",
+                  link: "/portfolio/e-commerce"
               },
               {
-                title: "App de Banco Digital",
-                description: "Aplicativo de banco digital seguro e fácil de usar",
-                category: "Desenvolvimento Mobile",
-                image: "/placeholder.svg?height=400&width=600",
+                  title: "Sites e Landing Pages",
+                  description: "Criação de sites e landing pages altamente compatíveis e interativos, focados em conversão de clientes, com design visualmente atraente e desempenho otimizado. Desenvolvido usando Next.js para garantir uma experiência moderna e responsiva.",
+                  image: "/site.png?height=400&width=600",
+                  category: "Desenvolvimento Web",
+                  link: "/portfolio/fintech"
               },
               {
-                title: "Análises com IA",
-                description: "Plataforma avançada de análises com recursos de machine learning",
-                category: "IA e Análises",
-                image: "/placeholder.svg?height=400&width=600",
+                  title: "Sistema de Agendamento",
+                  description: "Sistema de agendamento e gestão de transporte, focado em empresas que precisam gerenciar horários de ônibus e outros meios de transporte. Oferece controle completo sobre os agendamentos e os responsáveis por realizá-los. Desenvolvido com Python e React para uma solução escalável e eficiente.",
+                  image: "/scheduling.png?height=400&width=600",
+                  category: "Desenvolvimento Entriprise",
+                  link: "/portfolio/transport"
               },
-            ]
+          ]
           }            
         },
         process: {
@@ -1142,51 +1121,31 @@ export const translations = {
               "Explore nossa coleção de projetos de sucesso e veja como ajudamos empresas a transformar sua presença digital com soluções inovadoras.",
           },
           projectgrid: {
-            categories: ["Todos", "Web", "Mobile", "E-commerce", "Corporativo"],
+            categories: ["Todos", "Web", "E-commerce", "Corporativo"],
+            all: "Todos",
             items: [
               {
-                title: "Plataforma de E-commerce",
-                category: "E-commerce",
-                description: "Uma plataforma de e-commerce moderna com recursos avançados",
-                image: "/placeholder.svg?height=400&width=600",
-                link: "/portfolio/e-commerce-platform",
+                  title: "Plataforma de E-Commerce",
+                  description: "Sistema de controle de e-commerce para o Mercado Livre, centralizando todas as informações da loja. Permite o gerenciamento de estoque, adição, remoção e atualização de produtos, além de gerenciar anúncios. Desenvolvido com Python e Jinja para uma experiência robusta e eficiente.",
+                  image: "/e-commerce.png?height=400&width=600",
+                  category: "E-commerce",
+                  link: "/portfolio/e-commerce"
               },
               {
-                title: "App de Banco Mobile",
-                category: "Mobile",
-                description: "Solução de banco mobile segura e fácil de usar",
-                image: "/placeholder.svg?height=400&width=600",
-                link: "/portfolio/mobile-banking",
+                  title: "Sites e Landing Pages",
+                  description: "Criação de sites e landing pages altamente compatíveis e interativos, focados em conversão de clientes, com design visualmente atraente e desempenho otimizado. Desenvolvido usando Next.js para garantir uma experiência moderna e responsiva.",
+                  image: "/site.png?height=400&width=600",
+                  category: "Web",
+                  link: "/portfolio/fintech"
               },
               {
-                title: "Dashboard Corporativo",
-                category: "Corporativo",
-                description: "Dashboard completo para análise e gestão de dados",
-                image: "/placeholder.svg?height=400&width=600",
-                link: "/portfolio/enterprise-dashboard",
-              },
-              {
-                title: "Plataforma Social",
-                category: "Web",
-                description: "Plataforma de rede social focada na comunidade",
-                image: "/placeholder.svg?height=400&width=600",
-                link: "/portfolio/social-platform",
-              },
-              {
-                title: "App de Varejo Mobile",
-                category: "Mobile",
-                description: "Aplicativo de gestão de varejo com diversos recursos",
-                image: "/placeholder.svg?height=400&width=600",
-                link: "/portfolio/retail-app",
-              },
-              {
-                title: "Plataforma B2B",
-                category: "Corporativo",
-                description: "Plataforma de negociação entre empresas (B2B)",
-                image: "/placeholder.svg?height=400&width=600",
-                link: "/portfolio/b2b-platform",
-              },
-            ],
+                  title: "Sistema de Agendamento",
+                  description: "Sistema de agendamento e gestão de transporte, focado em empresas que precisam gerenciar horários de ônibus e outros meios de transporte. Oferece controle completo sobre os agendamentos e os responsáveis por realizá-los. Desenvolvido com Python e React para uma solução escalável e eficiente.",
+                  image: "/scheduling.png?height=400&width=600",
+                  category: "Corporativo",
+                  link: "/portfolio/transport"
+              }
+          ],
           },
           stats: {
             items: [
@@ -1205,21 +1164,21 @@ export const translations = {
                   "Trabalhar com a NextLayer foi um divisor de águas para o nosso negócio. Sua experiência e dedicação trouxeram resultados excepcionais.",
                 author: "Sarah Johnson",
                 role: "CEO, TechCorp",
-                image: "/placeholder.svg?height=100&width=100",
+                image: "/testimonials-2.png?height=100&width=100",
               },
               {
                 quote:
                   "A atenção aos detalhes e as soluções inovadoras da equipe nos ajudaram a alcançar nossos objetivos de transformação digital.",
                 author: "Michael Chen",
                 role: "CTO, InnovateCo",
-                image: "/placeholder.svg?height=100&width=100",
+                image: "/testimonials-1.png?height=100&width=100",
               },
               {
                 quote:
                   "Serviço excepcional e expertise técnica. Eles realmente entendem as necessidades dos negócios modernos.",
                 author: "Emma Williams",
                 role: "Gerente de Produto, StartupX",
-                image: "/placeholder.svg?height=100&width=100",
+                image: "/testimonials-3.png?height=100&width=100",
               },
             ],
           },

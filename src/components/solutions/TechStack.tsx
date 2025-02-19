@@ -3,24 +3,6 @@
 import { motion } from "framer-motion"
 import { useLanguage } from "@/context/LanguageContext"
 
-const technologies = [
-  {
-    category: "Frontend",
-    techs: ["React", "Next.js", "Vue", "Angular", "TypeScript"],
-  },
-  {
-    category: "Backend",
-    techs: ["Node.js", "Python", "Java", "Go", ".NET"],
-  },
-  {
-    category: "Mobile",
-    techs: ["React Native", "Flutter", "iOS", "Android", "Kotlin"],
-  },
-  {
-    category: "Cloud",
-    techs: ["AWS", "Azure", "GCP", "Vercel", "Docker"],
-  },
-]
 
 const TechStack = () => {
   const {t} = useLanguage()

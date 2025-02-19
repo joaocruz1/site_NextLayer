@@ -5,26 +5,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { useLanguage } from "@/context/LanguageContext"
 
-const caseStudies = [
-  {
-    title: "E-commerce Platform",
-    description: "Built a scalable e-commerce solution handling millions of transactions",
-    category: "Web Development",
-    image: "/placeholder.svg?height=400&width=600",
-  },
-  {
-    title: "Mobile Banking App",
-    description: "Secure and user-friendly mobile banking application",
-    category: "Mobile Development",
-    image: "/placeholder.svg?height=400&width=600",
-  },
-  {
-    title: "AI-Powered Analytics",
-    description: "Advanced analytics platform with machine learning capabilities",
-    category: "AI & Analytics",
-    image: "/placeholder.svg?height=400&width=600",
-  },
-]
 
 const CaseStudies = () => {
   const {t} = useLanguage()

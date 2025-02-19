@@ -6,31 +6,18 @@ import Image from "next/image"
 import Link from "next/link"
 import { useLanguage } from "@/context/LanguageContext"
 
-const projects = [
-  {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce with AI recommendations.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["Next.js", "React", "Node.js"],
-    link: "/portfolio/e-commerce",
-  },
-  {
-    title: "FinTech Dashboard",
-    description: "Real-time financial data visualization platform.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["React", "TypeScript", "D3.js"],
-    link: "/portfolio/fintech",
-  },
-  {
-    title: "Healthcare App",
-    description: "HIPAA-compliant telehealth platform.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["React Native", "Node.js", "WebRTC"],
-    link: "/portfolio/healthcare",
-  },
-]
+interface Project {
+  title: string
+  description: string
+  image: string
+  tags: string[]
+  link: string
+}
 
-const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index: number }) => {
+const ProjectCard = ({project,index,}: {
+  project: Project
+  index: number
+}) => {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -63,7 +50,9 @@ const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index:
               <h3 className="text-base sm:text-lg font-semibold text-white group-hover:text-white/90">
                 {project.title}
               </h3>
-              <p className="text-xs sm:text-sm text-zinc-400 group-hover:text-zinc-300">{project.description}</p>
+              <p className="text-xs sm:text-sm text-zinc-400 group-hover:text-zinc-300">
+                {project.description}
+              </p>
             </div>
 
             <div className="flex flex-wrap gap-1.5 sm:gap-2">
@@ -108,9 +97,13 @@ const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index:
 }
 
 export const PortfolioSection = () => {
-  const {t} = useLanguage()
+  const { t } = useLanguage()
+
   return (
-    <section className="relative py-12 sm:py-24 lg:py-32 overflow-hidden" id="portfolio">
+    <section
+      className="relative py-12 sm:py-24 lg:py-32 overflow-hidden"
+      id="portfolio"
+    >
       <div className="container px-4 sm:px-6 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -127,7 +120,9 @@ export const PortfolioSection = () => {
             >
               {t.landing.portfolio.header}
             </motion.div>
-            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-white">{t.landing.portfolio.title}</h2>
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-white">
+              {t.landing.portfolio.title}
+            </h2>
             <p className="text-xs sm:text-sm text-zinc-400 max-w-md mx-auto px-4 sm:px-0">
               {t.landing.portfolio.subtitle}
             </p>
@@ -135,7 +130,7 @@ export const PortfolioSection = () => {
         </motion.div>
 
         <div className="grid gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
-          {t.landing.portfolio.items.map((project, index) => (
+          {t.landing.portfolio.items.map((project: Project, index: number) => (
             <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
@@ -162,4 +157,3 @@ export const PortfolioSection = () => {
     </section>
   )
 }
-
