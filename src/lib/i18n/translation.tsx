@@ -1,6 +1,7 @@
 import { footer, header } from "framer-motion/client"
 import { features, title } from "process"
-import { Mail, MessageCircle, Phone, MessageSquare, Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
+import { ShoppingCart, ShoppingBag, BarChart3, Package, Truck, CreditCard, Settings, HardDrive, Server, Database, Mail, MessageCircle, Phone, MessageSquare, Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
+import { ActivityMonitor } from "@/components/e-commerce/ActivityMonitor"
 
 export const translations = {
     en: {
@@ -597,8 +598,181 @@ export const translations = {
               },
             ]            
           }
-        }
         },
+        ecommerce: {
+          dashboardhero: {
+            hero:"Next Generation E-Commerce",
+            title: "E-Commerce Control", 
+            description: "Powerful management system for your online store with real-time analytics and automation",
+            items:[
+              {
+                title: "Active Users",
+                value: "2,345",
+                icon: Users,
+                progress: 75,
+              },
+              {
+                title: "Daily Orders",
+                value: "1,234",
+                icon: ShoppingCart,
+                progress: 65,
+              },
+              {
+                title: "Database Size",
+                value: "15 GB",
+                icon: Database,
+                progress: 45,
+              },
+            ]
+          },
+          activitymonitor: {
+            title: "System Activity",
+            items: [
+              {
+                id: 1,
+                message: "Database backup completed successfully",
+                timestamp: "2 minutes ago",
+                status: "success",
+              },
+              {
+                id: 2,
+                message: "New order processing system update available",
+                timestamp: "15 minutes ago",
+                status: "warning",
+              },
+              {
+                id: 3,
+                message: "User authentication system synchronized",
+                timestamp: "1 hour ago",
+                status: "success",
+              },
+            ]
+          },
+          databasestats: {
+            title : "Database Management",
+            items : [
+              {
+                title: "Main Database",
+                usage: 65,
+                total: "50GB",
+                icon: Database,
+              },
+              {
+                title: "Storage",
+                usage: 40,
+                total: "1TB",
+                icon: HardDrive,
+              },
+              {
+                title: "Cache",
+                usage: 25,
+                total: "32GB",
+                icon: Server,
+              },
+            ]
+          },
+          systemfeatures: {
+            title : "System Features",
+            subtitle: "Our e-commerce management system provides comprehensive tools for running your online business",
+            items : [
+              {
+                title: "Order Management",
+                description: "Track and manage orders from receipt to delivery with real-time updates",
+                icon: ShoppingBag,
+              },
+              {
+                title: "Customer Management",
+                description: "Comprehensive tools to manage customer data and purchase history",
+                icon: Users,
+              },
+              {
+                title: "Analytics Dashboard",
+                description: "Real-time insights and performance metrics at your fingertips",
+                icon: BarChart3,
+              },
+              {
+                title: "Inventory Control",
+                description: "Advanced system to track stock levels and manage products",
+                icon: Package,
+              },
+              {
+                title: "Shipping Integration",
+                description: "Seamless shipping automation and tracking solutions",
+                icon: Truck,
+              },
+              {
+                title: "Payment Processing",
+                description: "Secure and flexible payment gateway integration",
+                icon: CreditCard,
+              },
+              {
+                title: "Customer Support",
+                description: "Integrated ticketing and chat system for better service",
+                icon: MessageSquare,
+              },
+              {
+                title: "System Settings",
+                description: "Fully customizable system parameters and configurations",
+                icon: Settings,
+              },
+            ]
+          },
+          testimonialssection:{
+            title : "What Our Clients Say",
+            subtitle : "Trusted by leading e-commerce businesses worldwide",
+            items : [
+              {
+                quote:
+                  "This system has transformed how we manage our online store. The analytics and automation features are game-changing.",
+                name: "Sarah Johnson",
+                role: "E-commerce Director",
+                avatar: "/placeholder.svg?height=100&width=100",
+              },
+              {
+                quote:
+                  "The customer management and support integration has helped us provide better service and grow our business.",
+                name: "Michael Chen",
+                role: "Operations Manager",
+                avatar: "/placeholder.svg?height=100&width=100",
+              },
+              {
+                quote:
+                  "Inventory management has never been easier. Real-time tracking and automated alerts save us hours every week.",
+                name: "Emma Davis",
+                role: "Store Owner",
+                avatar: "/placeholder.svg?height=100&width=100",
+              },
+            ]
+          },
+          pricingsection:{
+            title:"Simple, Transparent Pricing", 
+            subtitle:"Choose the perfect plan for your business needs",
+            items:[
+              {
+                name: "Starter",
+                description: "Perfect for small businesses",
+                price: 49,
+                features: ["Up to 1,000 products", "Basic analytics", "Email support", "1 admin user"],
+                popular: false,
+              },
+              {
+                name: "Professional",
+                description: "For growing businesses",
+                price: 99,
+                features: ["Up to 10,000 products", "Advanced analytics", "Priority support", "5 admin users", "API access"],
+                popular: true,
+              },
+              {
+                name: "Enterprise",
+                description: "For large scale operations",
+                price: 199,
+                features: ["Unlimited products", "Custom analytics", "24/7 support", "Unlimited users", "Custom integrations"],
+                popular: false,
+              },
+            ]
+          }
+        },
+      },
 
     pt: {
         
@@ -1182,7 +1356,177 @@ export const translations = {
               },
             ],
           },
-        }
+        },
+        ecommerce: {
+          dashboardhero: {
+            hero: "E-Commerce de Próxima Geração",
+            title: "Controle de E-Commerce",
+            description: "Sistema poderoso de gerenciamento para sua loja online, com análises em tempo real e automação",
+            items: [
+              {
+                title: "Usuários Ativos",
+                value: "2.345",
+                icon: Users,
+                progress: 75,
+              },
+              {
+                title: "Pedidos Diários",
+                value: "1.234",
+                icon: ShoppingCart,
+                progress: 65,
+              },
+              {
+                title: "Tamanho do Banco de Dados",
+                value: "15 GB",
+                icon: Database,
+                progress: 45,
+              },
+            ],
+          },
+          activitymonitor: {
+            title: "Atividade do Sistema",
+            items: [
+              {
+                id: 1,
+                message: "Backup do banco de dados concluído com sucesso",
+                timestamp: "Há 2 minutos",
+                status: "success",
+              },
+              {
+                id: 2,
+                message: "Nova atualização disponível para o sistema de processamento de pedidos",
+                timestamp: "Há 15 minutos",
+                status: "warning",
+              },
+              {
+                id: 3,
+                message: "Sistema de autenticação de usuários sincronizado",
+                timestamp: "Há 1 hora",
+                status: "success",
+              },
+            ],
+          },
+          databasestats: {
+            title: "Gerenciamento de Banco de Dados",
+            items: [
+              {
+                title: "Banco de Dados Principal",
+                usage: 65,
+                total: "50GB",
+                icon: Database,
+              },
+              {
+                title: "Armazenamento",
+                usage: 40,
+                total: "1TB",
+                icon: HardDrive,
+              },
+              {
+                title: "Cache",
+                usage: 25,
+                total: "32GB",
+                icon: Server,
+              },
+            ],
+          },
+          systemfeatures: {
+            title: "Recursos do Sistema",
+            subtitle: "Nosso sistema de gerenciamento de e-commerce oferece ferramentas completas para administrar seu negócio online",
+            items: [
+              {
+                title: "Gerenciamento de Pedidos",
+                description: "Acompanhe e gerencie pedidos do recebimento à entrega, com atualizações em tempo real",
+                icon: ShoppingBag,
+              },
+              {
+                title: "Gestão de Clientes",
+                description: "Ferramentas completas para gerenciar dados e histórico de compras dos clientes",
+                icon: Users,
+              },
+              {
+                title: "Painel de Análises",
+                description: "Insights em tempo real e métricas de desempenho ao seu alcance",
+                icon: BarChart3,
+              },
+              {
+                title: "Controle de Estoque",
+                description: "Sistema avançado para monitorar níveis de estoque e gerenciar produtos",
+                icon: Package,
+              },
+              {
+                title: "Integração com Transporte",
+                description: "Automação e rastreamento de envios de forma simples e eficiente",
+                icon: Truck,
+              },
+              {
+                title: "Processamento de Pagamentos",
+                description: "Integração com gateways de pagamento seguros e flexíveis",
+                icon: CreditCard,
+              },
+              {
+                title: "Suporte ao Cliente",
+                description: "Sistema integrado de tickets e chat para um atendimento mais eficiente",
+                icon: MessageSquare,
+              },
+              {
+                title: "Configurações do Sistema",
+                description: "Parâmetros e configurações totalmente personalizáveis",
+                icon: Settings,
+              },
+            ],
+          },
+          testimonialssection: {
+            title: "O Que Nossos Clientes Dizem",
+            subtitle: "Confiado por grandes negócios de e-commerce ao redor do mundo",
+            items: [
+              {
+                quote: "Este sistema transformou a forma como gerenciamos nossa loja online. As análises e automações são revolucionárias.",
+                name: "Sarah Johnson",
+                role: "Diretora de E-commerce",
+                avatar: "/placeholder.svg?height=100&width=100",
+              },
+              {
+                quote: "A gestão de clientes e a integração com suporte melhoraram nosso atendimento e impulsionaram nossos negócios.",
+                name: "Michael Chen",
+                role: "Gerente de Operações",
+                avatar: "/placeholder.svg?height=100&width=100",
+              },
+              {
+                quote: "O controle de estoque nunca foi tão fácil. O rastreamento em tempo real e os alertas automatizados nos poupam horas de trabalho por semana.",
+                name: "Emma Davis",
+                role: "Proprietária de Loja",
+                avatar: "/placeholder.svg?height=100&width=100",
+              },
+            ],
+          },
+          pricingsection: {
+            title: "Preços Simples e Transparentes",
+            subtitle: "Escolha o plano ideal para o seu negócio",
+            items: [
+              {
+                name: "Starter",
+                description: "Ideal para pequenos negócios",
+                price: 49,
+                features: ["Até 1.000 produtos", "Análises básicas", "Suporte por e-mail", "1 usuário administrador"],
+                popular: false,
+              },
+              {
+                name: "Professional",
+                description: "Para negócios em crescimento",
+                price: 99,
+                features: ["Até 10.000 produtos", "Análises avançadas", "Suporte prioritário", "5 usuários administradores", "Acesso à API"],
+                popular: true,
+              },
+              {
+                name: "Enterprise",
+                description: "Para operações em larga escala",
+                price: 199,
+                features: ["Produtos ilimitados", "Análises personalizadas", "Suporte 24/7", "Usuários ilimitados", "Integrações personalizadas"],
+                popular: false,
+              },
+            ],
+          },
+        }        
                       
      },
   }
