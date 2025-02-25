@@ -11,6 +11,7 @@ import { ProjectTypeSelector } from "@/components/start-project/ProjectTypeSelec
 import { ProjectDetailsForm } from "@/components/start-project/ProjectDetailsForm"
 import { ContactInfoForm } from "@/components/start-project/ContactInfoForm"
 import { toast } from "sonner"
+import { useLanguage } from "@/context/LanguageContext"
 
 interface FormData {
   projectType: string
@@ -154,9 +155,16 @@ export default function StartProjectPage() {
 
     setIsSubmitting(true)
     try {
-      // Here you would typically send the form data to your API
-      await new Promise((resolve) => setTimeout(resolve, 2000)) // Simulate API call
-      toast.success("Project submitted successfully! We'll be in touch soon.")
+      const res = await fetch("/api/sendEmail", { 
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      })
+      if (!res.ok) {
+        throw new Error("Erro ao enviar e-mail")
+      }
       setFormData(INITIAL_FORM_DATA)
       setCurrentStep(0)
     } catch (error) {
@@ -167,6 +175,7 @@ export default function StartProjectPage() {
   }
 
   const progressPercentage = ((currentStep + 1) / steps.length) * 100
+  const {t} = useLanguage()
 
   return (
     <div className="relative min-h-screen bg-[#0D0620]">
@@ -212,7 +221,7 @@ export default function StartProjectPage() {
             >
               <Button variant="outline" onClick={prevStep} disabled={currentStep === 0} className="group">
                 <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-                Previous
+                {t.start.buttons.arrow}
               </Button>
               <Button
                 onClick={currentStep === steps.length - 1 ? handleSubmit : nextStep}
@@ -226,16 +235,16 @@ export default function StartProjectPage() {
                       animate={{ rotate: 360 }}
                       transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
                     />
-                    Submitting...
+                    {t.start.buttons.first}
                   </span>
                 ) : currentStep === steps.length - 1 ? (
                   <span className="flex items-center gap-2">
-                    Submit Project
+                    {t.start.buttons.second}
                     <CheckCircle className="w-4 h-4 ml-2 group-hover:scale-110 transition-transform" />
                   </span>
                 ) : (
                   <span className="flex items-center gap-2">
-                    Next Step
+                    {t.start.buttons.tree}
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </span>
                 )}

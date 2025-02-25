@@ -772,6 +772,16 @@ export const translations = {
             ]
           }
         },
+        start : {
+          buttons : {
+            arrow :" Previous", 
+            first: "Submitting...",
+            second: "Submit Project",
+            tree: "Submit Project", 
+            foreing : "Next Step"
+          },
+
+        }
       },
 
     pt: {
