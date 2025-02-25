@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Rocket, Code, Palette, Server, ArrowRight, ArrowLeft, CheckCircle } from "lucide-react"
+import { Rocket, Code, Palette, Server, ArrowRight, ArrowLeft, CheckCircle, LucideIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { AnimatedBackground } from "@/components/ui/animated-background"
 import { Header } from "@/components/Header"
@@ -11,21 +11,6 @@ import { ProjectTypeSelector } from "@/components/start-project/ProjectTypeSelec
 import { ProjectDetailsForm } from "@/components/start-project/ProjectDetailsForm"
 import { ContactInfoForm } from "@/components/start-project/ContactInfoForm"
 import { toast } from "sonner"
-
-interface ProjectType {
-  icon: any
-  title: string
-  description: string
-  examples: string[]
-}
-
-interface Step {
-  id: string
-  title: string
-  description: string
-  icon: any
-  options?: ProjectType[]
-}
 
 interface FormData {
   projectType: string
@@ -53,7 +38,7 @@ const INITIAL_FORM_DATA: FormData = {
   company: "",
 }
 
-const steps: Step[] = [
+const steps = [
   {
     id: "project-type",
     title: "Project Type",
@@ -102,6 +87,7 @@ export default function StartProjectPage() {
 
   const updateFormData = (updates: Partial<FormData>) => {
     setFormData((prev) => ({ ...prev, ...updates }))
+    // Clear errors for updated fields
     const updatedErrors = { ...errors }
     Object.keys(updates).forEach((key) => {
       delete updatedErrors[key as keyof FormData]
@@ -117,19 +103,29 @@ export default function StartProjectPage() {
     }
 
     if (currentStep === 1) {
-      if (!formData.projectName.trim()) newErrors.projectName = "Project name is required"
-      if (!formData.projectDescription.trim()) newErrors.projectDescription = "Project description is required"
-      if (!formData.timeline) newErrors.timeline = "Timeline is required"
+      if (!formData.projectName.trim()) {
+        newErrors.projectName = "Project name is required"
+      }
+      if (!formData.projectDescription.trim()) {
+        newErrors.projectDescription = "Project description is required"
+      }
+      if (!formData.timeline) {
+        newErrors.timeline = "Timeline is required"
+      }
     }
 
     if (currentStep === 2) {
-      if (!formData.name.trim()) newErrors.name = "Name is required"
+      if (!formData.name.trim()) {
+        newErrors.name = "Name is required"
+      }
       if (!formData.email.trim()) {
         newErrors.email = "Email is required"
       } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
         newErrors.email = "Please enter a valid email"
       }
-      if (!formData.phone.trim()) newErrors.phone = "Phone number is required"
+      if (!formData.phone.trim()) {
+        newErrors.phone = "Phone number is required"
+      }
     }
 
     setErrors(newErrors)
@@ -158,7 +154,8 @@ export default function StartProjectPage() {
 
     setIsSubmitting(true)
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000))
+      // Here you would typically send the form data to your API
+      await new Promise((resolve) => setTimeout(resolve, 2000)) // Simulate API call
       toast.success("Project submitted successfully! We'll be in touch soon.")
       setFormData(INITIAL_FORM_DATA)
       setCurrentStep(0)
@@ -169,24 +166,81 @@ export default function StartProjectPage() {
     }
   }
 
+  const progressPercentage = ((currentStep + 1) / steps.length) * 100
+
   return (
     <div className="relative min-h-screen bg-[#0D0620]">
       <AnimatedBackground />
+
       <div className="relative z-10 pt-32 pb-20">
         <div className="container px-4 md:px-6">
           <Header />
-          <ProgressBar steps={steps} currentStep={currentStep} progressPercentage={(currentStep + 1) / steps.length * 100} />
+          <ProgressBar steps={steps} currentStep={currentStep} progressPercentage={progressPercentage} />
+
+          {/* Step Content */}
           <div className="max-w-3xl mx-auto">
             <AnimatePresence mode="wait">
-              {currentStep === 0 && steps[0].options && (
-                <ProjectTypeSelector
-                  options={steps[0].options}
-                  selectedType={formData.projectType}
-                  onSelect={(type) => updateFormData({ projectType: type })}
-                  error={errors.projectType}
-                />
-              )}
+              <motion.div
+                key={currentStep}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-6"
+              >
+                {currentStep === 0 && (
+                  <ProjectTypeSelector
+                    options={steps[0].options ? steps[0].options : []}
+                    selectedType={formData.projectType}
+                    onSelect={(type) => updateFormData({ projectType: type })}
+                    error={errors.projectType}
+                  />
+                )}
+
+                {currentStep === 1 && <ProjectDetailsForm data={formData} onChange={updateFormData} errors={errors} />}
+
+                {currentStep === 2 && <ContactInfoForm data={formData} onChange={updateFormData} errors={errors} />}
+              </motion.div>
             </AnimatePresence>
+
+            {/* Navigation Buttons */}
+            <motion.div
+              className="flex justify-between mt-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              <Button variant="outline" onClick={prevStep} disabled={currentStep === 0} className="group">
+                <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+                Previous
+              </Button>
+              <Button
+                onClick={currentStep === steps.length - 1 ? handleSubmit : nextStep}
+                disabled={isSubmitting}
+                className="group"
+              >
+                {isSubmitting ? (
+                  <span className="flex items-center gap-2">
+                    <motion.div
+                      className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                    />
+                    Submitting...
+                  </span>
+                ) : currentStep === steps.length - 1 ? (
+                  <span className="flex items-center gap-2">
+                    Submit Project
+                    <CheckCircle className="w-4 h-4 ml-2 group-hover:scale-110 transition-transform" />
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    Next Step
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                )}
+              </Button>
+            </motion.div>
           </div>
         </div>
       </div>

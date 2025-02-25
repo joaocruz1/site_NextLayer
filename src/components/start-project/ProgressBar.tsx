@@ -26,7 +26,10 @@ export function ProgressBar({ steps, currentStep, progressPercentage }: Progress
             </span>
           </div>
           <div className="text-right">
-            <span className="text-xs font-semibold inline-block text-purple-200">{progressPercentage}%</span>
+            {/* Arredondando a porcentagem */}
+            <span className="text-xs font-semibold inline-block text-purple-200">
+              {Math.round(progressPercentage)}%
+            </span>
           </div>
         </div>
         <div className="flex h-2 mb-4 overflow-hidden rounded-full bg-purple-500/10">
@@ -61,4 +64,3 @@ export function ProgressBar({ steps, currentStep, progressPercentage }: Progress
     </div>
   )
 }
-
