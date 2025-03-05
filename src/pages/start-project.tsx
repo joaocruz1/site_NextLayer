@@ -39,52 +39,13 @@ const INITIAL_FORM_DATA: FormData = {
   company: "",
 }
 
-const steps = [
-  {
-    id: "project-type",
-    title: "Project Type",
-    description: "What kind of project are you looking to build?",
-    icon: Rocket,
-    options: [
-      {
-        icon: Code,
-        title: "Web Application",
-        description: "Full-stack web applications with modern technologies",
-        examples: ["E-commerce", "SaaS Platform", "Customer Portal"],
-      },
-      {
-        icon: Palette,
-        title: "UI/UX Design",
-        description: "Beautiful and intuitive user interfaces",
-        examples: ["Mobile App Design", "Website Redesign", "Design System"],
-      },
-      {
-        icon: Server,
-        title: "Custom Software",
-        description: "Tailored software solutions for your business",
-        examples: ["CRM System", "Automation Tools", "Integration Services"],
-      },
-    ],
-  },
-  {
-    id: "project-details",
-    title: "Project Details",
-    description: "Tell us more about your project",
-    icon: Code,
-  },
-  {
-    id: "contact-info",
-    title: "Contact Information",
-    description: "How can we reach you?",
-    icon: CheckCircle,
-  },
-]
 
 export default function StartProjectPage() {
   const [currentStep, setCurrentStep] = useState(0)
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA)
   const [errors, setErrors] = useState<Partial<FormData>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const {t} = useLanguage()
 
   const updateFormData = (updates: Partial<FormData>) => {
     setFormData((prev) => ({ ...prev, ...updates }))
@@ -135,7 +96,7 @@ export default function StartProjectPage() {
 
   const nextStep = () => {
     if (validateStep()) {
-      setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1))
+      setCurrentStep((prev) => Math.min(prev + 1, t.start.steps.length - 1))
       window.scrollTo({ top: 0, behavior: "smooth" })
     } else {
       toast.error("Please fill in all required fields")
@@ -174,8 +135,8 @@ export default function StartProjectPage() {
     }
   }
 
-  const progressPercentage = ((currentStep + 1) / steps.length) * 100
-  const {t} = useLanguage()
+  const progressPercentage = ((currentStep + 1) / t.start.steps.length) * 100
+  
 
   return (
     <div className="relative min-h-screen bg-[#0D0620]">
@@ -184,7 +145,7 @@ export default function StartProjectPage() {
       <div className="relative z-10 pt-32 pb-20">
         <div className="container px-4 md:px-6">
           <Header />
-          <ProgressBar steps={steps} currentStep={currentStep} progressPercentage={progressPercentage} />
+          <ProgressBar steps={t.start.steps} currentStep={currentStep} progressPercentage={progressPercentage} />
 
           {/* Step Content */}
           <div className="max-w-3xl mx-auto">
@@ -199,7 +160,7 @@ export default function StartProjectPage() {
               >
                 {currentStep === 0 && (
                   <ProjectTypeSelector
-                    options={steps[0].options ? steps[0].options : []}
+                    options={t.start.steps[0].options ? t.start.steps[0].options : []}
                     selectedType={formData.projectType}
                     onSelect={(type) => updateFormData({ projectType: type })}
                     error={errors.projectType}
@@ -224,7 +185,7 @@ export default function StartProjectPage() {
                 {t.start.buttons.arrow}
               </Button>
               <Button
-                onClick={currentStep === steps.length - 1 ? handleSubmit : nextStep}
+                onClick={currentStep === t.start.steps.length - 1 ? handleSubmit : nextStep}
                 disabled={isSubmitting}
                 className="group"
               >
@@ -237,7 +198,7 @@ export default function StartProjectPage() {
                     />
                     {t.start.buttons.first}
                   </span>
-                ) : currentStep === steps.length - 1 ? (
+                ) : currentStep === t.start.steps.length - 1 ? (
                   <span className="flex items-center gap-2">
                     {t.start.buttons.second}
                     <CheckCircle className="w-4 h-4 ml-2 group-hover:scale-110 transition-transform" />

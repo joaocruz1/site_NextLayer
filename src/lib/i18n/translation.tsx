@@ -1,7 +1,8 @@
 import { footer, header } from "framer-motion/client"
 import { features, title } from "process"
-import { ShoppingCart, ShoppingBag, BarChart3, Package, Truck, CreditCard, Settings, HardDrive, Server, Database, Mail, MessageCircle, Phone, MessageSquare, Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
+import { ShoppingCart, Code, Laptop, Layout, Layers, Lightbulb, PenTool, Monitor, Search, PaintBucket, Palette, CheckCircle, ShoppingBag, BarChart3, Package, Truck, CreditCard, Settings, HardDrive, Server, Database, Mail, MessageCircle, Phone, MessageSquare, Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
 import { ActivityMonitor } from "@/components/e-commerce/ActivityMonitor"
+import { start } from "repl"
 
 export const translations = {
     en: {
@@ -553,7 +554,7 @@ export const translations = {
                   description: "Creation of highly compatible and interactive websites and landing pages, focused on customer conversion, with visually appealing design and optimized performance. Developed using Next.js to ensure a modern and responsive experience.",
                   image: "/site.png?height=400&width=600",
                   category: "Web",
-                  link: "/portfolio/fintech"
+                  link: "/portfolio/interactive-websites"
               },
               {
                   title: "Scheduling System",
@@ -772,14 +773,282 @@ export const translations = {
             ]
           }
         },
+        websites: {
+          herobanner: {
+            hero: " Web Development Studio",
+            title1: "We Build",
+            title2: "Interactive",
+            title3: "Websites",
+            subtitle: "Creating stunning, responsive websites that work seamlessly across all devices",
+            buttons : {start: "Start Building", contact: "Contact Us"},
+          },
+          device : {
+            title: "Responsive on Every Device",
+            subtitle: "Our websites adapt perfectly to any screen size, providing an optimal experience on desktop, tablet, and mobile",
+            descktop: "Desktop",
+            mobile: "Mobile",
+            tablet: "Tablet",
+          },
+          features: {
+            title: "Interactive Features",
+            subtitle: "We build websites with engaging interactive elements that captivate your audience",
+            items: [
+              {
+                title: "Responsive Design",
+                description:
+                  "Our websites adapt perfectly to any screen size, providing an optimal experience on desktop, tablet, and mobile devices.",
+                icon: Laptop,
+                benefits: [
+                  "Fluid layouts that adapt to any screen size",
+                  "Touch-friendly navigation for mobile users",
+                  "Optimized images for faster loading on mobile",
+                  "Consistent experience across all devices",
+                ],
+              },
+              {
+                title: "Interactive Elements",
+                description: "We create engaging interactive elements that respond to user actions and provide visual feedback.",
+                icon: Zap,
+                benefits: [
+                  "Smooth animations and transitions",
+                  "Interactive forms with real-time validation",
+                  "Hover and click effects for better engagement",
+                  "Scroll-triggered animations and reveals",
+                ],
+              },
+              {
+                title: "Modern UI/UX",
+                description: "We design intuitive user interfaces that guide users through your website with ease and clarity.",
+                icon: Layout,
+                benefits: [
+                  "Intuitive navigation and information architecture",
+                  "Clear visual hierarchy and content organization",
+                  "Consistent design language throughout the site",
+                  "Accessibility considerations for all users",
+                ],
+              },
+              {
+                title: "Performance Optimization",
+                description: "We optimize every aspect of your website to ensure fast loading times and smooth performance.",
+                icon: Zap,
+                benefits: [
+                  "Optimized code and assets for faster loading",
+                  "Lazy loading for images and components",
+                  "Efficient rendering and minimal repaints",
+                  "Caching strategies for repeat visitors",
+                ],
+              },
+              {
+                title: "Clean Code",
+                description: "We write clean, maintainable code that follows best practices and industry standards.",
+                icon: Code2,
+                benefits: [
+                  "Well-structured and documented codebase",
+                  "Component-based architecture for reusability",
+                  "Separation of concerns for easier maintenance",
+                  "Version control and deployment automation",
+                ],
+              },
+              {
+                title: "Custom Design",
+                description: "We create unique designs tailored to your brand identity and business goals.",
+                icon: PaintBucket,
+                benefits: [
+                  "Custom visual elements and illustrations",
+                  "Brand-aligned color schemes and typography",
+                  "Unique layouts and page structures",
+                  "Distinctive interactive elements",
+                ],
+              },
+              {
+                title: "Cross Browser",
+                description: "We ensure your website works flawlessly across all modern browsers.",
+                icon: Monitor,
+                benefits: [
+                  "Consistent experience in Chrome, Firefox, Safari, and Edge",
+                  "Fallbacks for older browsers when necessary",
+                  "Browser-specific optimizations",
+                  "Regular testing across multiple platforms",
+                ],
+              },
+              {
+                title: "SEO Optimized",
+                description: "We build websites with search engine optimization in mind to improve your visibility online.",
+                icon: Search,
+                benefits: [
+                  "Semantic HTML structure for better indexing",
+                  "Optimized meta tags and structured data",
+                  "Fast loading times for better rankings",
+                  "Mobile-friendly design (a Google ranking factor)",
+                ],
+              },
+            ]
+          },
+          process:{
+            title: "Our Development Process",
+            subtitle: "We follow a structured approach to deliver high-quality interactive websites",
+            items: [  {
+              title: "Discovery & Planning",
+              description: "We start by understanding your business goals, target audience, and project requirements.",
+              icon: MessageSquare,
+              details: [
+                "In-depth client consultation",
+                "Market and competitor analysis",
+                "Project scope definition",
+                "Technical requirements gathering",
+              ],
+            },
+            {
+              title: "Concept & Strategy",
+              description: "We develop a strategic approach and conceptual framework for your website.",
+              icon: Lightbulb,
+              details: [
+                "Information architecture planning",
+                "User flow mapping",
+                "Content strategy development",
+                "Interactive elements planning",
+              ],
+            },
+            {
+              title: "Design & Prototyping",
+              description: "We create visually stunning designs and interactive prototypes for your approval.",
+              icon: PenTool,
+              details: [
+                "UI/UX design creation",
+                "Responsive layouts for all devices",
+                "Interactive prototype development",
+                "Client feedback and revisions",
+              ],
+            },
+            {
+              title: "Development",
+              description: "Our developers bring the designs to life with clean, efficient code.",
+              icon: Code,
+              details: [
+                "Frontend development with React/Next.js",
+                "Backend integration and API development",
+                "Interactive elements implementation",
+                "Performance optimization",
+              ],
+            },
+            {
+              title: "Testing & Refinement",
+              description: "We thoroughly test your website to ensure it works flawlessly across all devices and browsers.",
+              icon: Layers,
+              details: [
+                "Cross-browser compatibility testing",
+                "Responsive design verification",
+                "Performance and loading speed optimization",
+                "User experience testing",
+              ],
+            },
+            {
+              title: "Launch & Support",
+              description: "We deploy your website and provide ongoing support to ensure its continued success.",
+              icon: CheckCircle,
+              details: [
+                "Website deployment and configuration",
+                "SEO optimization and setup",
+                "Analytics integration",
+                "Post-launch support and maintenance",
+              ],
+            },]
+          },
+          tech: {
+            title:"Our Technology Stack",
+            subtitle: "We use cutting-edge technologies to build fast, reliable, and scalable websites",
+            items : [
+              {
+                name: "React",
+                description: "Building interactive user interfaces",
+                logo: "/placeholder.svg?height=64&width=64",
+              },
+              {
+                name: "Next.js",
+                description: "React framework for production",
+                logo: "/placeholder.svg?height=64&width=64",
+              },
+              {
+                name: "TypeScript",
+                description: "Type-safe JavaScript development",
+                logo: "/placeholder.svg?height=64&width=64",
+              },
+              {
+                name: "Tailwind CSS",
+                description: "Utility-first CSS framework",
+                logo: "/placeholder.svg?height=64&width=64",
+              },
+              {
+                name: "Framer Motion",
+                description: "Animation library for React",
+                logo: "/placeholder.svg?height=64&width=64",
+              },
+              {
+                name: "Three.js",
+                description: "3D graphics in the browser",
+                logo: "/placeholder.svg?height=64&width=64",
+              },
+              {
+                name: "GraphQL",
+                description: "API query language",
+                logo: "/placeholder.svg?height=64&width=64",
+              },
+              {
+                name: "Node.js",
+                description: "JavaScript runtime for backends",
+                logo: "/placeholder.svg?height=64&width=64",
+              },
+            ]
+          }
+        },
         start : {
           buttons : {
             arrow :" Previous", 
             first: "Submitting...",
             second: "Submit Project",
             tree: "Submit Project", 
-            foreing : "Next Step"
+            foreing : "Next Step",
           },
+          steps : [
+            {
+              id: "project-type",
+              title: "Project Type",
+              description: "What kind of project are you looking to build?",
+              icon: Rocket,
+              options: [
+                {
+                  icon: Code,
+                  title: "Web Application",
+                  description: "Full-stack web applications with modern technologies",
+                  examples: ["E-commerce", "SaaS Platform", "Customer Portal"],
+                },
+                {
+                  icon: Palette,
+                  title: "UI/UX Design",
+                  description: "Beautiful and intuitive user interfaces",
+                  examples: ["Mobile App Design", "Website Redesign", "Design System"],
+                },
+                {
+                  icon: Server,
+                  title: "Custom Software",
+                  description: "Tailored software solutions for your business",
+                  examples: ["CRM System", "Automation Tools", "Integration Services"],
+                },
+              ],
+            },
+            {
+              id: "project-details",
+              title: "Project Details",
+              description: "Tell us more about your project",
+              icon: Code,
+            },
+            {
+              id: "contact-info",
+              title: "Contact Information",
+              description: "How can we reach you?",
+              icon: CheckCircle,
+            },
+          ]
 
         }
       },
@@ -1320,7 +1589,7 @@ export const translations = {
                   description: "Criação de sites e landing pages altamente compatíveis e interativos, focados em conversão de clientes, com design visualmente atraente e desempenho otimizado. Desenvolvido usando Next.js para garantir uma experiência moderna e responsiva.",
                   image: "/site.png?height=400&width=600",
                   category: "Web",
-                  link: "/portfolio/fintech"
+                  link: "/portfolio/interactive-websites"
               },
               {
                   title: "Sistema de Agendamento",
@@ -1536,8 +1805,286 @@ export const translations = {
               },
             ],
           },
-        }        
-                      
+        },
+        websites: {
+          herobanner: {
+            hero: "Estúdio de Desenvolvimento Web",
+            title1: "Nós Criamos",
+            title2: "Experiências",
+            title3: "Interativas",
+            subtitle: "Criamos sites impressionantes e responsivos que funcionam perfeitamente em todos os dispositivos",
+            buttons: { start: "Comece Agora", contact: "Fale Conosco" },
+          },
+          device: {
+            title: "Responsivo em Qualquer Dispositivo",
+            subtitle: "Nossos sites se adaptam perfeitamente a qualquer tamanho de tela, proporcionando uma experiência ideal em desktop, tablet e mobile",
+            descktop: "Desktop",
+            mobile: "Celular",
+            tablet: "Tablet",
+          },
+          features: {
+            title: "Recursos Interativos",
+            subtitle: "Criamos sites com elementos interativos envolventes que cativam seu público",
+            items: [
+              {
+                title: "Design Responsivo",
+                description:
+                  "Nossos sites se ajustam perfeitamente a qualquer tamanho de tela, proporcionando uma experiência otimizada em desktops, tablets e celulares.",
+                icon: Laptop,
+                benefits: [
+                  "Layouts fluidos que se adaptam a qualquer tela",
+                  "Navegação otimizada para toque em dispositivos móveis",
+                  "Imagens otimizadas para carregamento mais rápido",
+                  "Experiência consistente em todos os dispositivos",
+                ],
+              },
+              {
+                title: "Elementos Interativos",
+                description: "Criamos elementos interativos envolventes que respondem às ações do usuário e fornecem feedback visual.",
+                icon: Zap,
+                benefits: [
+                  "Animações e transições suaves",
+                  "Formulários interativos com validação em tempo real",
+                  "Efeitos de hover e clique para maior engajamento",
+                  "Animações ativadas por rolagem",
+                ],
+              },
+              {
+                title: "UI/UX Moderno",
+                description: "Projetamos interfaces intuitivas que guiam os usuários pelo seu site com facilidade e clareza.",
+                icon: Layout,
+                benefits: [
+                  "Navegação intuitiva e arquitetura da informação",
+                  "Hierarquia visual clara e organização de conteúdo",
+                  "Linguagem de design consistente em todo o site",
+                  "Acessibilidade para todos os usuários",
+                ],
+              },
+              {
+                title: "Otimização de Performance",
+                description: "Otimizamos todos os aspectos do seu site para garantir tempos de carregamento rápidos e desempenho suave.",
+                icon: Zap,
+                benefits: [
+                  "Código e recursos otimizados para carregamento mais rápido",
+                  "Carregamento preguiçoso (lazy loading) de imagens e componentes",
+                  "Renderização eficiente e mínimo de repaints",
+                  "Estratégias de cache para visitantes recorrentes",
+                ],
+              },
+              {
+                title: "Código Limpo",
+                description: "Escrevemos código limpo e sustentável, seguindo as melhores práticas e padrões da indústria.",
+                icon: Code2,
+                benefits: [
+                  "Base de código bem estruturada e documentada",
+                  "Arquitetura baseada em componentes para reutilização",
+                  "Separação de responsabilidades para manutenção mais fácil",
+                  "Controle de versão e automação de implantação",
+                ],
+              },
+              {
+                title: "Design Personalizado",
+                description: "Criamos designs únicos alinhados à identidade da sua marca e objetivos de negócios.",
+                icon: PaintBucket,
+                benefits: [
+                  "Elementos visuais e ilustrações personalizadas",
+                  "Esquemas de cores e tipografia alinhados à marca",
+                  "Layouts e estruturas de página exclusivas",
+                  "Elementos interativos distintos",
+                ],
+              },
+              {
+                title: "Compatibilidade Entre Navegadores",
+                description: "Garantimos que seu site funcione perfeitamente em todos os navegadores modernos.",
+                icon: Monitor,
+                benefits: [
+                  "Experiência consistente no Chrome, Firefox, Safari e Edge",
+                  "Soluções alternativas para navegadores mais antigos",
+                  "Otimizações específicas para cada navegador",
+                  "Testes regulares em várias plataformas",
+                ],
+              },
+              {
+                title: "SEO Otimizado",
+                description: "Desenvolvemos sites com otimização para mecanismos de busca, melhorando sua visibilidade online.",
+                icon: Search,
+                benefits: [
+                  "Estrutura HTML semântica para melhor indexação",
+                  "Meta tags otimizadas e dados estruturados",
+                  "Carregamento rápido para melhores rankings",
+                  "Design responsivo (fator de ranqueamento do Google)",
+                ],
+              },
+            ],
+          },
+          process: {
+            title: "Nosso Processo de Desenvolvimento",
+            subtitle: "Seguimos uma abordagem estruturada para entregar sites interativos de alta qualidade",
+            items: [
+              {
+                title: "Descoberta & Planejamento",
+                description: "Começamos entendendo seus objetivos de negócio, público-alvo e requisitos do projeto.",
+                icon: MessageSquare,
+                details: [
+                  "Consulta detalhada com o cliente",
+                  "Análise de mercado e concorrência",
+                  "Definição do escopo do projeto",
+                  "Levantamento de requisitos técnicos",
+                ],
+              },
+              {
+                title: "Conceito & Estratégia",
+                description: "Desenvolvemos uma abordagem estratégica e um framework conceitual para o seu site.",
+                icon: Lightbulb,
+                details: [
+                  "Planejamento da arquitetura da informação",
+                  "Mapeamento do fluxo do usuário",
+                  "Desenvolvimento da estratégia de conteúdo",
+                  "Planejamento de elementos interativos",
+                ],
+              },
+              {
+                title: "Design & Prototipagem",
+                description: "Criamos designs visualmente atraentes e protótipos interativos para sua aprovação.",
+                icon: PenTool,
+                details: [
+                  "Criação de UI/UX",
+                  "Layouts responsivos para todos os dispositivos",
+                  "Desenvolvimento de protótipos interativos",
+                  "Revisões com feedback do cliente",
+                ],
+              },
+              {
+                title: "Desenvolvimento",
+                description: "Nossos desenvolvedores transformam os designs em realidade com código limpo e eficiente.",
+                icon: Code,
+                details: [
+                  "Desenvolvimento frontend com React/Next.js",
+                  "Integração backend e desenvolvimento de APIs",
+                  "Implementação de elementos interativos",
+                  "Otimização de desempenho",
+                ],
+              },
+              {
+                title: "Testes & Refinamento",
+                description: "Testamos seu site minuciosamente para garantir que ele funcione perfeitamente em todos os dispositivos e navegadores.",
+                icon: Layers,
+                details: [
+                  "Testes de compatibilidade entre navegadores",
+                  "Verificação de design responsivo",
+                  "Otimização de desempenho e velocidade de carregamento",
+                  "Testes de experiência do usuário",
+                ],
+              },
+              {
+                title: "Lançamento & Suporte",
+                description: "Publicamos seu site e oferecemos suporte contínuo para garantir seu sucesso.",
+                icon: CheckCircle,
+                details: [
+                  "Implantação e configuração do site",
+                  "Otimização e configuração de SEO",
+                  "Integração com ferramentas de análise",
+                  "Suporte e manutenção pós-lançamento",
+                ],
+              },
+            ],
+          },
+          tech: {
+            title: "Nosso Stack Tecnológico",
+            subtitle: "Utilizamos tecnologias de ponta para construir sites rápidos, confiáveis e escaláveis",
+            "items": [
+              {
+                "name": "React",
+                "description": "Construção de interfaces de usuário interativas",
+                "logo": "https://reactjs.org/logo-og.png"
+              },
+              {
+                "name": "Next.js",
+                "description": "Framework React para produção",
+                "logo": "https://nextjs.org/static/favicon/favicon-32x32.png"
+              },
+              {
+                "name": "TypeScript",
+                "description": "Desenvolvimento JavaScript com tipagem estática",
+                "logo": "https://www.typescriptlang.org/icons/icon-48x48.png"
+              },
+              {
+                "name": "Tailwind CSS",
+                "description": "Framework CSS utilitário",
+                "logo": "https://tailwindcss.com/_next/static/media/tailwindcss-mark.b4282b4f.svg"
+              },
+              {
+                "name": "Framer Motion",
+                "description": "Biblioteca de animação para React",
+                "logo": "https://www.framer.com/images/brand/framer-logo.png"
+              },
+              {
+                "name": "Three.js",
+                "description": "Gráficos 3D no navegador",
+                "logo": "https://threejs.org/files/favicon.ico"
+              },
+              {
+                "name": "GraphQL",
+                "description": "Linguagem de consulta para APIs",
+                "logo": "https://graphql.org/img/logo.svg"
+              },
+              {
+                "name": "Node.js",
+                "description": "Ambiente de execução JavaScript para backends",
+                "logo": "https://nodejs.org/static/images/logo.svg"
+              }
+            ],
+          },
+        },        
+        start: {
+          buttons: {
+            arrow: "Anterior",
+            first: "Enviando...",
+            second: "Enviar Projeto",
+            tree: "Enviar Projeto",
+            foreing: "Próximo Passo",
+          },
+          steps: [
+            {
+              id: "project-type",
+              title: "Tipo de Projeto",
+              description: "Que tipo de projeto você deseja criar?",
+              icon: Rocket,
+              options: [
+                {
+                  icon: Code,
+                  title: "Aplicação Web",
+                  description: "Aplicações web full-stack com tecnologias modernas",
+                  examples: ["E-commerce", "Plataforma SaaS", "Portal do Cliente"],
+                },
+                {
+                  icon: Palette,
+                  title: "UI/UX Design",
+                  description: "Interfaces bonitas e intuitivas",
+                  examples: ["Design de App Mobile", "Redesign de Site", "Sistema de Design"],
+                },
+                {
+                  icon: Server,
+                  title: "Software Personalizado",
+                  description: "Soluções de software sob medida para o seu negócio",
+                  examples: ["Sistema CRM", "Ferramentas de Automação", "Serviços de Integração"],
+                },
+              ],
+            },
+            {
+              id: "project-details",
+              title: "Detalhes do Projeto",
+              description: "Conte-nos mais sobre o seu projeto",
+              icon: Code,
+            },
+            {
+              id: "contact-info",
+              title: "Informações de Contato",
+              description: "Como podemos entrar em contato com você?",
+              icon: CheckCircle,
+            },
+          ],
+        }                                
      },
   }
   
