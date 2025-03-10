@@ -3,12 +3,11 @@
 import { motion } from "framer-motion"
 import { useLanguage } from "@/context/LanguageContext"
 
-
 const Timeline = () => {
-  const {t} = useLanguage()
+  const { t } = useLanguage()
   return (
-    <section className="py-20 md:py-28">
-      <div className="container px-4 md:px-6">
+    <section className="py-20 md:py-28 w-full">
+      <div className="mx-auto max-w-7xl px-4 md:px-6 w-full">
         <div className="text-center space-y-4 mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -32,7 +31,7 @@ const Timeline = () => {
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-4 sm:left-1/2 transform -translate-x-1/2 h-full w-px bg-purple-500/10" />
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-purple-500/10" />
 
           <div className="space-y-8">
             {t.process.timeline.items.map((step, i) => (
@@ -52,7 +51,7 @@ const Timeline = () => {
                       i % 2 === 0 ? "sm:ml-8" : "sm:mr-8"
                     }`}
                   >
-                    <div className="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-purple-400 border-4 border-[#0D0620] sm:left-0 left-4 transform -translate-x-1/2" />
+                    <div className="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-purple-400 border-4 border-[#0D0620] sm:left-0 left-1/2 transform -translate-x-1/2" />
                     <h3 className="text-lg font-semibold mb-1">{step.title}</h3>
                     <div className="text-sm text-purple-400 mb-2">{step.duration}</div>
                     <p className="text-sm text-zinc-400">{step.description}</p>
@@ -69,4 +68,3 @@ const Timeline = () => {
 }
 
 export default Timeline
-

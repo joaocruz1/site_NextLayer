@@ -1,4 +1,3 @@
-// src/lib/hooks/use-parallax-scroll.ts
 "use client"
 
 import { useScroll, useTransform } from "framer-motion"

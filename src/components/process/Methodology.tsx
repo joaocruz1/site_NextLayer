@@ -4,12 +4,11 @@ import { motion } from "framer-motion"
 import { Code2, Users, Rocket, RefreshCw, Shield, Zap } from "lucide-react"
 import { useLanguage } from "@/context/LanguageContext"
 
-
 const Methodology = () => {
-  const {t} = useLanguage()
+  const { t } = useLanguage()
   return (
-    <section id="methodology" className="py-20 md:py-28">
-      <div className="container px-4 md:px-6">
+    <section id="methodology" className="py-20 md:py-28 w-full">
+      <div className="mx-auto max-w-7xl px-4 md:px-6 w-full">
         <div className="text-center space-y-4 mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -31,7 +30,7 @@ const Methodology = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
           {t.process.methodology.items.map((method, i) => (
             <motion.div
               key={method.title}
@@ -39,7 +38,7 @@ const Methodology = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative overflow-hidden rounded-lg border border-purple-200/10 bg-purple-500/[0.02] p-6 hover:bg-purple-500/[0.04] transition-colors"
+              className="group relative overflow-hidden rounded-lg border border-purple-200/10 bg-purple-500/[0.02] p-6 hover:bg-purple-500/[0.04] transition-colors w-full"
             >
               <div className="relative z-10">
                 <method.icon className="h-10 w-10 text-purple-400 mb-4" />
@@ -56,4 +55,3 @@ const Methodology = () => {
 }
 
 export default Methodology
-

@@ -3,12 +3,11 @@
 import { motion } from "framer-motion"
 import { useLanguage } from "@/context/LanguageContext"
 
-
 export function FeaturesSection() {
-  const {t} = useLanguage()
+  const { t } = useLanguage()
   return (
-    <section className="py-20 md:py-28">
-      <div className="container px-4 md:px-6">
+    <section className="py-20 md:py-28 w-full">
+      <div className="mx-auto max-w-7xl px-4 md:px-6 w-full">
         <div className="text-center space-y-4 mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -30,7 +29,7 @@ export function FeaturesSection() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
           {t.home.features.items.map((feature, i) => (
             <motion.div
               key={feature.title}
@@ -38,7 +37,7 @@ export function FeaturesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative overflow-hidden rounded-lg border border-purple-200/10 bg-purple-500/[0.02] p-6 hover:bg-purple-500/[0.04] transition-colors"
+              className="group relative overflow-hidden rounded-lg border border-purple-200/10 bg-purple-500/[0.02] p-6 hover:bg-purple-500/[0.04] transition-colors w-full"
             >
               <div className="relative z-10">
                 <feature.icon className="h-10 w-10 text-purple-400 mb-4" />
@@ -53,4 +52,3 @@ export function FeaturesSection() {
     </section>
   )
 }
-
