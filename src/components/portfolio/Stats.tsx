@@ -7,7 +7,7 @@ const Stats = () => {
   const {t} = useLanguage()
   return (
     <section className="py-20 md:py-28 relative">
-      <div className="container px-4 md:px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-2 w-full">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {t.portfolio.stats.items.map((stat, i) => (
             <motion.div

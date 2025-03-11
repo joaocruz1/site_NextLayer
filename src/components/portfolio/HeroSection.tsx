@@ -4,10 +4,10 @@ import { motion } from "framer-motion"
 import { useLanguage } from "@/context/LanguageContext"
 
 const HeroSection = () => {
-  const {t} = useLanguage()
+  const { t } = useLanguage()
   return (
-    <section className="relative min-h-[90vh] flex items-center">
-      <div className="container px-4 sm:px-6 py-20 sm:py-32">
+    <section className="relative min-h-[90vh] flex items-center w-full">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-32 w-full">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -45,4 +45,3 @@ const HeroSection = () => {
 }
 
 export default HeroSection
-

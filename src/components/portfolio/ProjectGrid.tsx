@@ -6,17 +6,15 @@ import Image from "next/image"
 import Link from "next/link"
 import { useLanguage } from "@/context/LanguageContext"
 
-
-
 const ProjectGrid = () => {
-  const {t} = useLanguage()
+  const { t } = useLanguage()
   const [activeCategory, setActiveCategory] = t.portfolio.projectgrid.all === "All" ? useState("All") : useState("Todos")
 
   const filteredProjects = activeCategory === t.portfolio.projectgrid.all ? t.portfolio.projectgrid.items : t.portfolio.projectgrid.items.filter((p) => p.category === activeCategory)
 
   return (
-    <section className="py-20 md:py-28">
-      <div className="container px-4 md:px-6">
+    <section className="py-20 md:py-28 w-full">
+      <div className="mx-auto max-w-7xl px-4 md:px-6 w-full">
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {t.portfolio.projectgrid.categories.map((category) => (
@@ -70,4 +68,3 @@ const ProjectGrid = () => {
 }
 
 export default ProjectGrid
-
