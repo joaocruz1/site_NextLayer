@@ -1,7 +1,6 @@
 import { footer, header } from "framer-motion/client"
 import { features, title } from "process"
 import { ShoppingCart, Code, Laptop, Layout, Layers, Lightbulb, PenTool, Monitor, Search, PaintBucket, Palette, CheckCircle, ShoppingBag, BarChart3, Package, Truck, CreditCard, Settings, HardDrive, Server, Database, Mail, MessageCircle, Phone, MessageSquare, Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
-import { ActivityMonitor } from "@/components/e-commerce/ActivityMonitor"
 import { start } from "repl"
 
 export const translations = {
@@ -205,14 +204,14 @@ export const translations = {
                       description: "Creation of highly compatible and interactive websites and landing pages, focused on customer conversion, with visually appealing design and optimized performance. Developed using Next.js to ensure a modern and responsive experience.",
                       image: "/site.png?height=400&width=600",
                       tags: ["Next.js", "React", "CSS", "HTML"],
-                      link: "/portfolio/fintech"
+                      link: "/portfolio/interactive-websites"
                   },
                   {
                       title: "Scheduling System",
                       description: "Transport scheduling and management system, focused on companies that need to manage bus and other transportation schedules. Provides complete control over schedules and those responsible for carrying them out. Developed with Python and React for a scalable and efficient solution.",
                       image: "/scheduling.png?height=400&width=600",
                       tags: ["Python", "React", "CSS", "HTML"],
-                      link: "/portfolio/transport"
+                      link: "/portfolio/transport-management"
                   }
               ],
                 view: "View All Projects"
@@ -408,14 +407,14 @@ export const translations = {
                   description: "Creation of highly compatible and interactive websites and landing pages, focused on customer conversion, with visually appealing design and optimized performance. Developed using Next.js to ensure a modern and responsive experience.",
                   image: "/site.png?height=400&width=600",
                   category: "Web Development",
-                  link: "/portfolio/fintech"
+                  link: "/portfolio/interactive-websites"
               },
               {
                   title: "Scheduling System",
                   description: "Scheduling and transportation management system, designed for companies that need to manage bus schedules and other means of transport. Provides full control over bookings and the responsible personnel. Developed with Python and React for a scalable and efficient solution.",
                   image: "/scheduling.png?height=400&width=600",
                   category: "Enterprise Development",
-                  link: "/portfolio/transport"
+                  link: "/portfolio/transportation-management"
               }
           ]          
           }
@@ -561,7 +560,7 @@ export const translations = {
                   description: "Transport scheduling and management system, focused on companies that need to manage bus and other transportation schedules. Provides complete control over schedules and those responsible for carrying them out. Developed with Python and React for a scalable and efficient solution.",
                   image: "/scheduling.png?height=400&width=600",
                   category: "Enterprise",
-                  link: "/portfolio/transport"
+                  link: "/portfolio/transport-management"
               }
           ]
           },

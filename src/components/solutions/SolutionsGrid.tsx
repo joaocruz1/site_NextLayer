@@ -9,7 +9,7 @@ const SolutionsGrid = () => {
   const {t} = useLanguage()
   return (
     <section className="py-20 md:py-28">
-      <div className="container px-4 md:px-6">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="text-center space-y-4 mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

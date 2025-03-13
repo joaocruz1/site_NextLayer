@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { MessageSquare, Video, GitBranch, Users } from "lucide-react"
 import { useLanguage } from "@/context/LanguageContext"
 
 
@@ -10,7 +9,7 @@ const Collaboration = () => {
   const {t} = useLanguage()
   return (
     <section className="py-12 sm:py-20 md:py-28">
-      <div className="container px-4 sm:px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}

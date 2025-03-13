@@ -10,7 +10,7 @@ export function ContactSection() {
   const {t} = useLanguage()
   return (
     <section className="py-20 md:py-28">
-      <div className="container px-4 md:px-6">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}

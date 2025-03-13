@@ -8,7 +8,7 @@ const HeroSection = () => {
   const {t} = useLanguage()
   return (
     <section className="relative min-h-[90vh] flex items-center">
-      <div className="container px-4 sm:px-6 py-20 sm:py-32">
+      <div className="container mx-auto px-4 sm:px-6 py-20 sm:py-32">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="space-y-8">
             <motion.div
