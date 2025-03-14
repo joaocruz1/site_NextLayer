@@ -3,18 +3,12 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 import Image from "next/image"
-import {
-  ArrowUpRight,
-  TrendingUp,
-  TrendingDown,
-  DollarSign,
-  ShoppingCart,
-  Users,
-  Package,
-  BarChart,
-} from "lucide-react"
+import { TrendingUp, TrendingDown, ArrowUpRight } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
+
 
 export function DashboardPreview() {
+  const { t } = useLanguage()
   const containerRef = useRef<HTMLDivElement>(null)
 
   const { scrollYProgress } = useScroll({
@@ -29,9 +23,9 @@ export function DashboardPreview() {
     <div ref={containerRef} className="py-12 md:py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-16 space-y-3 md:space-y-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Painel de Controle Completo</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">{t.ecommerce.dashboard.title}</h2>
           <p className="text-purple-200/70 max-w-2xl mx-auto text-sm sm:text-base">
-            Gerencie todos os aspectos do seu negócio em marketplaces com nosso dashboard intuitivo
+            {t.ecommerce.dashboard.subtitle}
           </p>
         </div>
 
@@ -57,7 +51,7 @@ export function DashboardPreview() {
 
           {/* Dashboard stats */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {dashboardStats.map((stat, index) => (
+            {t.ecommerce.dashboard.itemsstats.map((stat, index) => (
               <motion.div
                 key={stat.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -95,7 +89,7 @@ export function DashboardPreview() {
 
           {/* Dashboard features */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {dashboardFeatures.map((feature, index) => (
+            {t.ecommerce.dashboard.itemsfeatures.map((feature, index) => (
               <motion.div
                 key={feature.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -120,49 +114,4 @@ export function DashboardPreview() {
   )
 }
 
-const dashboardStats = [
-  {
-    title: "Faturamento Total",
-    value: "R$ 124.345",
-    trend: 12.5,
-    icon: DollarSign,
-  },
-  {
-    title: "Pedidos",
-    value: "1.245",
-    trend: 8.2,
-    icon: ShoppingCart,
-  },
-  {
-    title: "Funcionários",
-    value: "28",
-    trend: 5.7,
-    icon: Users,
-  },
-  {
-    title: "Produtos",
-    value: "678",
-    trend: -2.3,
-    icon: Package,
-  },
-]
-
-const dashboardFeatures = [
-  {
-    title: "Gestão de Marketplaces",
-    description:
-      "Controle todos os seus canais de venda em uma única interface, com sincronização automática de estoque e pedidos.",
-    icon: ShoppingCart,
-  },
-  {
-    title: "Controle de Funcionários",
-    description: "Gerencie as atividades dos seus colaboradores, atribuindo tarefas e monitorando o desempenho.",
-    icon: Users,
-  },
-  {
-    title: "Análise de Desempenho",
-    description: "Visualize métricas detalhadas de vendas, produtos e funcionários para tomar decisões estratégicas.",
-    icon: BarChart,
-  },
-]
 

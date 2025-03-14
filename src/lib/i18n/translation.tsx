@@ -1,4 +1,5 @@
-import { ShoppingCart,UserCheck, Route, Car,Clock, Bus, FileText, BarChart, Map, Bell, Code, Laptop, Layout, Layers, Lightbulb, PenTool, Monitor, Search, PaintBucket, Palette, CheckCircle, ShoppingBag, BarChart3, Package, Truck, CreditCard, Settings, HardDrive, Server, Database, Mail, MessageCircle, Phone, MessageSquare, Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
+import { ShoppingCart, UserCheck, Award, DollarSign, PieChart, Route, Car,Clock, Bus, FileText, BarChart, Map, Bell, Code, Laptop, Layout, Layers, Lightbulb, PenTool, Monitor, Search, PaintBucket, Palette, CheckCircle, ShoppingBag, BarChart3, Package, Truck, CreditCard, Settings, HardDrive, Server, Database, Mail, MessageCircle, Phone, MessageSquare, Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
+import { act } from "react";
 
 interface Feature {
   title: string;
@@ -603,177 +604,329 @@ export const translations = {
           }
         },
         ecommerce: {
-          dashboardhero: {
-            hero:"Next Generation E-Commerce",
-            title: "E-Commerce Control", 
-            description: "Powerful management system for your online store with real-time analytics and automation",
-            items:[
+          herobanner: {
+            hero: "Marketplace Management System",
+            title1: "Marketplace",
+            title2: "System",
+            subtitle: "Manage your marketplace with ease and efficiency. Our platform offers advanced features to manage products, orders, and customers effectively. Simplify your marketplace operations with our complete solution.",
+            button: "Get Started Now",
+            items: [
               {
-                title: "Active Users",
-                value: "2,345",
-                icon: Users,
+                title: "Managed Sales",
+                value: "$2.4M",
+                icon: ShoppingCart,
                 progress: 75,
               },
               {
-                title: "Daily Orders",
+                title: "Monthly Orders",
                 value: "1,234",
-                icon: ShoppingCart,
+                icon: Package,
                 progress: 65,
               },
               {
-                title: "Database Size",
-                value: "15 GB",
-                icon: Database,
-                progress: 45,
+                title: "Active Employees",
+                value: "28",
+                icon: Users,
+                progress: 85,
               },
-            ]
+            ],
           },
-          activitymonitor: {
-            title: "System Activity",
-            items: [
+          integrations: {
+            title: "Marketplace Integrations",
+            subtitle: "Manage your sales across multiple marketplaces from a single platform",
+            itemsmarketingplace: [
               {
-                id: 1,
-                message: "Database backup completed successfully",
-                timestamp: "2 minutes ago",
-                status: "success",
+                name: "Mercado Livre",
+                logo: "/placeholder.svg?height=48&width=48",
               },
               {
-                id: 2,
-                message: "New order processing system update available",
-                timestamp: "15 minutes ago",
-                status: "warning",
+                name: "Amazon",
+                logo: "/placeholder.svg?height=48&width=48",
               },
               {
-                id: 3,
-                message: "User authentication system synchronized",
-                timestamp: "1 hour ago",
-                status: "success",
-              },
-            ]
-          },
-          databasestats: {
-            title : "Database Management",
-            items : [
-              {
-                title: "Main Database",
-                usage: 65,
-                total: "50GB",
-                icon: Database,
+                name: "Shopee",
+                logo: "/placeholder.svg?height=48&width=48",
               },
               {
-                title: "Storage",
-                usage: 40,
-                total: "1TB",
-                icon: HardDrive,
+                name: "Magalu",
+                logo: "/placeholder.svg?height=48&width=48",
               },
               {
-                title: "Cache",
-                usage: 25,
-                total: "32GB",
-                icon: Server,
+                name: "Americanas",
+                logo: "/placeholder.svg?height=48&width=48",
               },
-            ]
-          },
-          systemfeatures: {
-            title : "System Features",
-            subtitle: "Our e-commerce management system provides comprehensive tools for running your online business",
-            items : [
               {
-                title: "Order Management",
-                description: "Track and manage orders from receipt to delivery with real-time updates",
+                name: "AliExpress",
+                logo: "/placeholder.svg?height=48&width=48",
+              },
+            ],
+            itemsfeatures: [
+              {
+                title: "Automatic Synchronization",
+                description: "Keep your products, inventory, and orders synchronized in real-time across all marketplaces",
+                icon: RefreshCw,
+                benefits: [
+                  "Automatic stock updates across all channels",
+                  "Synchronization of prices and product information",
+                  "Automatic import of new orders",
+                  "Notifications for status changes",
+                ],
+              },
+              {
+                title: "Centralized Management",
+                description: "Manage all your marketplaces from a single intuitive interface",
                 icon: ShoppingBag,
+                benefits: [
+                  "Unified product registration for all marketplaces",
+                  "Order processing in one place",
+                  "Centralized returns and exchanges management",
+                  "Control of ads and promotional campaigns",
+                ],
               },
               {
-                title: "Customer Management",
-                description: "Comprehensive tools to manage customer data and purchase history",
+                title: "Comparative Analysis",
+                description: "Compare performance across different marketplaces to optimize your sales strategies",
+                icon: BarChart,
+                benefits: [
+                  "Sales comparison between platforms",
+                  "Profitability analysis by marketplace",
+                  "Identification of market trends",
+                  "Custom reports by sales channel",
+                ],
+              },
+            ],
+          },
+          dashboard: {
+            title: "Complete Control Panel",
+            subtitle: "Manage all aspects of your marketplace business with our intuitive dashboard",
+            itemsstats: [
+              {
+                title: "Total Revenue",
+                value: "$124,345",
+                trend: 12.5,
+                icon: DollarSign,
+              },
+              {
+                title: "Orders",
+                value: "1,245",
+                trend: 8.2,
+                icon: ShoppingCart,
+              },
+              {
+                title: "Employees",
+                value: "28",
+                trend: 5.7,
                 icon: Users,
               },
               {
-                title: "Analytics Dashboard",
-                description: "Real-time insights and performance metrics at your fingertips",
-                icon: BarChart3,
+                title: "Products",
+                value: "678",
+                trend: -2.3,
+                icon: Package,
+              },
+            ],
+            itemsfeatures: [
+              {
+                title: "Marketplace Management",
+                description: "Control all your sales channels in a single interface, with automatic stock and order synchronization.",
+                icon: ShoppingCart,
               },
               {
-                title: "Inventory Control",
-                description: "Advanced system to track stock levels and manage products",
+                title: "Employee Management",
+                description: "Manage your team's activities, assign tasks, and monitor performance.",
+                icon: Users,
+              },
+              {
+                title: "Performance Analysis",
+                description: "View detailed sales, product, and employee metrics to make strategic decisions.",
+                icon: BarChart,
+              },
+            ],
+          },
+          features: {
+            title: "System Features",
+            subtitle: "Our marketplace control system offers complete tools to manage your business",
+            items: [
+              {
+                title: "Product Management",
+                description: "Register and manage products across multiple marketplaces with automatic synchronization",
                 icon: Package,
               },
               {
-                title: "Shipping Integration",
-                description: "Seamless shipping automation and tracking solutions",
+                title: "Order Control",
+                description: "Track orders from confirmation to delivery with real-time updates",
+                icon: ShoppingBag,
+              },
+              {
+                title: "Employee Management",
+                description: "Assign tasks, monitor activities, and evaluate your team's performance",
+                icon: Users,
+              },
+              {
+                title: "Sales Analysis",
+                description: "View detailed performance reports by marketplace, product, and seller",
+                icon: BarChart3,
+              },
+              {
+                title: "Returns Management",
+                description: "Process returns and exchanges efficiently with automated workflows",
+                icon: RefreshCw,
+              },
+              {
+                title: "Integrated Logistics",
+                description: "Integration with carriers and shipment control in a single platform",
                 icon: Truck,
               },
               {
-                title: "Payment Processing",
-                description: "Secure and flexible payment gateway integration",
-                icon: CreditCard,
-              },
-              {
                 title: "Customer Support",
-                description: "Integrated ticketing and chat system for better service",
+                description: "Centralize communications with customers from all marketplaces",
                 icon: MessageSquare,
               },
               {
-                title: "System Settings",
-                description: "Fully customizable system parameters and configurations",
+                title: "Advanced Settings",
+                description: "Customize the system according to your business's specific needs",
                 icon: Settings,
               },
-            ]
+            ],
           },
-          testimonialssection:{
-            title : "What Our Clients Say",
-            subtitle : "Trusted by leading e-commerce businesses worldwide",
-            items : [
+          analytics: {
+            title: "Advanced Analytics",
+            subtitle: "Make strategic decisions based on detailed data from all your marketplaces",
+            span: "Last 30 Days",
+            itemscharts: [
               {
-                quote:
-                  "This system has transformed how we manage our online store. The analytics and automation features are game-changing.",
-                name: "Sarah Johnson",
-                role: "E-commerce Director",
-                avatar: "/placeholder.svg?height=100&width=100",
+                id: "sales",
+                title: "Sales Performance",
+                description: "Track revenue, orders, and conversion rates",
+                icon: BarChart,
               },
               {
-                quote:
-                  "The customer management and support integration has helped us provide better service and grow our business.",
-                name: "Michael Chen",
-                role: "Operations Manager",
-                avatar: "/placeholder.svg?height=100&width=100",
+                id: "employees",
+                title: "Employee Performance",
+                description: "Monitor team productivity and efficiency",
+                icon: Users,
               },
               {
-                quote:
-                  "Inventory management has never been easier. Real-time tracking and automated alerts save us hours every week.",
-                name: "Emma Davis",
-                role: "Store Owner",
-                avatar: "/placeholder.svg?height=100&width=100",
+                id: "marketplaces",
+                title: "Marketplace Comparison",
+                description: "Compare sales and performance across platforms",
+                icon: PieChart,
               },
-            ]
+            ],
+            itemsmetrics: {
+              sales: [
+                { label: "Total Revenue", value: "$124,345", change: 12.5 },
+                { label: "Orders", value: "1,245", change: 8.2 },
+                { label: "Average Ticket", value: "$99.87", change: 3.7 },
+              ],
+              employees: [
+                { label: "Productivity", value: "87%", change: 5.3 },
+                { label: "Processed Orders", value: "845", change: 12.1 },
+                { label: "Average Time", value: "4.2 min", change: -8.5 },
+              ],
+              marketplaces: [
+                { label: "Mercado Livre", value: "45%", change: 8.7 },
+                { label: "Amazon", value: "32%", change: 15.2 },
+                { label: "Others", value: "23%", change: -3.8 },
+              ],
+            },
           },
-          pricingsection:{
-            title:"Simple, Transparent Pricing", 
-            subtitle:"Choose the perfect plan for your business needs",
-            items:[
+          employee: {
+            title: "Employee Management",
+            subtitle: "Manage your team's activities and track each employee's performance",
+            employee: {
+              name: "Carlos Silva",
+              role: "Sales Manager • ID: FUNC-2845",
+              experience: "Experience",
+              experiencetime: "2 years, 3 months",
+              department: "Department",
+              departmentname: "Sales",
+              marketingplaces: "Marketplaces",
+              marketingplacesname: "Mercado Livre, Amazon",
+              status: "Status",
+              statusname: "Online",
+              activity: "Current Activities",
+              activitytype: "Order Processing",
+              activityname: "Today, 8:00 - 12:30",
+              pending: "12 orders processed • 8 pending",
+            },
+            itemns: [
               {
-                name: "Starter",
-                description: "Perfect for small businesses",
-                price: 49,
-                features: ["Up to 1,000 products", "Basic analytics", "Email support", "1 admin user"],
-                popular: false,
+                title: "Task Assignment",
+                description: "Distribute tasks among your team and track progress in real-time",
+                icon: CheckCircle,
+                points: [
+                  "Task creation with deadlines and priorities",
+                  "Automatic assignment based on workload",
+                  "Notifications for new tasks and deadlines",
+                  "Complete history of completed activities",
+                ],
               },
               {
-                name: "Professional",
-                description: "For growing businesses",
-                price: 99,
-                features: ["Up to 10,000 products", "Advanced analytics", "Priority support", "5 admin users", "API access"],
-                popular: true,
+                title: "Time Monitoring",
+                description: "Track time spent on each activity to optimize processes",
+                icon: Clock,
+                points: [
+                  "Automatic time tracking per activity",
+                  "Productivity reports by employee",
+                  "Identification of operational bottlenecks",
+                  "Efficiency comparison between teams",
+                ],
               },
               {
-                name: "Enterprise",
-                description: "For large scale operations",
-                price: 199,
-                features: ["Unlimited products", "Custom analytics", "24/7 support", "Unlimited users", "Custom integrations"],
-                popular: false,
+                title: "Performance Analysis",
+                description: "Evaluate employee performance with objective metrics",
+                icon: BarChart,
+                points: [
+                  "Customizable performance indicators",
+                  "Comparison with established goals",
+                  "Trend analysis of performance",
+                  "Automated feedback based on results",
+                ],
               },
-            ]
-          }
+              {
+                title: "Rewards System",
+                description: "Motivate your team with recognition and performance-based incentives",
+                icon: Award,
+                points: [
+                  "Gamification of activities and goals",
+                  "Performance ranking among employees",
+                  "Integrated bonus program",
+                  "Automatic recognition of achievements",
+                ],
+              },
+            ],
+          },
+          testimonials: {
+            title: "What Our Clients Say",
+            subtitle: "Companies that transformed their marketplace management with our system",
+            items: [
+              {
+                quote:
+                  "This system completely transformed how we manage our marketplace sales. We increased our efficiency by 40% and reduced processing errors by 85%.",
+                name: "Ana Oliveira",
+                role: "E-commerce Director, Virtual Store Brazil",
+                avatar: "/placeholder.svg?height=100&width=100",
+                rating: 5,
+              },
+              {
+                quote:
+                  "Employee management and activity control allowed us to identify bottlenecks and optimize our processes. Our order processing time was cut in half.",
+                name: "Ricardo Santos",
+                role: "Operations Manager, Mega Distributor",
+                avatar: "/placeholder.svg?height=100&width=100",
+                rating: 5,
+              },
+              {
+                quote:
+                  "Integration with multiple marketplaces and automatic stock synchronization eliminated issues with unavailable products. Highly recommended.",
+                name: "Carla Mendes",
+                role: "Owner, CM Electronics",
+                avatar: "/placeholder.svg?height=100&width=100",
+                rating: 4,
+              },
+            ],
+          },
         },
         websites: {
           herobanner: {
@@ -1115,7 +1268,87 @@ export const translations = {
             ]
           },
 
-        } ,
+          benefits : {
+            title : "Why Choose Our System",
+            subtitle : "Benefits that make our solution stand out",
+            items : [
+              {
+                title: "Cost Reduction",
+                description: "Reduce transportation costs through optimized routes and better vehicle utilization",
+              },
+              {
+                title: "Improved Employee Satisfaction",
+                description: "Reliable transportation with minimal waiting times improves employee morale",
+              },
+              {
+                title: "Environmental Impact",
+                description: "Reduce carbon footprint with optimized routes and reduced fuel consumption",
+              },
+              {
+                title: "Enhanced Safety",
+                description: "Improved monitoring and verification ensures employee safety during transit",
+              },
+              {
+                title: "Time Savings",
+                description: "Automated scheduling saves administrative time and reduces manual errors",
+              },
+              {
+                title: "Scalability",
+                description: "Easily scale your transportation system as your workforce grows",
+              },
+            ]
+          },
+          techstack : {
+            title : "Built With Modern Technology",
+            subtitle : "Powered by Python backend and React/Next.js frontend",
+            items : {
+              container1 : {
+                title : "Python Backend",
+                subtitle : "Robust and scalable server architecture",
+                item1 : "Fast data processing",
+                item2 : "Advanced scheduling algorithms",
+                item3 : "Secure authentication",
+                item4 : "RESTful API architecture"
+              },
+              container2 : {
+                title : "React/Next.js Frontend",
+                subtitle : "Modern and responsive user interface",
+                item1 : "Responsive design for all devices",
+                item2 : "Interactive dashboards",
+                item3 : "Real-time updates",
+                item4 : "Intuitive user experience"
+              }
+            }
+          },
+          testimonials : {
+            title : "What Our Clients Say", 
+            subtitle : "Trusted by transportation managers worldwide",
+            items : [
+              {
+                quote:
+                  "This system has transformed how we manage our employee transportation. We've reduced costs by 25% while improving employee satisfaction.",
+                name: "Michael Rodriguez",
+                role: "Transportation Manager, Global Tech Inc.",
+                avatar: "/placeholder.svg?height=100&width=100",
+              },
+              {
+                quote:
+                  "The route optimization alone saved us thousands in fuel costs. The employee app makes communication seamless.",
+                name: "Sarah Chen",
+                role: "Operations Director, Manufacturing Co.",
+                avatar: "/placeholder.svg?height=100&width=100",
+              },
+              {
+                quote:
+                  "Managing our fleet of buses and vans was a logistical nightmare before implementing this system. Now it's all automated and efficient.",
+                name: "James Wilson",
+                role: "Fleet Manager, Enterprise Solutions",
+                avatar: "/placeholder.svg?height=100&width=100",
+              },
+            ]
+          }
+
+        },
         start : {
           buttons : {
             arrow :" Previous", 
@@ -1763,175 +1996,331 @@ export const translations = {
             ],
           },
         },
-        ecommerce: {
-          dashboardhero: {
-            hero: "E-Commerce de Próxima Geração",
-            title: "Controle de E-Commerce",
-            description: "Sistema poderoso de gerenciamento para sua loja online, com análises em tempo real e automação",
-            items: [
-              {
-                title: "Usuários Ativos",
-                value: "2.345",
-                icon: Users,
-                progress: 75,
-              },
-              {
-                title: "Pedidos Diários",
-                value: "1.234",
-                icon: ShoppingCart,
-                progress: 65,
-              },
-              {
-                title: "Tamanho do Banco de Dados",
-                value: "15 GB",
-                icon: Database,
-                progress: 45,
-              },
+        ecommerce : {
+          herobanner : {
+            hero : "Sistema de Gestão de Marketplaces",
+            title1 : "Sistema de",
+            title2 : "Marketplace",
+            subtitle : "Gerencie seu marketplace com facilidade e eficiência. Nossa plataforma oferece recursos avançados para gerenciar produtos, pedidos e clientes de forma eficiente. Simplifique suas operações de marketplace com nossa solução completa.",
+            button : "Começar Agora",
+            items : [
+                {
+                  title: "Vendas Gerenciadas",
+                  value: "R$ 2.4M",
+                  icon: ShoppingCart,
+                  progress: 75,
+                },
+                {
+                  title: "Pedidos Mensais",
+                  value: "1,234",
+                  icon: Package,
+                  progress: 65,
+                },
+                {
+                  title: "Funcionários Ativos",
+                  value: "28",
+                  icon: Users,
+                  progress: 85,
+                },
             ],
           },
-          activitymonitor: {
-            title: "Atividade do Sistema",
-            items: [
+          integrations : {
+            title : "Integração com Marketplaces",
+            subtitle : "Gerencie suas vendas em múltiplos marketplaces a partir de uma única plataforma",
+            itemsmarketingplace : [
               {
-                id: 1,
-                message: "Backup do banco de dados concluído com sucesso",
-                timestamp: "Há 2 minutos",
-                status: "success",
+                name: "Mercado Livre",
+                logo: "/placeholder.svg?height=48&width=48",
               },
               {
-                id: 2,
-                message: "Nova atualização disponível para o sistema de processamento de pedidos",
-                timestamp: "Há 15 minutos",
-                status: "warning",
+                name: "Amazon",
+                logo: "/placeholder.svg?height=48&width=48",
               },
               {
-                id: 3,
-                message: "Sistema de autenticação de usuários sincronizado",
-                timestamp: "Há 1 hora",
-                status: "success",
-              },
-            ],
-          },
-          databasestats: {
-            title: "Gerenciamento de Banco de Dados",
-            items: [
-              {
-                title: "Banco de Dados Principal",
-                usage: 65,
-                total: "50GB",
-                icon: Database,
+                name: "Shopee",
+                logo: "/placeholder.svg?height=48&width=48",
               },
               {
-                title: "Armazenamento",
-                usage: 40,
-                total: "1TB",
-                icon: HardDrive,
+                name: "Magalu",
+                logo: "/placeholder.svg?height=48&width=48",
               },
               {
-                title: "Cache",
-                usage: 25,
-                total: "32GB",
-                icon: Server,
+                name: "Americanas",
+                logo: "/placeholder.svg?height=48&width=48",
+              },
+              {
+                name: "AliExpress",
+                logo: "/placeholder.svg?height=48&width=48",
               },
             ],
+            itemsfeatures : [
+                {
+                  title: "Sincronização Automática",
+                  description: "Mantenha seus produtos, estoque e pedidos sincronizados em tempo real entre todos os marketplaces",
+                  icon: RefreshCw,
+                  benefits: [
+                    "Atualização automática de estoque em todos os canais",
+                    "Sincronização de preços e informações de produtos",
+                    "Importação automática de novos pedidos",
+                    "Notificações de alterações de status",
+                  ],
+                },
+                {
+                  title: "Gestão Centralizada",
+                  description: "Gerencie todos os seus marketplaces a partir de uma única interface intuitiva",
+                  icon: ShoppingBag,
+                  benefits: [
+                    "Cadastro unificado de produtos para todos os marketplaces",
+                    "Processamento de pedidos em um único local",
+                    "Gestão de devoluções e trocas centralizada",
+                    "Controle de anúncios e campanhas promocionais",
+                  ],
+                },
+                {
+                  title: "Análise Comparativa",
+                  description: "Compare o desempenho entre diferentes marketplaces para otimizar suas estratégias de venda",
+                  icon: BarChart,
+                  benefits: [
+                    "Comparação de vendas entre plataformas",
+                    "Análise de rentabilidade por marketplace",
+                    "Identificação de tendências de mercado",
+                    "Relatórios personalizados por canal de venda",
+                  ],
+                },
+            ]
           },
-          systemfeatures: {
-            title: "Recursos do Sistema",
-            subtitle: "Nosso sistema de gerenciamento de e-commerce oferece ferramentas completas para administrar seu negócio online",
-            items: [
+          dashboard : {
+            title : "Painel de Controle Completo",
+            subtitle : "Gerencie todos os aspectos do seu negócio em marketplaces com nosso dashboard intuitivo",
+            itemsstats : [
+                {
+                  title: "Faturamento Total",
+                  value: "R$ 124.345",
+                  trend: 12.5,
+                  icon: DollarSign,
+                },
+                {
+                  title: "Pedidos",
+                  value: "1.245",
+                  trend: 8.2,
+                  icon: ShoppingCart,
+                },
+                {
+                  title: "Funcionários",
+                  value: "28",
+                  trend: 5.7,
+                  icon: Users,
+                },
+                {
+                  title: "Produtos",
+                  value: "678",
+                  trend: -2.3,
+                  icon: Package,
+                },
+            ],
+            itemsfeatures : [
               {
-                title: "Gerenciamento de Pedidos",
-                description: "Acompanhe e gerencie pedidos do recebimento à entrega, com atualizações em tempo real",
-                icon: ShoppingBag,
-              },
+                  title: "Gestão de Marketplaces",
+                  description:
+                    "Controle todos os seus canais de venda em uma única interface, com sincronização automática de estoque e pedidos.",
+                  icon: ShoppingCart,
+                },
+                {
+                  title: "Controle de Funcionários",
+                  description: "Gerencie as atividades dos seus colaboradores, atribuindo tarefas e monitorando o desempenho.",
+                  icon: Users,
+                },
+                {
+                  title: "Análise de Desempenho",
+                  description: "Visualize métricas detalhadas de vendas, produtos e funcionários para tomar decisões estratégicas.",
+                  icon: BarChart,
+                },
+            ]
+          },
+          features : {
+            title : "Funcionalidades do Sistema",
+            subtitle : "Nosso sistema de controle de marketplace oferece ferramentas completas para gerenciar seu negócio",
+            items : [
               {
-                title: "Gestão de Clientes",
-                description: "Ferramentas completas para gerenciar dados e histórico de compras dos clientes",
-                icon: Users,
-              },
-              {
-                title: "Painel de Análises",
-                description: "Insights em tempo real e métricas de desempenho ao seu alcance",
-                icon: BarChart3,
-              },
-              {
-                title: "Controle de Estoque",
-                description: "Sistema avançado para monitorar níveis de estoque e gerenciar produtos",
+                title: "Gestão de Produtos",
+                description: "Cadastre e gerencie produtos em múltiplos marketplaces com sincronização automática",
                 icon: Package,
               },
               {
-                title: "Integração com Transporte",
-                description: "Automação e rastreamento de envios de forma simples e eficiente",
+                title: "Controle de Pedidos",
+                description: "Acompanhe pedidos desde a confirmação até a entrega com atualizações em tempo real",
+                icon: ShoppingBag,
+              },
+              {
+                title: "Gestão de Funcionários",
+                description: "Atribua tarefas, monitore atividades e avalie o desempenho da sua equipe",
+                icon: Users,
+              },
+              {
+                title: "Análise de Vendas",
+                description: "Visualize relatórios detalhados de desempenho por marketplace, produto e vendedor",
+                icon: BarChart3,
+              },
+              {
+                title: "Gestão de Devoluções",
+                description: "Processe devoluções e trocas de forma eficiente com fluxos automatizados",
+                icon: RefreshCw,
+              },
+              {
+                title: "Logística Integrada",
+                description: "Integração com transportadoras e controle de envios em uma única plataforma",
                 icon: Truck,
               },
               {
-                title: "Processamento de Pagamentos",
-                description: "Integração com gateways de pagamento seguros e flexíveis",
-                icon: CreditCard,
-              },
-              {
-                title: "Suporte ao Cliente",
-                description: "Sistema integrado de tickets e chat para um atendimento mais eficiente",
+                title: "Atendimento ao Cliente",
+                description: "Centralize as comunicações com clientes de todos os marketplaces",
                 icon: MessageSquare,
               },
               {
-                title: "Configurações do Sistema",
-                description: "Parâmetros e configurações totalmente personalizáveis",
+                title: "Configurações Avançadas",
+                description: "Personalize o sistema de acordo com as necessidades específicas do seu negócio",
                 icon: Settings,
               },
-            ],
+            ]
           },
-          testimonialssection: {
-            title: "O Que Nossos Clientes Dizem",
-            subtitle: "Confiado por grandes negócios de e-commerce ao redor do mundo",
-            items: [
+          analytics : {
+            title : "Análise Avançada",
+            subtitle : "Tome decisões estratégicas com base em dados detalhados de todos os seus marketplaces",
+            span: "Últimos 30 dias",
+            itemscharts : [
               {
-                quote: "Este sistema transformou a forma como gerenciamos nossa loja online. As análises e automações são revolucionárias.",
-                name: "Sarah Johnson",
-                role: "Diretora de E-commerce",
-                avatar: "/placeholder.svg?height=100&width=100",
+                id: "sales",
+                title: "Desempenho de Vendas",
+                description: "Acompanhe receita, pedidos e taxas de conversão",
+                icon: BarChart,
               },
               {
-                quote: "A gestão de clientes e a integração com suporte melhoraram nosso atendimento e impulsionaram nossos negócios.",
-                name: "Michael Chen",
-                role: "Gerente de Operações",
-                avatar: "/placeholder.svg?height=100&width=100",
+                id: "employees",
+                title: "Desempenho de Funcionários",
+                description: "Monitore produtividade e eficiência da equipe",
+                icon: Users,
               },
               {
-                quote: "O controle de estoque nunca foi tão fácil. O rastreamento em tempo real e os alertas automatizados nos poupam horas de trabalho por semana.",
-                name: "Emma Davis",
-                role: "Proprietária de Loja",
-                avatar: "/placeholder.svg?height=100&width=100",
-              },
-            ],
-          },
-          pricingsection: {
-            title: "Preços Simples e Transparentes",
-            subtitle: "Escolha o plano ideal para o seu negócio",
-            items: [
-              {
-                name: "Starter",
-                description: "Ideal para pequenos negócios",
-                price: 49,
-                features: ["Até 1.000 produtos", "Análises básicas", "Suporte por e-mail", "1 usuário administrador"],
-                popular: false,
-              },
-              {
-                name: "Professional",
-                description: "Para negócios em crescimento",
-                price: 99,
-                features: ["Até 10.000 produtos", "Análises avançadas", "Suporte prioritário", "5 usuários administradores", "Acesso à API"],
-                popular: true,
-              },
-              {
-                name: "Enterprise",
-                description: "Para operações em larga escala",
-                price: 199,
-                features: ["Produtos ilimitados", "Análises personalizadas", "Suporte 24/7", "Usuários ilimitados", "Integrações personalizadas"],
-                popular: false,
+                id: "marketplaces",
+                title: "Comparativo de Marketplaces",
+                description: "Compare vendas e desempenho entre plataformas",
+                icon: PieChart,
               },
             ],
+            itemsmetrics : {
+              sales: [
+                { label: "Receita Total", value: "R$ 124.345", change: 12.5 },
+                { label: "Pedidos", value: "1.245", change: 8.2 },
+                { label: "Ticket Médio", value: "R$ 99,87", change: 3.7 },
+              ],
+              employees: [
+                { label: "Produtividade", value: "87%", change: 5.3 },
+                { label: "Pedidos Processados", value: "845", change: 12.1 },
+                { label: "Tempo Médio", value: "4,2 min", change: -8.5 },
+              ],
+              marketplaces: [
+                { label: "Mercado Livre", value: "45%", change: 8.7 },
+                { label: "Amazon", value: "32%", change: 15.2 },
+                { label: "Outros", value: "23%", change: -3.8 },
+              ],
+            }
           },
+          employee : {
+            title : "Gestão de Funcionários",
+            subtitle : "Gerencie as atividades da sua equipe e acompanhe o desempenho de cada colaborador",
+            employee : {
+                name: "Carlos Silva",
+                role : "Gerente de Vendas • ID: FUNC-2845",
+                experience : "Experiência",
+                experiencetime : "2 anos, 3 meses",
+                department : "Departamento ",
+                departmentname : "Vendas",
+                marketingplaces : "Marketplaces",
+                marketingplacesname: "Mercado Livre, Amazon",
+                status:  "Status",
+                statusname: "Online",
+                activity : "Atividades Atuais",
+                activitytype : "Processamento de Pedidos",
+                activityname : "Hoje, 8:00 - 12:30",
+                pending : "12 pedidos processados • 8 pendentes",
+            },
+            itemns : [
+              {
+                title: "Atribuição de Tarefas",
+                description: "Distribua atividades entre sua equipe e acompanhe o progresso em tempo real",
+                icon: CheckCircle,
+                points: [
+                  "Criação de tarefas com prazos e prioridades",
+                  "Atribuição automática baseada em carga de trabalho",
+                  "Notificações de novas tarefas e prazos",
+                  "Histórico completo de atividades realizadas",
+                ],
+              },
+              {
+                title: "Monitoramento de Tempo",
+                description: "Acompanhe o tempo gasto em cada atividade para otimizar processos",
+                icon: Clock,
+                points: [
+                  "Registro automático de tempo por atividade",
+                  "Relatórios de produtividade por funcionário",
+                  "Identificação de gargalos operacionais",
+                  "Comparativo de eficiência entre equipes",
+                ],
+              },
+              {
+                title: "Análise de Desempenho",
+                description: "Avalie o desempenho dos funcionários com métricas objetivas",
+                icon: BarChart,
+                points: [
+                  "Indicadores de performance personalizáveis",
+                  "Comparativo com metas estabelecidas",
+                  "Análise de tendências de desempenho",
+                  "Feedback automatizado baseado em resultados",
+                ],
+              },
+              {
+                title: "Sistema de Recompensas",
+                description: "Motive sua equipe com reconhecimento e incentivos baseados em desempenho",
+                icon: Award,
+                points: [
+                  "Gamificação de atividades e metas",
+                  "Ranking de desempenho entre funcionários",
+                  "Programa de bonificação integrado",
+                  "Reconhecimento automático de conquistas",
+                ],
+              },
+            ]
+          },
+          testimonials : {
+            title : "O Que Nossos Clientes Dizem",
+            subtitle : "Empresas que transformaram sua gestão de marketplaces com nosso sistema",
+            items : [
+              {
+                quote:
+                  "Este sistema transformou completamente a forma como gerenciamos nossas vendas em marketplaces. Conseguimos aumentar nossa eficiência em 40% e reduzir erros de processamento em 85%.",
+                name: "Ana Oliveira",
+                role: "Diretora de E-commerce, Loja Virtual Brasil",
+                avatar: "/placeholder.svg?height=100&width=100",
+                rating: 5,
+              },
+              {
+                quote:
+                  "A gestão de funcionários e o controle de atividades nos permitiu identificar gargalos e otimizar nossos processos. Nosso tempo de processamento de pedidos caiu pela metade.",
+                name: "Ricardo Santos",
+                role: "Gerente de Operações, Mega Distribuidora",
+                avatar: "/placeholder.svg?height=100&width=100",
+                rating: 5,
+              },
+              {
+                quote:
+                  "A integração com múltiplos marketplaces e a sincronização automática de estoque eliminaram os problemas de vendas de produtos indisponíveis. Recomendo fortemente.",
+                name: "Carla Mendes",
+                role: "Proprietária, CM Eletrônicos",
+                avatar: "/placeholder.svg?height=100&width=100",
+                rating: 4,
+              },
+            ]
+          }
         },
         websites: {
           herobanner: {
@@ -2163,11 +2552,195 @@ export const translations = {
             ],
           },
         },
-        transport:{
+        transport: {
           herosection: {
-            hero : "",
+            hero: "Gestão de Transporte de Funcionários",
+            title1: "Frota Inteligente",
+            title2: "Agendamento",
+            subtitle: "Sistema completo de gestão de transporte de funcionários para ônibus, vans e carros"
+          },
+          vehicle: {
+            title: "Gestão Completa da Frota",
+            subtitle: "Gerencie todos os tipos de veículos da sua frota de transporte de funcionários",
+            items: [
+              {
+                title: "Frota de Ônibus",
+                description: "Gerencie ônibus de grande capacidade para transporte de funcionários com otimização de rotas",
+                icon: Bus,
+              },
+              {
+                title: "Gestão de Vans",
+                description: "Coordene vans de médio porte para necessidades flexíveis de transporte em grupo",
+                icon: Truck,
+              },
+              {
+                title: "Serviço de Carro",
+                description: "Agende carros individuais para executivos e necessidades especiais de transporte",
+                icon: Car,
+              },
+            ]
+          },
+          dashboard: {
+            title: "Painel Poderoso",
+            subtitle: "Insights em tempo real e controle total sobre sua operação de transporte"
+          },
+          features: {
+            title: "Funcionalidades Principais",
+            subtitle: "Ferramentas abrangentes para gerenciar suas necessidades de transporte de funcionários",
+            items: [
+              {
+                title: "Agendamento de Funcionários",
+                description: "Atribua funcionários a veículos e rotas específicas com base em sua localização e agenda",
+                icon: UserCheck,
+              },
+              {
+                title: "Planejamento de Rotas",
+                description: "Otimize rotas para minimizar o tempo de viagem e maximizar a eficiência",
+                icon: Route,
+              },
+              {
+                title: "Controle de Ponto",
+                description: "Monitore o embarque e desembarque de funcionários com check-in digital",
+                icon: FileText,
+              },
+              {
+                title: "Rastreamento em Tempo Real",
+                description: "Acompanhe todos os veículos em tempo real com integração de GPS",
+                icon: Map,
+              },
+              {
+                title: "Gestão de Motoristas",
+                description: "Atribua e monitore motoristas com gerenciamento completo de perfis",
+                icon: Users,
+              },
+              {
+                title: "Painel de Análises",
+                description: "Relatórios abrangentes sobre utilização, custos e eficiência",
+                icon: BarChart,
+              },
+              {
+                title: "Aplicativo Móvel",
+                description: "App para funcionários com horários, notificações e check-ins",
+                icon: Smartphone,
+              },
+              {
+                title: "Recursos de Segurança",
+                description: "Garanta a segurança dos funcionários com verificação e monitoramento",
+                icon: Shield,
+              },
+              {
+                title: "Notificações Automatizadas",
+                description: "Envie alertas sobre mudanças de horário, atrasos ou emergências",
+                icon: Bell,
+              },
+            ]
+          },
+          stats: {
+            title: "Resultados Comprovados",
+            subtitle: "Nosso sistema oferece melhorias mensuráveis para organizações",
+            items: [
+              {
+                title: "Economia de Combustível",
+                value: "30%",
+                icon: Truck,
+              },
+              {
+                title: "Redução do Tempo de Espera",
+                value: "45%",
+                icon: Clock,
+              },
+              {
+                title: "Satisfação dos Funcionários",
+                value: "92%",
+                icon: UserCheck,
+              },
+              {
+                title: "Eficiência de Rotas",
+                value: "50%",
+                icon: Route,
+              },
+            ]
+          },
+          benefits: {
+            title: "Por Que Escolher Nosso Sistema",
+            subtitle: "Benefícios que destacam nossa solução",
+            items: [
+              {
+                title: "Redução de Custos",
+                description: "Reduza custos de transporte com rotas otimizadas e melhor utilização de veículos",
+              },
+              {
+                title: "Melhoria na Satisfação dos Funcionários",
+                description: "Transporte confiável com tempos de espera mínimos aumenta o moral dos funcionários",
+              },
+              {
+                title: "Impacto Ambiental",
+                description: "Reduza a pegada de carbono com rotas otimizadas e menor consumo de combustível",
+              },
+              {
+                title: "Segurança Aprimorada",
+                description: "Monitoramento e verificação melhorados garantem a segurança dos funcionários durante o trânsito",
+              },
+              {
+                title: "Economia de Tempo",
+                description: "Agendamento automatizado economiza tempo administrativo e reduz erros manuais",
+              },
+              {
+                title: "Escalabilidade",
+                description: "Escale facilmente seu sistema de transporte conforme sua equipe cresce",
+              },
+            ]
+          },
+          techstack: {
+            title: "Desenvolvido com Tecnologia Moderna",
+            subtitle: "Alimentado por backend em Python e frontend em React/Next.js",
+            items: {
+              container1: {
+                title: "Backend em Python",
+                subtitle: "Arquitetura de servidor robusta e escalável",
+                item1: "Processamento rápido de dados",
+                item2: "Algoritmos avançados de agendamento",
+                item3: "Autenticação segura",
+                item4: "Arquitetura RESTful API"
+              },
+              container2: {
+                title: "Frontend em React/Next.js",
+                subtitle: "Interface de usuário moderna e responsiva",
+                item1: "Design responsivo para todos os dispositivos",
+                item2: "Painéis interativos",
+                item3: "Atualizações em tempo real",
+                item4: "Experiência do usuário intuitiva"
+              }
+            }
+          },
+          testimonials: {
+            title: "O Que Nossos Clientes Dizem",
+            subtitle: "Confiado por gerentes de transporte em todo o mundo",
+            items: [
+              {
+                quote:
+                  "Este sistema transformou a forma como gerenciamos o transporte de nossos funcionários. Reduzimos custos em 25% enquanto melhoramos a satisfação dos funcionários.",
+                name: "Michael Rodriguez",
+                role: "Gerente de Transporte, Global Tech Inc.",
+                avatar: "/placeholder.svg?height=100&width=100",
+              },
+              {
+                quote:
+                  "Apenas a otimização de rotas nos economizou milhares em custos de combustível. O aplicativo para funcionários torna a comunicação perfeita.",
+                name: "Sarah Chen",
+                role: "Diretora de Operações, Indústria de Manufatura",
+                avatar: "/placeholder.svg?height=100&width=100",
+              },
+              {
+                quote:
+                  "Gerenciar nossa frota de ônibus e vans era um pesadelo logístico antes de implementar este sistema. Agora tudo é automatizado e eficiente.",
+                name: "James Wilson",
+                role: "Gerente de Frota, Soluções Empresariais",
+                avatar: "/placeholder.svg?height=100&width=100",
+              },
+            ]
           }
-        } ,       
+        },      
         start: {
           buttons: {
             arrow: "Anterior",

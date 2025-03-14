@@ -2,16 +2,18 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { useLanguage } from "@/context/LanguageContext"
 
 export function Testimonials() {
+  const { t } = useLanguage()
   return (
     <div className="space-y-12">
       <div className="text-center space-y-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-white">What Our Clients Say</h2>
-        <p className="text-purple-200/70 max-w-2xl mx-auto">Trusted by transportation managers worldwide</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-white">{t.transport.testimonials.title}</h2>
+        <p className="text-purple-200/70 max-w-2xl mx-auto">{t.transport.testimonials.subtitle}</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {testimonials.map((testimonial, index) => (
+        {t.transport.testimonials.items.map((testimonial, index) => (
           <motion.div
             key={testimonial.name}
             whileHover={{ y: -5 }}
@@ -39,27 +41,4 @@ export function Testimonials() {
   )
 }
 
-const testimonials = [
-  {
-    quote:
-      "This system has transformed how we manage our employee transportation. We've reduced costs by 25% while improving employee satisfaction.",
-    name: "Michael Rodriguez",
-    role: "Transportation Manager, Global Tech Inc.",
-    avatar: "/placeholder.svg?height=100&width=100",
-  },
-  {
-    quote:
-      "The route optimization alone saved us thousands in fuel costs. The employee app makes communication seamless.",
-    name: "Sarah Chen",
-    role: "Operations Director, Manufacturing Co.",
-    avatar: "/placeholder.svg?height=100&width=100",
-  },
-  {
-    quote:
-      "Managing our fleet of buses and vans was a logistical nightmare before implementing this system. Now it's all automated and efficient.",
-    name: "James Wilson",
-    role: "Fleet Manager, Enterprise Solutions",
-    avatar: "/placeholder.svg?height=100&width=100",
-  },
-]
 

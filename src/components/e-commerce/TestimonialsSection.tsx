@@ -4,34 +4,36 @@ import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
 export function TestimonialsCarousel() {
+  const { t } = useLanguage()
   const [activeIndex, setActiveIndex] = useState(0)
 
   // Auto-advance testimonials
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % testimonials.length)
+      setActiveIndex((prev) => (prev + 1) % t.ecommerce.testimonials.items.length)
     }, 5000)
 
     return () => clearInterval(interval)
   }, [])
 
   const nextTestimonial = () => {
-    setActiveIndex((prev) => (prev + 1) % testimonials.length)
+    setActiveIndex((prev) => (prev + 1) % t.ecommerce.testimonials.items.length)
   }
 
   const prevTestimonial = () => {
-    setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+    setActiveIndex((prev) => (prev - 1 + t.ecommerce.testimonials.items.length) % t.ecommerce.testimonials.items.length)
   }
 
   return (
     <div className="py-12 md:py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-16 space-y-3 md:space-y-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">O Que Nossos Clientes Dizem</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">{t.ecommerce.testimonials.title}</h2>
           <p className="text-purple-200/70 max-w-2xl mx-auto text-sm sm:text-base">
-            Empresas que transformaram sua gestão de marketplaces com nosso sistema
+            {t.ecommerce.testimonials.subtitle}
           </p>
         </div>
 
@@ -43,7 +45,7 @@ export function TestimonialsCarousel() {
               animate={{ x: `-${activeIndex * 100}%` }}
               transition={{ ease: "easeInOut", duration: 0.5 }}
             >
-              {testimonials.map((testimonial) => (
+              {t.ecommerce.testimonials.items.map((testimonial) => (
                 <div key={testimonial.name} className="min-w-full">
                   <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 md:p-8 border border-purple-500/10 mx-4">
                     <div className="flex flex-col md:flex-row md:items-start gap-6">
@@ -104,7 +106,7 @@ export function TestimonialsCarousel() {
           {/* Dots navigation */}
           <div className="flex justify-center mt-6">
             <div className="flex items-center space-x-2">
-              {testimonials.map((_, index) => (
+              {t.ecommerce.testimonials.items.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setActiveIndex(index)}
@@ -122,30 +124,5 @@ export function TestimonialsCarousel() {
   )
 }
 
-const testimonials = [
-  {
-    quote:
-      "Este sistema transformou completamente a forma como gerenciamos nossas vendas em marketplaces. Conseguimos aumentar nossa eficiência em 40% e reduzir erros de processamento em 85%.",
-    name: "Ana Oliveira",
-    role: "Diretora de E-commerce, Loja Virtual Brasil",
-    avatar: "/placeholder.svg?height=100&width=100",
-    rating: 5,
-  },
-  {
-    quote:
-      "A gestão de funcionários e o controle de atividades nos permitiu identificar gargalos e otimizar nossos processos. Nosso tempo de processamento de pedidos caiu pela metade.",
-    name: "Ricardo Santos",
-    role: "Gerente de Operações, Mega Distribuidora",
-    avatar: "/placeholder.svg?height=100&width=100",
-    rating: 5,
-  },
-  {
-    quote:
-      "A integração com múltiplos marketplaces e a sincronização automática de estoque eliminaram os problemas de vendas de produtos indisponíveis. Recomendo fortemente.",
-    name: "Carla Mendes",
-    role: "Proprietária, CM Eletrônicos",
-    avatar: "/placeholder.svg?height=100&width=100",
-    rating: 4,
-  },
-]
+
 

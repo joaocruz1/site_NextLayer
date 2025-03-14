@@ -2,10 +2,12 @@
 
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
-import { ArrowRight, ShoppingCart, BarChart, Users, Package } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/context/LanguageContext"
+import { ShoppingCart, BarChart, Users, Package, ArrowRight } from "lucide-react"
 
 export function HeroBanner() {
+  const { t } = useLanguage()
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -69,12 +71,12 @@ export function HeroBanner() {
             className="flex justify-center"
           >
             <span className="px-4 py-1.5 md:px-6 md:py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs md:text-sm lg:text-base">
-              Sistema de Gestão de Marketplaces
+              {t.ecommerce.herobanner.hero}
             </span>
           </motion.div>
 
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
-            Sistema de
+            {t.ecommerce.herobanner.title1}
             <span className="relative mx-2 md:mx-4 block sm:inline-block">
               <span className="bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text">
                 Controle
@@ -86,12 +88,11 @@ export function HeroBanner() {
                 transition={{ duration: 1, delay: 1 }}
               />
             </span>
-            Marketplace
+            {t.ecommerce.herobanner.title2}
           </h1>
 
           <p className="text-purple-200/70 text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto">
-            Gerencie suas vendas em marketplaces como Mercado Livre e Amazon com controle total de produtos, pedidos,
-            devoluções e funcionários
+            {t.ecommerce.herobanner.subtitle}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -110,7 +111,7 @@ export function HeroBanner() {
 
         {/* Stats cards */}
         <div className="mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {stats.map((stat, index) => (
+          {t.ecommerce.herobanner.items.map((stat, index) => (
             <motion.div
               key={stat.title}
               initial={{ opacity: 0, y: 20 }}
@@ -150,24 +151,4 @@ export function HeroBanner() {
   )
 }
 
-const stats = [
-  {
-    title: "Vendas Gerenciadas",
-    value: "R$ 2.4M",
-    icon: ShoppingCart,
-    progress: 75,
-  },
-  {
-    title: "Pedidos Mensais",
-    value: "1,234",
-    icon: Package,
-    progress: 65,
-  },
-  {
-    title: "Funcionários Ativos",
-    value: "28",
-    icon: Users,
-    progress: 85,
-  },
-]
 

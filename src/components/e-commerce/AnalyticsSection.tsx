@@ -3,24 +3,27 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { BarChart, PieChart, ArrowUpRight, TrendingUp, Users } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
 export function AnalyticsSection() {
-  const [activeChart, setActiveChart] = useState<keyof typeof metrics>("sales")
+  const { t } = useLanguage()
+  const [activeChart, setActiveChart] = useState<keyof typeof t.ecommerce.analytics.itemsmetrics>("sales")
+  
 
   return (
     <div className="py-12 md:py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-16 space-y-3 md:space-y-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Análise Avançada</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">{t.ecommerce.analytics.title}</h2>
           <p className="text-purple-200/70 max-w-2xl mx-auto text-sm sm:text-base">
-            Tome decisões estratégicas com base em dados detalhados de todos os seus marketplaces
+            {t.ecommerce.analytics.subtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Chart selection */}
           <div className="space-y-4">
-            {charts.map((chart) => (
+            {t.ecommerce.analytics.itemscharts.map((chart) => (
               <motion.div
                 key={chart.id}
                 whileHover={{ x: 5 }}
@@ -29,7 +32,7 @@ export function AnalyticsSection() {
                     ? "bg-purple-500/20 border border-purple-500/30"
                     : "bg-white/5 border border-transparent hover:border-purple-500/10"
                 }`}
-                onClick={() => setActiveChart(chart.id)}
+                onClick={() => setActiveChart(chart.id as "sales" | "employees" | "marketplaces")}
               >
                 <div className="flex items-center gap-3">
                   <div
@@ -49,9 +52,9 @@ export function AnalyticsSection() {
           {/* Chart visualization */}
           <div className="lg:col-span-2 bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-purple-500/10">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-semibold text-white">{charts.find((c) => c.id === activeChart)?.title}</h3>
+              <h3 className="text-xl font-semibold text-white">{t.ecommerce.analytics.itemscharts.find((c) => c.id === activeChart)?.title}</h3>
               <div className="flex items-center text-purple-200/70 text-sm">
-                <span>Últimos 30 dias</span>
+                <span>{t.ecommerce.analytics.span}</span>
                 <ArrowUpRight className="w-4 h-4 ml-1" />
               </div>
             </div>
@@ -65,7 +68,7 @@ export function AnalyticsSection() {
 
             {/* Chart metrics */}
             <div className="grid grid-cols-3 gap-4 mt-6">
-              {metrics[activeChart].map((metric, index) => (
+              {t.ecommerce.analytics.itemsmetrics[activeChart].map((metric, index) => (
                 <div key={index} className="space-y-1">
                   <div className="flex items-center gap-1 text-purple-200/70 text-xs">
                     <span>{metric.label}</span>
@@ -196,43 +199,4 @@ const MarketplacesChart = () => (
 )
 
 
-
-const charts : { id: "sales" | "employees" | "marketplaces"; title: string; description: string; icon: any } [] = [
-  {
-    id: "sales",
-    title: "Desempenho de Vendas",
-    description: "Acompanhe receita, pedidos e taxas de conversão",
-    icon: BarChart,
-  },
-  {
-    id: "employees",
-    title: "Desempenho de Funcionários",
-    description: "Monitore produtividade e eficiência da equipe",
-    icon: Users,
-  },
-  {
-    id: "marketplaces",
-    title: "Comparativo de Marketplaces",
-    description: "Compare vendas e desempenho entre plataformas",
-    icon: PieChart,
-  },
-]
-
-const metrics = {
-  sales: [
-    { label: "Receita Total", value: "R$ 124.345", change: 12.5 },
-    { label: "Pedidos", value: "1.245", change: 8.2 },
-    { label: "Ticket Médio", value: "R$ 99,87", change: 3.7 },
-  ],
-  employees: [
-    { label: "Produtividade", value: "87%", change: 5.3 },
-    { label: "Pedidos Processados", value: "845", change: 12.1 },
-    { label: "Tempo Médio", value: "4,2 min", change: -8.5 },
-  ],
-  marketplaces: [
-    { label: "Mercado Livre", value: "45%", change: 8.7 },
-    { label: "Amazon", value: "32%", change: 15.2 },
-    { label: "Outros", value: "23%", change: -3.8 },
-  ],
-}
 

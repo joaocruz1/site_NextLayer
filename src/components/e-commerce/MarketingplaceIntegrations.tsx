@@ -2,16 +2,18 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { ShoppingBag, BarChart, RefreshCw, Globe } from "lucide-react"
+import { Globe,} from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
 export function MarketplaceIntegrations() {
+  const { t } = useLanguage()
   return (
     <div className="py-12 md:py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-16 space-y-3 md:space-y-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Integração com Marketplaces</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">{t.ecommerce.integrations.title}</h2>
           <p className="text-purple-200/70 max-w-2xl mx-auto text-sm sm:text-base">
-            Gerencie suas vendas em múltiplos marketplaces a partir de uma única plataforma
+            {t.ecommerce.integrations.subtitle}
           </p>
         </div>
 
@@ -37,8 +39,8 @@ export function MarketplaceIntegrations() {
               </div>
 
               {/* Marketplace connections */}
-              {marketplaces.map((marketplace, index) => {
-                const angle = index * (360 / marketplaces.length) * (Math.PI / 180)
+              {t.ecommerce.integrations.itemsmarketingplace.map((marketplace, index) => {
+                const angle = index * (360 / t.ecommerce.integrations.itemsmarketingplace.length) * (Math.PI / 180)
                 const x = Math.cos(angle) * 120 + 150
                 const y = Math.sin(angle) * 120 + 150
 
@@ -107,7 +109,7 @@ export function MarketplaceIntegrations() {
 
           {/* Integration features */}
           <div className="space-y-6">
-            {integrationFeatures.map((feature, index) => (
+            {t.ecommerce.integrations.itemsfeatures.map((feature, index) => (
               <motion.div
                 key={feature.title}
                 initial={{ opacity: 0, x: 20 }}
@@ -142,66 +144,4 @@ export function MarketplaceIntegrations() {
   )
 }
 
-const marketplaces = [
-  {
-    name: "Mercado Livre",
-    logo: "/placeholder.svg?height=48&width=48",
-  },
-  {
-    name: "Amazon",
-    logo: "/placeholder.svg?height=48&width=48",
-  },
-  {
-    name: "Shopee",
-    logo: "/placeholder.svg?height=48&width=48",
-  },
-  {
-    name: "Magalu",
-    logo: "/placeholder.svg?height=48&width=48",
-  },
-  {
-    name: "Americanas",
-    logo: "/placeholder.svg?height=48&width=48",
-  },
-  {
-    name: "AliExpress",
-    logo: "/placeholder.svg?height=48&width=48",
-  },
-]
-
-const integrationFeatures = [
-  {
-    title: "Sincronização Automática",
-    description: "Mantenha seus produtos, estoque e pedidos sincronizados em tempo real entre todos os marketplaces",
-    icon: RefreshCw,
-    benefits: [
-      "Atualização automática de estoque em todos os canais",
-      "Sincronização de preços e informações de produtos",
-      "Importação automática de novos pedidos",
-      "Notificações de alterações de status",
-    ],
-  },
-  {
-    title: "Gestão Centralizada",
-    description: "Gerencie todos os seus marketplaces a partir de uma única interface intuitiva",
-    icon: ShoppingBag,
-    benefits: [
-      "Cadastro unificado de produtos para todos os marketplaces",
-      "Processamento de pedidos em um único local",
-      "Gestão de devoluções e trocas centralizada",
-      "Controle de anúncios e campanhas promocionais",
-    ],
-  },
-  {
-    title: "Análise Comparativa",
-    description: "Compare o desempenho entre diferentes marketplaces para otimizar suas estratégias de venda",
-    icon: BarChart,
-    benefits: [
-      "Comparação de vendas entre plataformas",
-      "Análise de rentabilidade por marketplace",
-      "Identificação de tendências de mercado",
-      "Relatórios personalizados por canal de venda",
-    ],
-  },
-]
 

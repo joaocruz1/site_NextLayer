@@ -2,16 +2,18 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { CheckCircle, Clock, BarChart, Award } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
+import {Clock } from "lucide-react"
 
 export function EmployeeManagement() {
+  const { t } = useLanguage()
   return (
     <div className="py-12 md:py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-16 space-y-3 md:space-y-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Gestão de Funcionários</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">{t.ecommerce.employee.title}</h2>
           <p className="text-purple-200/70 max-w-2xl mx-auto text-sm sm:text-base">
-            Gerencie as atividades da sua equipe e acompanhe o desempenho de cada colaborador
+            {t.ecommerce.employee.subtitle}
           </p>
         </div>
 
@@ -35,40 +37,40 @@ export function EmployeeManagement() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white">Carlos Silva</h3>
-                  <p className="text-purple-200/70 text-sm">Gerente de Vendas • ID: FUNC-2845</p>
+                  <h3 className="text-xl font-semibold text-white">{t.ecommerce.employee.employee.name}</h3>
+                  <p className="text-purple-200/70 text-sm">{t.ecommerce.employee.employee.role}</p>
                 </div>
               </div>
 
               <div className="space-y-4 mb-6">
                 <div className="flex justify-between items-center">
-                  <span className="text-purple-200/70 text-sm">Experiência</span>
-                  <span className="text-white font-medium">2 anos, 3 meses</span>
+                  <span className="text-purple-200/70 text-sm">{t.ecommerce.employee.employee.experience}</span>
+                  <span className="text-white font-medium">{t.ecommerce.employee.employee.experiencetime}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-purple-200/70 text-sm">Departamento</span>
-                  <span className="text-white font-medium">Vendas</span>
+                  <span className="text-purple-200/70 text-sm">{t.ecommerce.employee.employee.department}</span>
+                  <span className="text-white font-medium">{t.ecommerce.employee.employee.departmentname}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-purple-200/70 text-sm">Marketplaces</span>
-                  <span className="text-white font-medium">Mercado Livre, Amazon</span>
+                  <span className="text-purple-200/70 text-sm">{t.ecommerce.employee.employee.marketingplaces}</span>
+                  <span className="text-white font-medium">{t.ecommerce.employee.employee.marketingplacesname}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-purple-200/70 text-sm">Status</span>
-                  <span className="px-2 py-1 bg-green-500/20 text-green-300 rounded-full text-xs">Online</span>
+                  <span className="text-purple-200/70 text-sm">{t.ecommerce.employee.employee.status}</span>
+                  <span className="px-2 py-1 bg-green-500/20 text-green-300 rounded-full text-xs">{t.ecommerce.employee.employee.statusname}</span>
                 </div>
               </div>
 
               <div className="pt-4 border-t border-purple-500/10">
-                <h4 className="text-white font-medium mb-3">Atividades Atuais</h4>
+                <h4 className="text-white font-medium mb-3">{t.ecommerce.employee.employee.activity}</h4>
                 <div className="bg-purple-500/10 rounded-lg p-3">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-purple-200/90 text-sm">Processamento de Pedidos</span>
-                    <span className="text-purple-200/90 text-sm">Hoje, 8:00 - 12:30</span>
+                    <span className="text-purple-200/90 text-sm">{t.ecommerce.employee.employee.activitytype}</span>
+                    <span className="text-purple-200/90 text-sm">{t.ecommerce.employee.employee.activityname}</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-purple-200/70">
                     <Clock className="w-4 h-4 text-purple-400" />
-                    <span>12 pedidos processados • 8 pendentes</span>
+                    <span>{t.ecommerce.employee.employee.pending}</span>
                   </div>
                 </div>
               </div>
@@ -77,7 +79,7 @@ export function EmployeeManagement() {
 
           {/* Features grid */}
           <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-            {employeeFeatures.map((feature, index) => (
+            {t.ecommerce.employee.itemns.map((feature, index) => (
               <motion.div
                 key={feature.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -112,50 +114,5 @@ export function EmployeeManagement() {
   )
 }
 
-const employeeFeatures = [
-  {
-    title: "Atribuição de Tarefas",
-    description: "Distribua atividades entre sua equipe e acompanhe o progresso em tempo real",
-    icon: CheckCircle,
-    points: [
-      "Criação de tarefas com prazos e prioridades",
-      "Atribuição automática baseada em carga de trabalho",
-      "Notificações de novas tarefas e prazos",
-      "Histórico completo de atividades realizadas",
-    ],
-  },
-  {
-    title: "Monitoramento de Tempo",
-    description: "Acompanhe o tempo gasto em cada atividade para otimizar processos",
-    icon: Clock,
-    points: [
-      "Registro automático de tempo por atividade",
-      "Relatórios de produtividade por funcionário",
-      "Identificação de gargalos operacionais",
-      "Comparativo de eficiência entre equipes",
-    ],
-  },
-  {
-    title: "Análise de Desempenho",
-    description: "Avalie o desempenho dos funcionários com métricas objetivas",
-    icon: BarChart,
-    points: [
-      "Indicadores de performance personalizáveis",
-      "Comparativo com metas estabelecidas",
-      "Análise de tendências de desempenho",
-      "Feedback automatizado baseado em resultados",
-    ],
-  },
-  {
-    title: "Sistema de Recompensas",
-    description: "Motive sua equipe com reconhecimento e incentivos baseados em desempenho",
-    icon: Award,
-    points: [
-      "Gamificação de atividades e metas",
-      "Ranking de desempenho entre funcionários",
-      "Programa de bonificação integrado",
-      "Reconhecimento automático de conquistas",
-    ],
-  },
-]
+
 
