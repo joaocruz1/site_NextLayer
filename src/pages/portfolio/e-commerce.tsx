@@ -27,7 +27,7 @@ export default function ECommercePage() {
   return (
     <>
       <Head>
-        <title>Sistema de Controle de Marketplace | NextLayer</title>
+        <title>NextLayer | Ecommerce System</title>
       </Head>
       <div ref={containerRef} className="relative min-h-screen bg-[#0D0620]">
         {/* Background Effects */}

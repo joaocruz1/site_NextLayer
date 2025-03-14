@@ -26,7 +26,7 @@ export default function InteractiveWebsites() {
   return (
     <>
       <Head>
-        <title>Interactive Websites | NextLayer</title>
+        <title>NextLayer | Interactive Websites</title>
       </Head>
       <div ref={containerRef} className="relative min-h-screen bg-[#0D0620]">
         {/* Background Effects */}
