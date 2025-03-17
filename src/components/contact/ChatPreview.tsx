@@ -17,7 +17,7 @@ export function ChatPreview() {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="absolute bottom-full right-0 mb-4 w-80 rounded-lg border border-purple-200/10 bg-[#0D0620] shadow-xl"
+            className="absolute bottom-full left-0 mb-4 w-80 rounded-lg border border-purple-200/10 bg-[#0D0620] shadow-xl"
           >
             <div className="flex items-center justify-between p-4 border-b border-purple-200/10">
               <h3 className="font-medium text-white">Chat with us</h3>

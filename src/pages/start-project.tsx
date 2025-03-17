@@ -12,6 +12,7 @@ import { ProjectDetailsForm } from "@/components/start-project/ProjectDetailsFor
 import { ContactInfoForm } from "@/components/start-project/ContactInfoForm"
 import { toast } from "sonner"
 import { useLanguage } from "@/context/LanguageContext"
+import Head from "next/head"
 
 interface FormData {
   projectType: string
@@ -139,6 +140,10 @@ export default function StartProjectPage() {
   
 
   return (
+    <>
+    <Head>
+      <title>Next Layer | Start Project</title>
+    </Head>
     <div className="relative min-h-screen bg-[#0D0620]">
       <AnimatedBackground />
 
@@ -215,5 +220,6 @@ export default function StartProjectPage() {
         </div>
       </div>
     </div>
+    </>
   )
 }

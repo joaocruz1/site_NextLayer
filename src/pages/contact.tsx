@@ -11,6 +11,7 @@ import { FaqSection } from "@/components/contact/FaqSection"
 import { NewsletterSection } from "@/components/contact/NewsLetterSection"
 import { SocialLinks } from "@/components/contact/SocialLinks"
 import { ChatPreview } from "@/components/contact/ChatPreview"
+import Head from "next/head"
 
 const stats = [
   { icon: Clock, value: "2h", label: "Average Response Time" },
@@ -20,11 +21,15 @@ const stats = [
 
 export default function ContactPage() {
   return (
+    <>
+    <Head>
+      <title>Next Layer | Contact</title>
+    </Head>
     <div className="relative min-h-screen bg-[#0D0620]">
       <AnimatedBackground />
 
       <div className="relative z-10 pt-32 pb-20">
-        <div className="container px-4 md:px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <Header/>
 
           <StatsGrid stats={stats} />
@@ -54,6 +59,7 @@ export default function ContactPage() {
 
       <ChatPreview />
     </div>
+    </>
   )
 }
 
