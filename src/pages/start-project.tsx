@@ -117,7 +117,7 @@ export default function StartProjectPage() {
 
     setIsSubmitting(true)
     try {
-      const res = await fetch("/api/sendEmail", { 
+      const res = await fetch("/api/send-email", { 
         method: "POST",
         headers: {
           "Content-Type": "application/json"
