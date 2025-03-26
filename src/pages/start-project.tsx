@@ -40,17 +40,15 @@ const INITIAL_FORM_DATA: FormData = {
   company: "",
 }
 
-
 export default function StartProjectPage() {
   const [currentStep, setCurrentStep] = useState(0)
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA)
   const [errors, setErrors] = useState<Partial<FormData>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const {t} = useLanguage()
+  const { t } = useLanguage()
 
   const updateFormData = (updates: Partial<FormData>) => {
     setFormData((prev) => ({ ...prev, ...updates }))
-    // Clear errors for updated fields
     const updatedErrors = { ...errors }
     Object.keys(updates).forEach((key) => {
       delete updatedErrors[key as keyof FormData]
@@ -117,19 +115,50 @@ export default function StartProjectPage() {
 
     setIsSubmitting(true)
     try {
-      const res = await fetch("/api/send-email", { 
+      // Format the email content with all project details
+      const emailContent = {
+        name: formData.name,
+        email: formData.email,
+        subject: `New Project Submission: ${formData.projectName}`,
+        message: `
+          Project Details:
+          -------------------------
+          Type: ${formData.projectType}
+          Name: ${formData.projectName}
+          Description: ${formData.projectDescription}
+          Timeline: ${formData.timeline}
+          Budget: $${formData.budget}
+          
+          Contact Information:
+          -------------------------
+          Name: ${formData.name}
+          Email: ${formData.email}
+          Phone: ${formData.phone}
+          Company: ${formData.company}
+          
+          Full Project Description:
+          -------------------------
+          ${formData.projectDescription}
+        `
+      }
+
+      const res = await fetch('/api/send-email', { 
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(emailContent)
       })
+
       if (!res.ok) {
-        throw new Error("Erro ao enviar e-mail")
+        throw new Error("Failed to send submission")
       }
+
       setFormData(INITIAL_FORM_DATA)
       setCurrentStep(0)
+      toast.success("Your project has been submitted successfully!")
     } catch (error) {
+      console.error('Submission error:', error)
       toast.error("Something went wrong. Please try again.")
     } finally {
       setIsSubmitting(false)
@@ -137,89 +166,88 @@ export default function StartProjectPage() {
   }
 
   const progressPercentage = ((currentStep + 1) / t.start.steps.length) * 100
-  
 
   return (
     <>
-    <Head>
-      <title>Next Layer | Start Project</title>
-    </Head>
-    <div className="relative min-h-screen bg-[#0D0620]">
-      <AnimatedBackground />
+      <Head>
+        <title>Next Layer | Start Project</title>
+      </Head>
+      <div className="relative min-h-screen bg-[#0D0620]">
+        <AnimatedBackground />
 
-      <div className="relative z-10 pt-32 pb-20">
-        <div className="container px-4 md:px-6">
-          <Header />
-          <ProgressBar steps={t.start.steps} currentStep={currentStep} progressPercentage={progressPercentage} />
+        <div className="relative z-10 pt-32 pb-20">
+          <div className="container px-4 md:px-6">
+            <Header />
+            <ProgressBar steps={t.start.steps} currentStep={currentStep} progressPercentage={progressPercentage} />
 
-          {/* Step Content */}
-          <div className="max-w-3xl mx-auto">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentStep}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="space-y-6"
-              >
-                {currentStep === 0 && (
-                  <ProjectTypeSelector
-                    options={t.start.steps[0].options ? t.start.steps[0].options : []}
-                    selectedType={formData.projectType}
-                    onSelect={(type) => updateFormData({ projectType: type })}
-                    error={errors.projectType}
-                  />
-                )}
-
-                {currentStep === 1 && <ProjectDetailsForm data={formData} onChange={updateFormData} errors={errors} />}
-
-                {currentStep === 2 && <ContactInfoForm data={formData} onChange={updateFormData} errors={errors} />}
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Navigation Buttons */}
-            <motion.div
-              className="flex justify-between mt-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-            >
-              <Button variant="outline" onClick={prevStep} disabled={currentStep === 0} className="group">
-                <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-                {t.start.buttons.arrow}
-              </Button>
-              <Button
-                onClick={currentStep === t.start.steps.length - 1 ? handleSubmit : nextStep}
-                disabled={isSubmitting}
-                className="group"
-              >
-                {isSubmitting ? (
-                  <span className="flex items-center gap-2">
-                    <motion.div
-                      className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+            {/* Step Content */}
+            <div className="max-w-3xl mx-auto">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentStep}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="space-y-6"
+                >
+                  {currentStep === 0 && (
+                    <ProjectTypeSelector
+                      options={t.start.steps[0].options ? t.start.steps[0].options : []}
+                      selectedType={formData.projectType}
+                      onSelect={(type) => updateFormData({ projectType: type })}
+                      error={errors.projectType}
                     />
-                    {t.start.buttons.first}
-                  </span>
-                ) : currentStep === t.start.steps.length - 1 ? (
-                  <span className="flex items-center gap-2">
-                    {t.start.buttons.second}
-                    <CheckCircle className="w-4 h-4 ml-2 group-hover:scale-110 transition-transform" />
-                  </span>
-                ) : (
-                  <span className="flex items-center gap-2">
-                    {t.start.buttons.tree}
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                )}
-              </Button>
-            </motion.div>
+                  )}
+
+                  {currentStep === 1 && <ProjectDetailsForm data={formData} onChange={updateFormData} errors={errors} />}
+
+                  {currentStep === 2 && <ContactInfoForm data={formData} onChange={updateFormData} errors={errors} />}
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Navigation Buttons */}
+              <motion.div
+                className="flex justify-between mt-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                <Button variant="outline" onClick={prevStep} disabled={currentStep === 0} className="group">
+                  <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+                  {t.start.buttons.arrow}
+                </Button>
+                <Button
+                  onClick={currentStep === t.start.steps.length - 1 ? handleSubmit : nextStep}
+                  disabled={isSubmitting}
+                  className="group"
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      <motion.div
+                        className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                      />
+                      {t.start.buttons.first}
+                    </span>
+                  ) : currentStep === t.start.steps.length - 1 ? (
+                    <span className="flex items-center gap-2">
+                      {t.start.buttons.second}
+                      <CheckCircle className="w-4 h-4 ml-2 group-hover:scale-110 transition-transform" />
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-2">
+                      {t.start.buttons.tree}
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  )}
+                </Button>
+              </motion.div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </>
   )
 }

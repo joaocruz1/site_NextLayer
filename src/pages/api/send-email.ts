@@ -1,8 +1,15 @@
-import { NextRequest, NextResponse } from 'next/server'
+import type { NextApiRequest, NextApiResponse } from 'next'
 import nodemailer from 'nodemailer'
 
-export async function POST(req: NextRequest) {
-  const { name, email, subject, message } = await req.json()
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method not allowed' })
+  }
+
+  const { name, email, subject, message } = req.body
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -20,9 +27,9 @@ export async function POST(req: NextRequest) {
       text: `De: ${name} (${email})\n\n${message}`,
     })
 
-    return NextResponse.json({ success: true })
+    return res.status(200).json({ success: true })
   } catch (error) {
     console.error('Erro ao enviar email:', error)
-    return NextResponse.json({ success: false }, { status: 500 })
+    return res.status(500).json({ success: false })
   }
 }

@@ -48,10 +48,6 @@ export function ContactForm() {
         body: JSON.stringify(formData),
       })
 
-      console.log('Status:', response.status) // ← Adicione isto
-      const responseData = await response.json() // ← E isto
-      console.log('Response:', responseData) // ← E isto
-
       if (response.ok) {
         setSubmitMessage({
           type: "success",
