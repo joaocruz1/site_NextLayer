@@ -3,43 +3,17 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Plus, Minus } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
-const faqs = [
-  {
-    question: "What services do you offer?",
-    answer:
-      "We offer a comprehensive range of digital services including web development, mobile app development, UI/UX design, and custom software solutions. Our team specializes in creating modern, scalable, and user-friendly digital experiences.",
-  },
-  {
-    question: "How long does a typical project take?",
-    answer:
-      "Project timelines vary depending on complexity and scope. A typical web project can take 6-12 weeks, while more complex applications may take 3-6 months. We'll provide a detailed timeline during our initial consultation.",
-  },
-  {
-    question: "What is your development process?",
-    answer:
-      "Our development process follows an agile methodology with regular client check-ins. We begin with discovery and planning, move through design and development phases, and finish with testing and deployment. You'll be involved every step of the way.",
-  },
-  {
-    question: "Do you provide ongoing support?",
-    answer:
-      "Yes, we offer various support and maintenance packages to ensure your project continues to run smoothly after launch. This includes regular updates, security patches, and technical support.",
-  },
-  {
-    question: "What technologies do you use?",
-    answer:
-      "We work with modern technologies including React, Next.js, Node.js, and other cutting-edge tools. Our stack is chosen based on project requirements to ensure the best possible performance and scalability.",
-  },
-]
 
 export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
-
+  const {t} = useLanguage()
   return (
     <div className="py-12">
       <h2 className="text-2xl font-bold text-white mb-8">Frequently Asked Questions</h2>
       <div className="space-y-4">
-        {faqs.map((faq, index) => (
+        {t.contact.faqsection.items.map((faq, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}

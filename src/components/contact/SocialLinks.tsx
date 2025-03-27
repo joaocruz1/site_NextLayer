@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Twitter, GitlabIcon as GitHub, LinkedinIcon as LinkedIn, Instagram } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
 const socialLinks = [
   {
@@ -31,9 +32,10 @@ const socialLinks = [
 ]
 
 export function SocialLinks() {
+  const {t} = useLanguage()
   return (
     <div className="py-12">
-      <h2 className="text-2xl font-bold text-white mb-8">Connect With Us</h2>
+      <h2 className="text-2xl font-bold text-white mb-8">{t.contact.sociallinks.title}</h2>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {socialLinks.map((social, index) => (
           <motion.a

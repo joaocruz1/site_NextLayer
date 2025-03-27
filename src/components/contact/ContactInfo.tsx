@@ -1,40 +1,12 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Mail, MapPin, Phone, Globe, ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
-const contactInfo = [
-  {
-    icon: Mail,
-    title: "Email",
-    value: "hello@nextlayer.dev",
-    href: "mailto:hello@nextlayer.dev",
-    color: "from-purple-500 to-pink-500",
-  },
-  {
-    icon: Phone,
-    title: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
-    color: "from-blue-500 to-cyan-500",
-  },
-  {
-    icon: MapPin,
-    title: "Office",
-    value: "123 Innovation Street, Tech City, TC 12345",
-    href: "https://maps.google.com",
-    color: "from-green-500 to-emerald-500",
-  },
-  {
-    icon: Globe,
-    title: "Global Support",
-    value: "24/7 Available Worldwide",
-    href: "#support",
-    color: "from-orange-500 to-yellow-500",
-  },
-]
 
 export function ContactInfo() {
+  const {t} = useLanguage()
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -43,7 +15,7 @@ export function ContactInfo() {
       className="space-y-8"
     >
       <div className="grid gap-6">
-        {contactInfo.map((item, i) => (
+        {t.contact.contactinfoitems.map((item, i) => (
           <motion.a
             key={item.title}
             href={item.href}

@@ -8,7 +8,6 @@ import { ContactForm } from "@/components/contact/ContactForm"
 import { ContactInfo } from "@/components/contact/ContactInfo"
 import { InteractiveGlobe } from "@/components/contact/InteractiveGlobe"
 import { FaqSection } from "@/components/contact/FaqSection"
-import { NewsletterSection } from "@/components/contact/NewsLetterSection"
 import { SocialLinks } from "@/components/contact/SocialLinks"
 import { ChatPreview } from "@/components/contact/ChatPreview"
 import Head from "next/head"
@@ -49,10 +48,6 @@ export default function ContactPage() {
 
           <div className="mt-20">
             <SocialLinks />
-          </div>
-
-          <div className="mt-20">
-            <NewsletterSection />
           </div>
         </div>
       </div>

@@ -7,8 +7,10 @@ import { Send, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { useLanguage } from "@/context/LanguageContext"
 
 export function ContactForm() {
+  const {t} = useLanguage()
   const formRef = useRef<HTMLDivElement>(null)
   const [formData, setFormData] = useState({
     name: "",
@@ -51,7 +53,7 @@ export function ContactForm() {
       if (response.ok) {
         setSubmitMessage({
           type: "success",
-          text: "Message sent successfully! I'll get back to you soon.",
+          text: t.contact.contactform.message.sucess,
         })
         setFormData({
           name: "",
@@ -62,13 +64,13 @@ export function ContactForm() {
       } else {
         setSubmitMessage({
           type: "error",
-          text: "Failed to send message. Please try again later.",
+          text: t.contact.contactform.message.failed,
         })
       }
     } catch {
       setSubmitMessage({
         type: "error",
-        text: "An error occurred. Please try again later.",
+        text: t.contact.contactform.message.error,
       })
     } finally {
       setIsSubmitting(false)
@@ -83,8 +85,8 @@ export function ContactForm() {
       <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 via-purple-400/10 to-blue-500/20 rounded-3xl blur-2xl" />
       <div className="relative space-y-6 p-6 sm:p-8 rounded-3xl border border-purple-200/10 bg-purple-500/[0.02]">
         <div className="space-y-2">
-          <h2 className="text-xl font-semibold text-white">Send us a Message</h2>
-          <p className="text-sm text-zinc-400">Fill out the form below and we&apos;ll get back to you shortly.</p>
+          <h2 className="text-xl font-semibold text-white">{t.contact.contactform.title}</h2>
+          <p className="text-sm text-zinc-400">{t.contact.contactform.subtitle}</p>
         </div>
         
         {submitMessage && (
@@ -103,7 +105,7 @@ export function ContactForm() {
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <label htmlFor="name" className="text-sm font-medium text-zinc-200">
-                Name
+                {t.contact.contactform.name}
               </label>
               <Input
                 id="name"
@@ -117,7 +119,7 @@ export function ContactForm() {
             </div>
             <div className="space-y-2">
               <label htmlFor="email" className="text-sm font-medium text-zinc-200">
-                Email
+                {t.contact.contactform.email}
               </label>
               <Input
                 id="email"
@@ -147,7 +149,7 @@ export function ContactForm() {
           </div>
           <div className="space-y-2">
             <label htmlFor="message" className="text-sm font-medium text-zinc-200">
-              Message
+              {t.contact.contactform.messageplaceholder}
             </label>
             <Textarea
               id="message"
@@ -177,12 +179,12 @@ export function ContactForm() {
               {isSubmitting ? (
                 <>
                   <Send className="w-5 h-5 animate-pulse" />
-                  Sending...
+                    {t.contact.contactform.sending}
                 </>
               ) : (
                 <>
                   <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  Send Message
+                    {t.contact.contactform.buttonsend}
                 </>
               )}
             </span>

@@ -1,4 +1,4 @@
-import { ShoppingCart, UserCheck, Award, DollarSign, PieChart, Route, Car,Clock, Bus, FileText, BarChart, Map, Bell, Code, Laptop, Layout, Layers, Lightbulb, PenTool, Monitor, Search, PaintBucket, Palette, CheckCircle, ShoppingBag, BarChart3, Package, Truck, CreditCard, Settings, HardDrive, Server, Database, Mail, MessageCircle, Phone, MessageSquare, Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
+import { ShoppingCart, UserCheck,MapPin, Award, DollarSign, PieChart, Route, Car,Clock, Bus, FileText, BarChart, Map, Bell, Code, Laptop, Layout, Layers, Lightbulb, PenTool, Monitor, Search, PaintBucket, Palette, CheckCircle, ShoppingBag, BarChart3, Package, Truck, CreditCard, Settings, HardDrive, Server, Database, Mail, MessageCircle, Phone, MessageSquare, Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
 import { act } from "react";
 
 interface Feature {
@@ -601,6 +601,87 @@ export const translations = {
                 image: "/testimonials-3.png?height=100&width=100",
               },
             ]            
+          }
+        },
+        contact : {
+          contactform: {
+            message:{
+              sucess :"Message sent successfully! I'll get back to you soon.",
+              failed : "Failed to send message. Please try again later.",
+              error : "An error occurred. Please try again later."
+            },
+            title : "Send us a Message",
+            subtitle : "Fill out the form below and we&apos;ll get back to you shortly.",
+            name : "Name",
+            email : "Email",
+            subeject : "Subject",
+            messageplaceholder : "Message",
+            buttonsend : "Send Message",
+            sending : "Sending ..."
+
+          },
+          contactinfoitems : [
+            {
+              icon: Mail,
+              title: "Email",
+              value: "hello@nextlayer.dev",
+              href: "mailto:hello@nextlayer.dev",
+              color: "from-purple-500 to-pink-500",
+            },
+            {
+              icon: Phone,
+              title: "Phone",
+              value: "+1 (555) 123-4567",
+              href: "tel:+15551234567",
+              color: "from-blue-500 to-cyan-500",
+            },
+            {
+              icon: MapPin,
+              title: "Office",
+              value: "123 Innovation Street, Tech City, TC 12345",
+              href: "https://maps.google.com",
+              color: "from-green-500 to-emerald-500",
+            },
+            {
+              icon: Globe,
+              title: "Global Support",
+              value: "24/7 Available Worldwide",
+              href: "#support",
+              color: "from-orange-500 to-yellow-500",
+            },
+          ],
+          faqsection : {
+            title : "Frequently Asked Questions",
+            items : [
+              {
+                question: "What services do you offer?",
+                answer:
+                  "We offer a comprehensive range of digital services including web development, mobile app development, UI/UX design, and custom software solutions. Our team specializes in creating modern, scalable, and user-friendly digital experiences.",
+              },
+              {
+                question: "How long does a typical project take?",
+                answer:
+                  "Project timelines vary depending on complexity and scope. A typical web project can take 6-12 weeks, while more complex applications may take 3-6 months. We'll provide a detailed timeline during our initial consultation.",
+              },
+              {
+                question: "What is your development process?",
+                answer:
+                  "Our development process follows an agile methodology with regular client check-ins. We begin with discovery and planning, move through design and development phases, and finish with testing and deployment. You'll be involved every step of the way.",
+              },
+              {
+                question: "Do you provide ongoing support?",
+                answer:
+                  "Yes, we offer various support and maintenance packages to ensure your project continues to run smoothly after launch. This includes regular updates, security patches, and technical support.",
+              },
+              {
+                question: "What technologies do you use?",
+                answer:
+                  "We work with modern technologies including React, Next.js, Node.js, and other cutting-edge tools. Our stack is chosen based on project requirements to ensure the best possible performance and scalability.",
+              },
+            ]
+          },
+          sociallinks : {
+            title : "Connect With Us"
           }
         },
         ecommerce: {
@@ -1995,6 +2076,81 @@ export const translations = {
               },
             ],
           },
+        },
+        contact: {
+          contactform: {
+            message: {
+              sucess: "Mensagem enviada com sucesso! Entrarei em contato em breve.",
+              failed: "Falha ao enviar mensagem. Por favor, tente novamente mais tarde.",
+              error: "Ocorreu um erro. Por favor, tente novamente mais tarde."
+            },
+            title: "Envie-nos uma Mensagem",
+            subtitle: "Preencha o formulário abaixo e retornaremos o mais breve possível.",
+            name: "Nome",
+            email: "E-mail",
+            subeject: "Assunto",
+            messageplaceholder: "Sua mensagem",
+            buttonsend: "Enviar Mensagem",
+            sending: "Enviando..."
+          },
+          contactinfoitems: [
+            {
+              icon: Mail,
+              title: "E-mail",
+              value: "hello@nextlayer.dev",
+              href: "mailto:hello@nextlayer.dev",
+              color: "from-purple-500 to-pink-500",
+            },
+            {
+              icon: Phone,
+              title: "Telefone",
+              value: "+55 (11) 91234-5678",
+              href: "tel:+5511912345678",
+              color: "from-blue-500 to-cyan-500",
+            },
+            {
+              icon: MapPin,
+              title: "Escritório",
+              value: "Rua Inovação, 123, Tecnópolis, SP 01234-567",
+              href: "https://maps.google.com",
+              color: "from-green-500 to-emerald-500",
+            },
+            {
+              icon: Globe,
+              title: "Suporte Global",
+              value: "Disponível 24/7 em todo o mundo",
+              href: "#support",
+              color: "from-orange-500 to-yellow-500",
+            },
+          ],
+          faqsection: {
+            title: "Perguntas Frequentes",
+            items: [
+              {
+                question: "Quais serviços vocês oferecem?",
+                answer: "Oferecemos uma gama completa de serviços digitais incluindo desenvolvimento web, desenvolvimento de aplicativos móveis, design UI/UX e soluções de software personalizadas. Nossa equipe é especializada em criar experiências digitais modernas, escaláveis e intuitivas."
+              },
+              {
+                question: "Quanto tempo dura um projeto típico?",
+                answer: "Os prazos variam de acordo com a complexidade e escopo. Um projeto web típico pode levar de 6 a 12 semanas, enquanto aplicativos mais complexos podem levar de 3 a 6 meses. Apresentaremos um cronograma detalhado durante nossa consulta inicial."
+              },
+              {
+                question: "Qual é o processo de desenvolvimento?",
+                answer: "Nosso processo segue metodologia ágil com check-ins regulares. Começamos com descoberta e planejamento, passamos pelas fases de design e desenvolvimento, e finalizamos com testes e implantação. Você estará envolvido em cada etapa."
+              },
+              {
+                question: "Vocês oferecem suporte contínuo?",
+                answer: "Sim, oferecemos diversos pacotes de suporte e manutenção para garantir que seu projeto continue funcionando perfeitamente após o lançamento, incluindo atualizações regulares, correções de segurança e suporte técnico."
+              },
+              {
+                question: "Quais tecnologias vocês utilizam?",
+                answer: "Trabalhamos com tecnologias modernas como React, Next.js, Node.js e outras ferramentas de ponta. Nossa stack é escolhida com base nos requisitos do projeto para garantir o melhor desempenho e escalabilidade."
+              }
+            ]
+          },
+          sociallinks: {
+            title: "Conecte-se Conosco"
+          }
         },
         ecommerce : {
           herobanner : {
