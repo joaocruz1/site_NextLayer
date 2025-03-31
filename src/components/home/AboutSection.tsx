@@ -75,7 +75,7 @@ export function AboutSection() {
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 via-purple-400/10 to-blue-500/20 rounded-3xl blur-2xl" />
             <div className="relative h-full w-full rounded-3xl border border-purple-200/10 bg-purple-500/[0.02] overflow-hidden">
-              <Image src="/placeholder.svg?height=600&width=600" alt="Team at work" fill className="object-cover" />
+              <Image src="/about.png?height=600&width=600" alt="Team at work" fill className="object-cover" />
             </div>
           </motion.div>
         </div>
