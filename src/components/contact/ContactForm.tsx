@@ -3,7 +3,7 @@
 import type React from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef, useState } from "react"
-import { Send, CheckCircle } from "lucide-react"
+import { Send} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"

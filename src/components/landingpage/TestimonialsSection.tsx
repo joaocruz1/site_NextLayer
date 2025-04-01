@@ -5,34 +5,10 @@ import { useRef } from "react"
 import Image from "next/image"
 import { useLanguage } from "@/context/LanguageContext"
 
-const testimonials = [
-  {
-    quote:
-      "NextLayer transformed our business with their innovative solutions. Their expertise and dedication to quality are unmatched.",
-    author: "Sarah Johnson",
-    role: "CTO",
-    company: "TechCorp",
-    image: "/placeholder.svg?height=100&width=100",
-  },
-  {
-    quote:
-      "Working with NextLayer was a game-changer. They delivered our project on time and exceeded all expectations.",
-    author: "Michael Chen",
-    role: "Founder",
-    company: "StartupX",
-    image: "/placeholder.svg?height=100&width=100",
-  },
-  {
-    quote:
-      "Their attention to detail and technical expertise helped us create a scalable solution that our users love.",
-    author: "Emily Rodriguez",
-    role: "Product Manager",
-    company: "InnovateCo",
-    image: "/placeholder.svg?height=100&width=100",
-  },
-]
 
-const TestimonialCard = ({ testimonial, index }: { testimonial: (typeof testimonials)[0]; index: number }) => {
+type Testimonial = ReturnType<typeof useLanguage>['t']['landing']['testimonials']['items'][0];
+
+const TestimonialCard  = ({ testimonial, _index }: { testimonial: Testimonial ; _index: number }) => {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -73,7 +49,7 @@ const TestimonialCard = ({ testimonial, index }: { testimonial: (typeof testimon
             <div>
               <div className="font-medium text-white text-sm sm:text-base">{testimonial.author}</div>
               <div className="text-xs sm:text-sm text-zinc-400">
-                {testimonial.role} at {testimonial.company}
+                {testimonial.role}
               </div>
             </div>
           </div>
@@ -84,7 +60,9 @@ const TestimonialCard = ({ testimonial, index }: { testimonial: (typeof testimon
 }
 
 export const TestimonialsSection = () => {
+  
   const {t} = useLanguage()
+
   return (
     <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
       <div className="container px-4 sm:px-6 mx-auto">
@@ -114,7 +92,7 @@ export const TestimonialsSection = () => {
 
         <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
           {t.landing.testimonials.items.map((testimonial, index) => (
-            <TestimonialCard key={index} testimonial={testimonial} index={index} />
+            <TestimonialCard key={index} testimonial={testimonial} _index={index} />
           ))}
         </div>
       </div>

@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain } from "lucide-react"
 import { useLanguage } from "@/context/LanguageContext"
 
 

@@ -2,7 +2,7 @@
 
 import { useLanguage } from "@/context/LanguageContext"
 import { motion } from "framer-motion"
-import { MessageSquare, Lightbulb, Code, PenTool, Layers, CheckCircle } from "lucide-react"
+
 
 export function ProcessTimeline() {
 

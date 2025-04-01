@@ -13,7 +13,7 @@ export function BenefitsSection() {
         <p className="text-purple-200/70 max-w-2xl mx-auto">{t.transport.benefits.subtitle}</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {t.transport.benefits.items.map((benefit, index) => (
+        {t.transport.benefits.items.map((benefit, _index) => (
           <motion.div key={benefit.title} whileHover={{ x: 5 }} className="flex gap-4 items-start">
             <div className="p-2 rounded-lg bg-purple-500/10 mt-1">
               <CheckCircle className="w-6 h-6 text-purple-400" />

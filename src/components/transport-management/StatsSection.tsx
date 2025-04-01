@@ -14,7 +14,7 @@ export function StatsSection() {
         </p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {t.transport.stats.items.map((stat, index) => (
+        {t.transport.stats.items.map((stat, _index) => (
           <motion.div
             key={stat.title}
             whileHover={{ scale: 1.05 }}

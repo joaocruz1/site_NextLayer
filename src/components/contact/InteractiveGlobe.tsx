@@ -144,7 +144,7 @@ export function InteractiveGlobe() {
   const getLocalTime = (timezone: string) => {
     try {
       return new Date().toLocaleTimeString("en-US", { timeZone: timezone })
-    } catch (error) {
+    } catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
       return new Date().toLocaleTimeString("en-US")
     }
   }

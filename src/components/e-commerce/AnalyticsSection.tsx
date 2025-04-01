@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useState } from "react"
-import { BarChart, PieChart, ArrowUpRight, TrendingUp, Users } from "lucide-react"
+import {ArrowUpRight, TrendingUp} from "lucide-react"
 import { useLanguage } from "@/context/LanguageContext"
 
 export function AnalyticsSection() {

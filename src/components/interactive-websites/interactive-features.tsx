@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import { useState } from "react"
-import { Laptop, Zap, Layout, Code2, PaintBucket, Monitor, Search } from "lucide-react"
 import { useLanguage } from "@/context/LanguageContext"
 
 export function InteractiveFeatures() {

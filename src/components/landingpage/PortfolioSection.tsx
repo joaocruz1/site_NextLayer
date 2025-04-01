@@ -14,9 +14,9 @@ interface Project {
   link: string
 }
 
-const ProjectCard = ({project,index,}: {
+const ProjectCard = ({project,_index,}: {
   project: Project
-  index: number
+  _index: number
 }) => {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
@@ -131,7 +131,7 @@ export const PortfolioSection = () => {
 
         <div className="grid gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
           {t.landing.portfolio.items.map((project: Project, index: number) => (
-            <ProjectCard key={project.title} project={project} index={index} />
+            <ProjectCard key={project.title} project={project} _index={index} />
           ))}
         </div>
 

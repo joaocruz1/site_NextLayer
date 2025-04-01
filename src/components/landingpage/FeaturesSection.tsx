@@ -7,7 +7,7 @@ import type React from "react" // Import React
 import { useLanguage } from "@/context/LanguageContext"
 
 
-const ParallaxCard = ({ children, index }: { children: React.ReactNode; index: number }) => {
+const ParallaxCard = ({ children, _index }: { children: React.ReactNode; _index: number }) => {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -55,7 +55,7 @@ export const FeaturesSection = () => {
 
         <div className="grid gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
           {t.landing.features.items.map((feature, index) => (
-            <ParallaxCard key={feature.title} index={index}>
+            <ParallaxCard key={feature.title} _index={index}>
               <div className="group relative h-full">
                 <div
                   className={`absolute inset-0 rounded-xl bg-gradient-to-b ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl`}

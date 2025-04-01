@@ -1,5 +1,5 @@
-import { ShoppingCart, UserCheck,MapPin, Award, DollarSign, PieChart, Route, Car,Clock, Bus, FileText, BarChart, Map, Bell, Code, Laptop, Layout, Layers, Lightbulb, PenTool, Monitor, Search, PaintBucket, Palette, CheckCircle, ShoppingBag, BarChart3, Package, Truck, CreditCard, Settings, HardDrive, Server, Database, Mail, MessageCircle, Phone, MessageSquare, Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
-import { act } from "react";
+import { ShoppingCart, UserCheck,MapPin, Award, DollarSign, PieChart, Route, Car,Clock, Bus, FileText, BarChart, Map, Bell, Code, Laptop, Layout, Layers, Lightbulb, PenTool, Monitor, Search, PaintBucket, Palette, CheckCircle, ShoppingBag, BarChart3, Package, Truck, Settings, Server, Mail, MessageCircle, Phone, MessageSquare, Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
+
 
 interface Feature {
   title: string;

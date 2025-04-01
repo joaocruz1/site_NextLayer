@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Code2, Users, Rocket, RefreshCw, Shield, Zap } from "lucide-react"
 import { useLanguage } from "@/context/LanguageContext"
 
 const Methodology = () => {

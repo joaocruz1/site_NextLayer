@@ -4,36 +4,11 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 import { useLanguage } from "@/context/LanguageContext"
 
-const processes = [
-  {
-    step: "01",
-    title: "Discovery",
-    description: "We dive deep into your business needs and objectives.",
-    details: ["Requirements Analysis", "Market Research", "Technical Planning"],
-  },
-  {
-    step: "02",
-    title: "Design",
-    description: "Creating intuitive interfaces and robust architecture.",
-    details: ["UI/UX Design", "System Architecture", "Prototype Development"],
-  },
-  {
-    step: "03",
-    title: "Development",
-    description: "Building your solution with clean, efficient code.",
-    details: ["Agile Development", "Code Reviews", "Quality Assurance"],
-  },
-  {
-    step: "04",
-    title: "Deployment",
-    description: "Launching your project with comprehensive testing.",
-    details: ["Testing & QA", "Performance Optimization", "Continuous Support"],
-  },
-]
+type Processes = ReturnType<typeof useLanguage>['t']['landing']['process']['items'][0];
 
-const ProcessCard = ({ process, index }: { process: (typeof processes)[0]; index: number }) => {
 
-  const {t} = useLanguage()
+const ProcessCard = ({ process, index }: { process: Processes; index: number }) => {
+
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,

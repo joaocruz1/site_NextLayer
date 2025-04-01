@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Rocket, Code, Palette, Server, ArrowRight, ArrowLeft, CheckCircle, LucideIcon } from "lucide-react"
+import { ArrowRight, ArrowLeft, CheckCircle} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { AnimatedBackground } from "@/components/ui/animated-background"
 import { Header } from "@/components/Header"
@@ -176,7 +176,7 @@ export default function StartProjectPage() {
         <AnimatedBackground />
 
         <div className="relative z-10 pt-32 pb-20">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <Header />
             <ProgressBar steps={t.start.steps} currentStep={currentStep} progressPercentage={progressPercentage} />
 

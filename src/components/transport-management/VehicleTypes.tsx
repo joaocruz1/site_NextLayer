@@ -14,7 +14,7 @@ export function VehicleTypes() {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {t.transport.vehicle.items.map((vehicle, index) => (
+        {t.transport.vehicle.items.map((vehicle, _index) => (
           <motion.div
             key={vehicle.title}
             whileHover={{ y: -5 }}

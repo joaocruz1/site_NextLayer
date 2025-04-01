@@ -9,7 +9,6 @@ import { ContactInfo } from "@/components/contact/ContactInfo"
 import { InteractiveGlobe } from "@/components/contact/InteractiveGlobe"
 import { FaqSection } from "@/components/contact/FaqSection"
 import { SocialLinks } from "@/components/contact/SocialLinks"
-import { ChatPreview } from "@/components/contact/ChatPreview"
 import Head from "next/head"
 
 const stats = [
@@ -51,8 +50,6 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-
-      <ChatPreview />
     </div>
     </>
   )
