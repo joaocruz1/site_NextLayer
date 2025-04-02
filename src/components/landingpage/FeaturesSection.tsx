@@ -7,7 +7,7 @@ import type React from "react" // Import React
 import { useLanguage } from "@/context/LanguageContext"
 
 
-const ParallaxCard = ({ children, _index }: { children: React.ReactNode; _index: number }) => {
+const ParallaxCard = ({ children }: { children: React.ReactNode; _index: number }) => {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,

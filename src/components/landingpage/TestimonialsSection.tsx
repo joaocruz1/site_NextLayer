@@ -8,7 +8,7 @@ import { useLanguage } from "@/context/LanguageContext"
 
 type Testimonial = ReturnType<typeof useLanguage>['t']['landing']['testimonials']['items'][0];
 
-const TestimonialCard  = ({ testimonial, _index }: { testimonial: Testimonial ; _index: number }) => {
+const TestimonialCard  = ({ testimonial}: { testimonial: Testimonial ; _index: number }) => {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,

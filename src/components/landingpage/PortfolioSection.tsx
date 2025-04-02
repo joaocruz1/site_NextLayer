@@ -14,7 +14,7 @@ interface Project {
   link: string
 }
 
-const ProjectCard = ({project,_index,}: {
+const ProjectCard = ({project}: {
   project: Project
   _index: number
 }) => {

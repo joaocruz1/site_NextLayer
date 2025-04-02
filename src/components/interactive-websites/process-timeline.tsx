@@ -2,11 +2,20 @@
 
 import { useLanguage } from "@/context/LanguageContext"
 import { motion } from "framer-motion"
+import { LucideIcon } from "lucide-react"
+
+interface ProcessStep {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  details: string[];
+}
 
 
 export function ProcessTimeline() {
 
   const {t} = useLanguage()
+  const steps: ProcessStep[] = t.websites.process.items
 
   return (
     <div className="py-20">
@@ -24,7 +33,7 @@ export function ProcessTimeline() {
 
           {/* Timeline steps */}
           <div className="space-y-16 md:space-y-32">
-            {t.websites.process.items.map((step, index) => (
+            {steps.map((step, index) => (
               <div key={step.title} className="relative">
                 {/* Mobile timeline line */}
                 {index < t.websites.process.items.length - 1 && (
@@ -130,11 +139,11 @@ export function ProcessTimeline() {
   )
 }
 
-function StepIcon({ icon: Icon, number }: { icon: any; number: number }) {
+function StepIcon({ icon: Icon, number }: { icon: LucideIcon ; number: number }) {
   return (
     <div className="relative">
       <motion.div
-        initial={{ scale: 0 }}
+        initial={{ scale: 0 }} 
         whileInView={{ scale: 1 }}
         transition={{ type: "spring", stiffness: 260, damping: 20 }}
         viewport={{ once: true }}

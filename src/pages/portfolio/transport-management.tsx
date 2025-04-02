@@ -13,21 +13,6 @@ import { StatsSection } from "@/components/transport-management/StatsSection"
 import { BenefitsSection } from "@/components/transport-management/BenefitsSection"
 import { TechStack } from "@/components/transport-management/TechStack"
 import { Testimonials } from "@/components/transport-management/Testimonials"
-import {
-  Clock,
-  Map,
-  Truck,
-  Users,
-  BarChart,
-  Bell,
-  Bus,
-  Car,
-  UserCheck,
-  Route,
-  FileText,
-  Shield,
-  Smartphone,
-} from "lucide-react"
 import Footer from "@/components/Footer"
 
 export default function TransportManagement() {

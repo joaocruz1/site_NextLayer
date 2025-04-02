@@ -14,7 +14,7 @@ export function FeaturesGrid() {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        {t.transport.features.items.map((feature, _index) => (
+        {t.transport.features.items.map((feature) => (
           <motion.div key={feature.title} whileHover={{ scale: 1.02 }} className="group relative">
             <div className="absolute -inset-px bg-gradient-to-r from-purple-500/30 to-purple-700/30 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity blur-lg" />
             <div className="relative h-full bg-white/[0.03] backdrop-blur-sm rounded-xl p-6 border border-purple-500/10 hover:border-purple-500/30 transition-all">

@@ -13,7 +13,7 @@ export function Testimonials() {
         <p className="text-purple-200/70 max-w-2xl mx-auto">{t.transport.testimonials.subtitle}</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {t.transport.testimonials.items.map((testimonial, _index) => (
+        {t.transport.testimonials.items.map((testimonial) => (
           <motion.div
             key={testimonial.name}
             whileHover={{ y: -5 }}
