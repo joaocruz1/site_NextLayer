@@ -52,18 +52,6 @@ export function AboutSection() {
                 ),
               )}
             </ul>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/about">
-                <Button variant="outline" size="lg">
-                  {t.home.about.buttons.primary}
-                </Button>
-              </Link>
-              <Link href="/careers">
-                <Button variant="ghost" size="lg">
-                  {t.home.about.buttons.second}
-                </Button>
-              </Link>
-            </div>
           </motion.div>
 
           <motion.div

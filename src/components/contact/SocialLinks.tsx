@@ -8,13 +8,13 @@ const socialLinks = [
   {
     name: "Twitter",
     icon: Twitter,
-    href: "https://twitter.com/nextlayer",
+    href: "https://x.com/nextlayerdev",
     color: "hover:text-blue-400",
   },
   {
     name: "GitHub",
     icon: GitHub,
-    href: "https://github.com/nextlayer",
+    href: "https://github.com/joaocruz1",
     color: "hover:text-white",
   },
   {
@@ -26,7 +26,7 @@ const socialLinks = [
   {
     name: "Instagram",
     icon: Instagram,
-    href: "https://instagram.com/nextlayer",
+    href: "https://www.instagram.com/nextlayerdev_/",
     color: "hover:text-pink-500",
   },
 ]

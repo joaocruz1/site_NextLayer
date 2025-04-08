@@ -230,8 +230,8 @@ export const translations = {
                       {
                         icon: Mail,
                         title: "Email",
-                        value: "nextlayer99@gmail.com",
-                        href: "mailto:nextlayer99@gmail.com",
+                        value: "nextlayerdev@gmail.com",
+                        href: "mailto:nextlayerdev@gmail.com",
                       },
                       {
                         icon: MessageCircle,
@@ -566,10 +566,10 @@ export const translations = {
           },
           stats:{
             items:[
-              { label: "Projects Completed", value: "100+" },
-              { label: "Happy Clients", value: "50+" },
-              { label: "Team Members", value: "25+" },
-              { label: "Years Experience", value: "10+" },
+              { label: "Projects Completed", value: "10+" },
+              { label: "Happy Clients", value: "15+" },
+              { label: "Team Members", value: "5+" },
+              { label: "Yers of Experience", value: "2+" },
             ]
           },
           testimonials:{
@@ -1867,8 +1867,8 @@ export const translations = {
                     {
                         icon: Mail,
                         title: "E-mail",
-                        value: "nextlayer99@gmail.com",
-                        href: "nextlayer99@gmail.com",
+                        value: "nextlayerdev@gmail.com",
+                        href: "nextlayerdev@gmail.com",
                     },
                     {
                         icon: MessageCircle,
@@ -2203,10 +2203,10 @@ export const translations = {
           },
           stats: {
             items: [
-              { label: "Projetos Concluídos", value: "100+" },
-              { label: "Clientes Satisfeitos", value: "50+" },
-              { label: "Membros da Equipe", value: "25+" },
-              { label: "Anos de Experiência", value: "10+" },
+              { label: "Projetos Concluídos", value: "10+" },
+              { label: "Clientes Satisfeitos", value: "15+" },
+              { label: "Membros da Equipe", value: "5+" },
+              { label: "Anos de Experiência", value: "2+" },
             ],
           },
           testimonials: {
