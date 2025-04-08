@@ -1,4 +1,4 @@
-import { ShoppingCart, UserCheck,MapPin, Award, DollarSign, PieChart, Route, Car,Clock, Bus, FileText, BarChart, Map, Bell, Code, Laptop, Layout, Layers, Lightbulb, PenTool, Monitor, Search, PaintBucket, Palette, CheckCircle, ShoppingBag, BarChart3, Package, Truck, Settings, Server, Mail, MessageCircle, Phone, MessageSquare, Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
+import { ShoppingCart, UserCheck,MapPin, Award,Copyright, ShieldCheck,Ban, AlertTriangle,Scale, DollarSign, PieChart, Route, Car,Clock, Bus, FileText, BarChart, Map, Bell, Code, Laptop, Layout, Layers, Lightbulb, PenTool, Monitor, Search, PaintBucket, Palette, CheckCircle, ShoppingBag, BarChart3, Package, Truck, Settings, Server, Mail, MessageCircle, Phone, MessageSquare, Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
   size?: number;
@@ -20,10 +20,8 @@ export const translations = {
         footer : {
             title : "Creating innovative digital solutions that help businesses thrive in the modern world.",
             solutions: [
-              { name: "Web Development", href: "#" },
-              { name: "Mobile Apps", href: "#" },
-              { name: "Custom Software", href: "#" },
-              { name: "UI/UX Design", href: "#" },
+              { name: "Web Development", href: "/portfolio/interactive-websites" },
+              { name: "Custom Software", href: "/portfolio/transport-management" },
             ],
             company: [
               { name: "Process", href: "/process" },
@@ -31,8 +29,7 @@ export const translations = {
               { name: "Solutions", href: "/solutions" },
             ],
             legal: [
-              { name: "Privacy", href: "#" },
-              { name: "Terms", href: "#" },
+              { name: "Terms", href: "/terms" },
             ],
             social: [
               {
@@ -265,9 +262,9 @@ export const translations = {
               second: "View Our Projects"
             },
             items:[
-              { value: "50+", label: "Projects Delivered" },
+              { value: "10+", label: "Projects Delivered" },
               { value: "100%", label: "Client Satisfaction" },
-              { value: "10+", label: "Team Members" },
+              { value: "5+", label: "Team Members" },
               { value: "24/7", label: "Support" },
             ],
           },
@@ -275,7 +272,7 @@ export const translations = {
             header:"About Us",
             title:"We Build More Than Just Software",
             description:"NextLayer is a team of passionate developers, designers, and digital craftsmen. We believe in creating software that not only meets technical requirements but also delivers exceptional user experiences.",
-            items:["10+ Years of Experience", "Award-winning Team", "Global Client Base", "24/7 Support"],
+            items:["Years of Experience", "Award-winning Team", "Global Client Base", "24/7 Support"],
             buttons:{
               primary:"Learn More",
               second: "Join Your Team"
@@ -623,21 +620,21 @@ export const translations = {
             {
               icon: Mail,
               title: "Email",
-              value: "hello@nextlayer.dev",
-              href: "mailto:hello@nextlayer.dev",
-              color: "from-purple-500 to-pink-500",
+              value: "nextlayerdev@gmail.com",
+              href: "mailto:nextlayerdev@gmail.com",
+              color: "from-purple-500 to-pink-500", 
             },
             {
               icon: Phone,
               title: "Phone",
-              value: "+1 (555) 123-4567",
-              href: "tel:+15551234567",
+              value: "+55 (35) 997478472",
+              href: "https://wa.me/5535997478472", 
               color: "from-blue-500 to-cyan-500",
             },
             {
               icon: MapPin,
               title: "Office",
-              value: "123 Innovation Street, Tech City, TC 12345",
+              value: "",
               href: "https://maps.google.com",
               color: "from-green-500 to-emerald-500",
             },
@@ -645,7 +642,7 @@ export const translations = {
               icon: Globe,
               title: "Global Support",
               value: "24/7 Available Worldwide",
-              href: "#support",
+              href: "/contact",
               color: "from-orange-500 to-yellow-500",
             },
           ],
@@ -1201,7 +1198,7 @@ export const translations = {
               {
                 name: "Next.js",
                 description: "React framework for production",
-                logo: "https://nextjs.org/static/favicon/favicon-32x32.png",
+                logo: "/next-logo.png",
               },
               {
                 name: "TypeScript",
@@ -1211,12 +1208,12 @@ export const translations = {
               {
                 name: "Tailwind CSS",
                 description: "Utility-first CSS framework",
-                logo: "https://tailwindcss.com/_next/static/media/tailwindcss-mark.b4282b4f.svg",
+                logo: "/tailwind-logo.png",
               },
               {
                 name: "Framer Motion",
                 description: "Animation library for React",
-                logo: "https://www.framer.com/images/brand/framer-logo.png",
+                logo: "/framermotion-logo.png",
               },
               {
                 name: "Three.js",
@@ -1478,6 +1475,173 @@ export const translations = {
             },
           ]
 
+        },
+        terms : {
+          termscontent : [
+            {
+              id: "acceptance",
+              icon: UserCheck,
+              title: "Acceptance of Terms",
+              content: [
+                {
+                  text: "By accessing or using the NextLayer website, mobile applications, or any other services provided by NextLayer (collectively, the 'Services'), you agree to be bound by these Terms of Service ('Terms'). If you do not agree to these Terms, you may not access or use the Services.",
+                },
+                {
+                  text: "We may modify these Terms at any time. If we make changes, we will provide notice of such changes, such as by sending an email notification, providing notice through the Services, or updating the 'Last Updated' date at the beginning of these Terms. Your continued use of the Services will confirm your acceptance of the revised Terms.",
+                },
+              ],
+            },
+            {
+              id: "account",
+              icon: UserCheck,
+              title: "Account Registration and Security",
+              content: [
+                {
+                  subtitle: "Account Creation",
+                  text: "To use certain features of the Services, you may need to register for an account. You agree to provide accurate, current, and complete information during the registration process and to update such information to keep it accurate, current, and complete.",
+                },
+                {
+                  subtitle: "Account Security",
+                  text: "You are responsible for safeguarding your password and for all activities that occur under your account. You agree to notify us immediately if you suspect any unauthorized use of your account or any other breach of security.",
+                },
+                {
+                  subtitle: "Age Restrictions",
+                  text: "The Services are intended for users who are 18 years of age or older. By using the Services, you represent and warrant that you are at least 18 years old.",
+                },
+              ],
+            },
+            {
+              id: "content",
+              icon: FileText,
+              title: "User Content and Conduct",
+              content: [
+                {
+                  subtitle: "User Content",
+                  text: "You retain ownership of any content you submit, post, or display on or through the Services ('User Content'). By submitting User Content, you grant us a worldwide, non-exclusive, royalty-free license to use, copy, modify, create derivative works based upon, distribute, and display your User Content for the purpose of operating and providing the Services.",
+                },
+                {
+                  subtitle: "Content Restrictions",
+                  text: "You agree not to post, upload, or share User Content that: (i) infringes any third party's intellectual property rights; (ii) violates any law or regulation; (iii) is defamatory, obscene, harmful, threatening, abusive, or otherwise objectionable; (iv) contains viruses or other harmful code; or (v) violates these Terms.",
+                },
+                {
+                  subtitle: "Prohibited Conduct",
+                  text: "You agree not to: (i) use the Services in any manner that could interfere with, disrupt, negatively affect, or inhibit other users from fully enjoying the Services; (ii) attempt to circumvent any filtering, security measures, or other features designed to protect the Services; (iii) use any automated means to access or use the Services; or (iv) use the Services for any illegal or unauthorized purpose.",
+                },
+              ],
+            },
+            {
+              id: "intellectual-property",
+              icon: Copyright,
+              title: "Intellectual Property Rights",
+              content: [
+                {
+                  subtitle: "Ownership",
+                  text: "The Services and all content, features, and functionality thereof, including but not limited to all information, software, text, displays, images, video, audio, design, and the selection and arrangement thereof (excluding User Content), are owned by NextLayer or its licensors and are protected by copyright, trademark, and other intellectual property laws.",
+                },
+                {
+                  subtitle: "License to Use",
+                  text: "Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, non-sublicensable license to access and use the Services for your personal or internal business purposes.",
+                },
+                {
+                  subtitle: "Feedback",
+                  text: "If you provide us with any feedback or suggestions regarding the Services, you hereby assign to us all rights in such feedback and agree that we shall have the right to use such feedback and related information in any manner we deem appropriate.",
+                },
+              ],
+            },
+            {
+              id: "privacy",
+              icon: ShieldCheck,
+              title: "Privacy",
+              content: [
+                {
+                  text: "Please refer to our Privacy Policy for information about how we collect, use, and disclose information about you. By using the Services, you consent to our collection, use, and disclosure of information as described in our Privacy Policy.",
+                },
+              ],
+            },
+            {
+              id: "third-party",
+              icon: Globe,
+              title: "Third-Party Services",
+              content: [
+                {
+                  text: "The Services may contain links to third-party websites or services that are not owned or controlled by NextLayer. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You further acknowledge and agree that we shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods, or services available on or through any such websites or services.",
+                },
+              ],
+            },
+            {
+              id: "termination",
+              icon: Ban,
+              title: "Termination",
+              content: [
+                {
+                  text: "We may terminate or suspend your access to and use of the Services, at our sole discretion, at any time and without notice to you. You may cancel your account at any time by contacting us. Upon termination, your right to use the Services will immediately cease.",
+                },
+                {
+                  text: "The following provisions will survive termination: Intellectual Property Rights, Disclaimer, Limitation of Liability, Indemnification, and Governing Law.",
+                },
+              ],
+            },
+            {
+              id: "disclaimer",
+              icon: AlertTriangle,
+              title: "Disclaimer",
+              content: [
+                {
+                  text: "THE SERVICES AND ALL CONTENT THEREON ARE PROVIDED ON AN 'AS IS' AND 'AS AVAILABLE' BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMISSIBLE BY LAW, NEXTLAYER DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.",
+                },
+                {
+                  text: "NEXTLAYER DOES NOT WARRANT THAT THE SERVICES WILL BE UNINTERRUPTED OR ERROR-FREE, THAT DEFECTS WILL BE CORRECTED, OR THAT THE SERVICES OR THE SERVERS THAT MAKE THE SERVICES AVAILABLE ARE FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.",
+                },
+              ],
+            },
+            {
+              id: "limitation",
+              icon: AlertTriangle,
+              title: "Limitation of Liability",
+              content: [
+                {
+                  text: "TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL NEXTLAYER OR ITS DIRECTORS, EMPLOYEES, PARTNERS, AGENTS, SUPPLIERS, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM: (I) YOUR ACCESS TO OR USE OF OR INABILITY TO ACCESS OR USE THE SERVICES; (II) ANY CONDUCT OR CONTENT OF ANY THIRD PARTY ON THE SERVICES; (III) ANY CONTENT OBTAINED FROM THE SERVICES; AND (IV) UNAUTHORIZED ACCESS, USE, OR ALTERATION OF YOUR TRANSMISSIONS OR CONTENT, WHETHER BASED ON WARRANTY, CONTRACT, TORT (INCLUDING NEGLIGENCE), OR ANY OTHER LEGAL THEORY, WHETHER OR NOT WE HAVE BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGE.",
+                },
+              ],
+            },
+            {
+              id: "indemnification",
+              icon: ShieldCheck,
+              title: "Indemnification",
+              content: [
+                {
+                  text: "You agree to defend, indemnify, and hold harmless NextLayer and its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses, including, without limitation, reasonable legal and accounting fees, arising out of or in any way connected with your access to or use of the Services or your violation of these Terms.",
+                },
+              ],
+            },
+            {
+              id: "governing-law",
+              icon: Scale,
+              title: "Governing Law",
+              content: [
+                {
+                  text: "These Terms shall be governed by and construed in accordance with the laws of the State of California, without regard to its conflict of law provisions. Any dispute arising from or relating to the subject matter of these Terms shall be finally settled by arbitration in San Francisco, California, using the English language in accordance with the Arbitration Rules and Procedures of JAMS then in effect.",
+                },
+              ],
+            },
+            {
+              id: "contact",
+              icon: MessageSquare,
+              title: "Contact Us",
+              content: [
+                {
+                  text: "If you have any questions about these Terms, please contact us at legal@nextlayer.com.",
+                },
+              ],
+            },
+          ],
+          termshero : {
+            title: "Terms of Service",
+            subtitle: "Legal agreement between you and NextLayer",
+            description:
+              "Please read these Terms of Service carefully before using our website and services. By accessing or using our services, you agree to be bound by these terms.",
+            lastUpdated: "Last updated: April 8, 2025",
+          }
         }
       },
 
@@ -1493,10 +1657,8 @@ export const translations = {
         footer: {
           title : "Criando soluções digitais inovadoras que ajudam as empresas a prosperar no mundo moderno.",
           solutions: [
-              { name: "Desenvolvimento Web", href: "#" },
-              { name: "Aplicativos Mobile", href: "#" },
-              { name: "Software Personalizado", href: "#" },
-              { name: "Design UI/UX", href: "#" },
+              { name: "Desenvolvimento Web", href: "/portfolio/interactive-websites" },
+              { name: "Software Personalizado", href: "/portfolio/transport-management" },
           ],
           company: [
               { name: "Processo", href: "/process" },
@@ -1504,8 +1666,7 @@ export const translations = {
               { name: "Soluções", href: "/solutions" },
           ],
           legal: [
-              { name: "Privacidade", href: "#" },
-              { name: "Termos", href: "#" },
+              { name: "Termos", href: "/terms" },
           ],
           social: [
             {
@@ -1737,9 +1898,9 @@ export const translations = {
               second: "Veja Nossos Projetos"
             },
             items: [
-              { value: "50+", label: "Projetos Entregues" },
+              { value: "10+", label: "Projetos Entregues" },
               { value: "100%", label: "Satisfação dos Clientes" },
-              { value: "10+", label: "Membros da Equipe" },
+              { value: "5+", label: "Membros da Equipe" },
               { value: "24/7", label: "Suporte" }
             ]
           },          
@@ -1747,7 +1908,7 @@ export const translations = {
             header: "Quem Somos",
             title: "Construímos Mais do que Apenas Software",
             description: "A NextLayer é uma equipe de desenvolvedores, designers e artesãos digitais apaixonados. Acreditamos em criar software que não apenas atenda aos requisitos técnicos, mas que também proporcione experiências excepcionais aos usuários.",
-            items: ["Mais de 10 Anos de Experiência", "Equipe Premiada", "Clientes em Todo o Mundo", "Suporte 24/7"],
+            items: ["Anos de Experiência", "Equipe Premiada", "Clientes em Todo o Mundo", "Suporte 24/7"],
             buttons: {
               primary: "Saiba Mais",
               second: "Junte-se à Nossa Equipe"
@@ -2096,21 +2257,21 @@ export const translations = {
             {
               icon: Mail,
               title: "E-mail",
-              value: "hello@nextlayer.dev",
-              href: "mailto:hello@nextlayer.dev",
+              value: "nextlayerdev@gmail.com",
+              href: "mailto:nextlayerdev@gmail.com",
               color: "from-purple-500 to-pink-500",
             },
             {
               icon: Phone,
               title: "Telefone",
-              value: "+55 (11) 91234-5678",
-              href: "tel:+5511912345678",
+              value: "+55 (35) 99747-8472",
+              href: "https://wa.me/5535997478472",
               color: "from-blue-500 to-cyan-500",
             },
             {
               icon: MapPin,
               title: "Escritório",
-              value: "Rua Inovação, 123, Tecnópolis, SP 01234-567",
+              value: "",
               href: "https://maps.google.com",
               color: "from-green-500 to-emerald-500",
             },
@@ -2118,7 +2279,7 @@ export const translations = {
               icon: Globe,
               title: "Suporte Global",
               value: "Disponível 24/7 em todo o mundo",
-              href: "#support",
+              href: "/contact",
               color: "from-orange-500 to-yellow-500",
             },
           ],
@@ -2672,7 +2833,7 @@ export const translations = {
               {
                 "name": "Next.js",
                 "description": "Framework React para produção",
-                "logo": "https://nextjs.org/static/favicon/favicon-32x32.png"
+                "logo": "/next-logo.png"
               },
               {
                 "name": "TypeScript",
@@ -2682,12 +2843,12 @@ export const translations = {
               {
                 "name": "Tailwind CSS",
                 "description": "Framework CSS utilitário",
-                "logo": "https://tailwindcss.com/_next/static/media/tailwindcss-mark.b4282b4f.svg"
+                "logo": "/tailwind-logo.png"
               },
               {
                 "name": "Framer Motion",
                 "description": "Biblioteca de animação para React",
-                "logo": "https://www.framer.com/images/brand/framer-logo.png"
+                "logo": "/framermotion-logo.png"
               },
               {
                 "name": "Three.js",
@@ -2944,6 +3105,172 @@ export const translations = {
               icon: CheckCircle,
             },
           ],
+        },
+        terms : {
+          termscontent: [
+            {
+              id: "acceptance",
+              icon: UserCheck,
+              title: "Aceitação dos Termos",
+              content: [
+                {
+                  text: "Ao acessar ou utilizar o website NextLayer, aplicativos móveis ou quaisquer outros serviços fornecidos pela NextLayer (coletivamente, os 'Serviços'), você concorda em ficar vinculado a estes Termos de Serviço ('Termos'). Se você não concordar com estes Termos, não poderá acessar ou utilizar os Serviços."
+                },
+                {
+                  text: "Podemos modificar estes Termos a qualquer momento. Se fizermos alterações, iremos notificá-lo, seja enviando uma notificação por e-mail, disponibilizando um aviso através dos Serviços ou atualizando a data de 'Última Atualização' no início destes Termos. O uso contínuo dos Serviços confirmará sua aceitação dos Termos revisados."
+                }
+              ]
+            },
+            {
+              id: "account",
+              icon: UserCheck,
+              title: "Registro e Segurança da Conta",
+              content: [
+                {
+                  subtitle: "Criação de Conta",
+                  text: "Para utilizar certos recursos dos Serviços, você pode precisar registrar uma conta. Você concorda em fornecer informações precisas, atualizadas e completas durante o processo de registro e em mantê-las atualizadas."
+                },
+                {
+                  subtitle: "Segurança da Conta",
+                  text: "Você é responsável por proteger sua senha e por todas as atividades que ocorram em sua conta. Você concorda em nos notificar imediatamente caso suspeite de qualquer uso não autorizado de sua conta ou qualquer outra violação de segurança."
+                },
+                {
+                  subtitle: "Restrições de Idade",
+                  text: "Os Serviços são destinados a usuários com 18 anos ou mais. Ao utilizar os Serviços, você declara e garante que tem pelo menos 18 anos de idade."
+                }
+              ]
+            },
+            {
+              id: "content",
+              icon: FileText,
+              title: "Conteúdo e Conduta do Usuário",
+              content: [
+                {
+                  subtitle: "Conteúdo do Usuário",
+                  text: "Você mantém a propriedade de qualquer conteúdo que enviar, postar ou exibir através dos Serviços ('Conteúdo do Usuário'). Ao enviar Conteúdo do Usuário, você nos concede uma licença mundial, não exclusiva, isenta de royalties para usar, copiar, modificar, criar obras derivadas, distribuir e exibir seu Conteúdo do Usuário para fins de operação e prestação dos Serviços."
+                },
+                {
+                  subtitle: "Restrições de Conteúdo",
+                  text: "Você concorda em não postar, enviar ou compartilhar Conteúdo do Usuário que: (i) infrinja direitos de propriedade intelectual de terceiros; (ii) viole leis ou regulamentos; (iii) seja difamatório, obsceno, prejudicial, ameaçador, abusivo ou de outra forma inadequado; (iv) contenha vírus ou outros códigos maliciosos; ou (v) viole estes Termos."
+                },
+                {
+                  subtitle: "Conduta Proibida",
+                  text: "Você concorda em não: (i) usar os Serviços de forma que interfira, perturbe ou afete negativamente outros usuários; (ii) tentar contornar filtros, medidas de segurança ou outros recursos de proteção dos Serviços; (iii) usar meios automatizados para acessar ou utilizar os Serviços; ou (iv) usar os Serviços para fins ilegais ou não autorizados."
+                }
+              ]
+            },
+            {
+              id: "intellectual-property",
+              icon: Copyright,
+              title: "Direitos de Propriedade Intelectual",
+              content: [
+                {
+                  subtitle: "Propriedade",
+                  text: "Os Serviços e todo o conteúdo, recursos e funcionalidades (excluindo o Conteúdo do Usuário), incluindo informações, software, textos, imagens, vídeos, áudios, designs e sua seleção e disposição, são propriedade da NextLayer ou seus licenciantes e estão protegidos por leis de direitos autorais, marcas registradas e outras leis de propriedade intelectual."
+                },
+                {
+                  subtitle: "Licença de Uso",
+                  text: "Sujeito ao cumprimento destes Termos, concedemos a você uma licença limitada, não exclusiva, intransferível e não sublicenciável para acessar e usar os Serviços para fins pessoais ou internos de negócios."
+                },
+                {
+                  subtitle: "Feedback",
+                  text: "Se você nos fornecer qualquer feedback ou sugestão sobre os Serviços, você concorda em ceder todos os direitos sobre tal feedback e que teremos o direito de utilizá-lo da maneira que julgarmos apropriada."
+                }
+              ]
+            },
+            {
+              id: "privacy",
+              icon: ShieldCheck,
+              title: "Privacidade",
+              content: [
+                {
+                  text: "Consulte nossa Política de Privacidade para informações sobre como coletamos, usamos e divulgamos suas informações. Ao usar os Serviços, você concorda com nossa coleta, uso e divulgação de informações conforme descrito na Política de Privacidade."
+                }
+              ]
+            },
+            {
+              id: "third-party",
+              icon: Globe,
+              title: "Serviços de Terceiros",
+              content: [
+                {
+                  text: "Os Serviços podem conter links para sites ou serviços de terceiros não controlados pela NextLayer. Não temos controle e não assumimos responsabilidade pelo conteúdo, políticas de privacidade ou práticas de sites ou serviços de terceiros. Você reconhece e concorda que não seremos responsáveis por qualquer dano ou perda causado ou alegado em conexão com o uso ou confiança em tais conteúdos, bens ou serviços."
+                }
+              ]
+            },
+            {
+              id: "termination",
+              icon: Ban,
+              title: "Rescisão",
+              content: [
+                {
+                  text: "Podemos encerrar ou suspender seu acesso aos Serviços, a nosso critério, a qualquer momento e sem aviso prévio. Você pode cancelar sua conta a qualquer momento entrando em contato conosco. Após a rescisão, seu direito de usar os Serviços cessará imediatamente."
+                },
+                {
+                  text: "As seguintes disposições sobreviverão à rescisão: Direitos de Propriedade Intelectual, Isenção de Garantias, Limitação de Responsabilidade, Indenização e Lei Aplicável."
+                }
+              ]
+            },
+            {
+              id: "disclaimer",
+              icon: AlertTriangle,
+              title: "Isenção de Garantias",
+              content: [
+                {
+                  text: "OS SERVIÇOS E TODO O CONTEÚDO SÃO FORNECIDOS 'COMO ESTÃO' E 'CONFORME DISPONÍVEIS', SEM GARANTIAS DE QUALQUER TIPO, EXPRESSAS OU IMPLÍCITAS. NA MÁXIMA EXTENSÃO PERMITIDA POR LEI, A NEXTLAYER ISENTA-SE DE TODAS AS GARANTIAS, INCLUINDO, SEM LIMITAÇÃO, GARANTIAS IMPLÍCITAS DE COMERCIALIZAÇÃO, ADEQUAÇÃO A UM PROPÓSITO ESPECÍFICO E NÃO VIOLAÇÃO."
+                },
+                {
+                  text: "A NEXTLAYER NÃO GARANTE QUE OS SERVIÇOS SERÃO ININTERRUPTOS OU LIVRES DE ERROS, QUE DEFEITOS SERÃO CORRIGIDOS OU QUE OS SERVIÇOS OU SERVIDORES QUE OS DISPONIBILIZAM ESTÃO LIVRES DE VÍRUS OU OUTROS COMPONENTES NOCIVOS."
+                }
+              ]
+            },
+            {
+              id: "limitation",
+              icon: AlertTriangle,
+              title: "Limitação de Responsabilidade",
+              content: [
+                {
+                  text: "NA MÁXIMA EXTENSÃO PERMITIDA POR LEI, EM NENHUMA HIPÓTESE A NEXTLAYER OU SEUS DIRETORES, FUNCIONÁRIOS, PARCEIROS, AGENTES, FORNECEDORES OU AFILIADOS SERÃO RESPONSÁVEIS POR DANOS INDIRETOS, INCIDENTAIS, ESPECIAIS, CONSEQUENCIAIS OU PUNITIVOS, INCLUINDO PERDA DE LUCROS, DADOS, USO, FUNDO DE COMÉRCIO OU OUTRAS PERDAS INTANGÍVEIS, DECORRENTES DE: (I) SEU ACESSO OU USO OU INABILIDADE DE ACESSAR OU USAR OS SERVIÇOS; (II) QUALQUER CONDUTA OU CONTEÚDO DE TERCEIROS NOS SERVIÇOS; (III) QUALQUER CONTEÚDO OBTIDO DOS SERVIÇOS; E (IV) ACESSO, USO OU ALTERAÇÃO NÃO AUTORIZADOS DE SUAS TRANSMISSÕES OU CONTEÚDO, SEJA COM BASE EM GARANTIA, CONTRATO, ATO ILÍCITO (INCLUINDO NEGLIGÊNCIA) OU QUALQUER OUTRA TEORIA JURÍDICA."
+                }
+              ]
+            },
+            {
+              id: "indemnification",
+              icon: ShieldCheck,
+              title: "Indenização",
+              content: [
+                {
+                  text: "Você concorda em defender, indenizar e isentar a NextLayer e seus diretores, funcionários e agentes de e contra quaisquer reclamações, responsabilidades, danos, perdas e despesas, incluindo honorários advocatícios razoáveis, decorrentes de ou relacionados ao seu acesso ou uso dos Serviços ou violação destes Termos."
+                }
+              ]
+            },
+            {
+              id: "governing-law",
+              icon: Scale,
+              title: "Lei Aplicável",
+              content: [
+                {
+                  text: "Estes Termos serão regidos e interpretados de acordo com as leis do Estado da Califórnia, sem considerar seus conflitos de leis. Qualquer disputa relacionada a estes Termos será finalmente resolvida por arbitragem em São Francisco, Califórnia, em inglês, de acordo com as Regras e Procedimentos de Arbitragem da JAMS então em vigor."
+                }
+              ]
+            },
+            {
+              id: "contact",
+              icon: MessageSquare,
+              title: "Fale Conosco",
+              content: [
+                {
+                  text: "Se tiver dúvidas sobre estes Termos, entre em contato conosco em legal@nextlayer.com."
+                }
+              ]
+            }
+          ],
+          termshero: {
+            title: "Termos de Serviço",
+            subtitle: "Acordo legal entre você e a NextLayer",
+            description: "Por favor, leia estes Termos de Serviço cuidadosamente antes de utilizar nosso website e serviços. Ao acessar ou usar nossos serviços, você concorda em ficar vinculado a estes termos.",
+            lastUpdated: "Última atualização: 8 de abril de 2025"
+          }
         }                                
      },
   }
