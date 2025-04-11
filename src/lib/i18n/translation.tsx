@@ -1,4 +1,4 @@
-import { ShoppingCart, UserCheck,MapPin, Award,Copyright, ShieldCheck,Ban, AlertTriangle,Scale, DollarSign, PieChart, Route, Car,Clock, Bus, FileText, BarChart, Map, Bell, Code, Laptop, Layout, Layers, Lightbulb, PenTool, Monitor, Search, PaintBucket, Palette, CheckCircle, ShoppingBag, BarChart3, Package, Truck, Settings, Server, Mail, MessageCircle, Phone, MessageSquare, Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
+import { ShoppingCart, UserCheck,MapPin, Award,Copyright,Briefcase, ShieldCheck,Ban, AlertTriangle,Scale, DollarSign, PieChart, Route, Car,Clock, Bus, FileText, BarChart, Map, Bell, Code, Laptop, Layout, Layers, Lightbulb, PenTool, Monitor, Search, PaintBucket, Palette, CheckCircle, ShoppingBag, BarChart3, Package, Truck, Settings, Server, Mail, MessageCircle, Phone, MessageSquare, Code2, Smartphone, Globe, Shield, Zap, Users, Cloud, Brain, Rocket, RefreshCw, Video, GitBranch } from "lucide-react"
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
   size?: number;
@@ -1642,6 +1642,46 @@ export const translations = {
               "Please read these Terms of Service carefully before using our website and services. By accessing or using our services, you agree to be bound by these terms.",
             lastUpdated: "Last updated: April 8, 2025",
           }
+        },
+        links : {
+          title: "NextLayer | Connect With Us",
+          explore : "Explore our services",
+          content : {
+              name: "NextLayer",
+              title: "Connect With Us",
+              description: "Follow our social channels for the latest updates, insights, and inspiration.",
+              verified: true,
+          },
+          links : [
+            {
+              title: "Web Development",
+              description: "Modern, responsive websites and web applications",
+              icon: Code,
+              url: "/interactive-websites",
+              color: "from-blue-400 to-purple-500",
+            },
+            {
+              title: "View Our Portfolio",
+              description: "Explore our latest projects and case studies",
+              icon: Briefcase,
+              url: "/portfolio",
+              color: "from-violet-400 to-purple-600",
+            },
+            {
+              title: "About Us",
+              description: "Learn more about our team and mission",
+              icon: FileText,
+              url: "/",
+              color: "from-fuchsia-400 to-purple-600",
+            },
+            {
+              title: "Contact Us",
+              description: "Get in touch for inquiries and collaborations",
+              icon: Mail,
+              url: "/contact",
+              color: "from-pink-400 to-purple-600",
+            },
+          ]
         }
       },
 
@@ -3271,6 +3311,46 @@ export const translations = {
             description: "Por favor, leia estes Termos de Serviço cuidadosamente antes de utilizar nosso website e serviços. Ao acessar ou usar nossos serviços, você concorda em ficar vinculado a estes termos.",
             lastUpdated: "Última atualização: 8 de abril de 2025"
           }
+        },
+        links : {
+          title: "NextLayer | Conecte-se Conosco",
+          explore : "Explore Nossos Serviços",
+          content : {
+              name: "NextLayer",
+              title: "Conecte-se Conosco",
+              description: "Siga nossos canais sociais para as últimas atualizações, insights e inspiração.",
+              verified: true,
+          },
+          links : [
+            {
+              title: "Desenvolvimento Web",
+              description: "Websites e aplicações web modernas e responsivas",
+              icon: Code,
+              url: "/interactive-websites",
+              color: "from-blue-400 to-purple-500",
+            },
+            {
+              title: "Veja Nosso Portfólio",
+              description: "Explore nossos projetos recentes e estudos de caso",
+              icon: Briefcase,
+              url: "/portfolio",
+              color: "from-violet-400 to-purple-600",
+            },
+            {
+              title: "Sobre Nós",
+              description: "Conheça mais sobre nossa equipe e missão",
+              icon: FileText,
+              url: "/",
+              color: "from-fuchsia-400 to-purple-600",
+            },
+            {
+              title: "Contate-Nos",
+              description: "Entre em contato para consultas e colaborações",
+              icon: Mail,
+              url: "/contact",
+              color: "from-pink-400 to-purple-600",
+            },
+          ]
         }                                
      },
   }
