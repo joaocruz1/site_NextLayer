@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Slider } from "@/components/ui/slider"
@@ -16,7 +15,6 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 export function EasterCardGenerator() {
   const [message, setMessage] = useState("")
-  const [name, setName] = useState("")
   const [style, setStyle] = useState("watercolor")
   const [theme, setTheme] = useState("traditional")
   const [includeElements, setIncludeElements] = useState(true)
@@ -126,9 +124,9 @@ export function EasterCardGenerator() {
       if (data.note) {
         console.log(data.note)
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error generating card:", error)
-      setError(error.message || "Failed to generate Easter card. Please try again.")
+      setError(error instanceof Error ? error.message : "Failed to generate Easter card. Please try again.")
     } finally {
       setIsGenerating(false)
     }
@@ -173,7 +171,7 @@ export function EasterCardGenerator() {
       try {
         await navigator.share({
           title: "My Easter Card",
-          text: `Check out this Easter card I created with the message: "${message}"${name ? ` from ${name}` : ''}`,
+          text: `Check out this Easter card I created with the message: "${message}": ''}`,
           url: window.location.href,
         })
       } catch (error) {
