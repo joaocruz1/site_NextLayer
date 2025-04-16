@@ -14,7 +14,7 @@ export function EasterHero() {
           className="inline-flex items-center rounded-full border border-purple-500/10 bg-purple-500/5 px-3 py-1 text-xs sm:text-sm text-purple-200 backdrop-blur-sm"
         >
           <Egg className="h-4 w-4 mr-2" />
-          <span>AI-Powered Easter Card Generator</span>
+          <span>Gerador de Cartões de Páscoa com Inteligência Artificial</span>
         </motion.div>
 
         <motion.h1
@@ -25,7 +25,7 @@ export function EasterHero() {
         >
           <span className="block text-white mb-4">Create Magical</span>
           <span className="block bg-gradient-to-r from-pink-300 via-purple-400 to-yellow-300 bg-clip-text text-transparent pb-4">
-            Easter Cards with AI
+            Cartões de Páscoa com IA
           </span>
         </motion.h1>
 
@@ -35,8 +35,7 @@ export function EasterHero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-lg text-zinc-400 max-w-2xl mx-auto"
         >
-          Enter your personalized Easter message and our AI will generate a beautiful, unique Easter card that you can
-          download and share with your loved ones.
+          Digite sua mensagem personalizada de Páscoa e nossa IA vai gerar um cartão único e encantador, pronto para você baixar e compartilhar com quem ama.
         </motion.p>
 
         <motion.div
@@ -46,7 +45,7 @@ export function EasterHero() {
           className="flex items-center justify-center gap-2 text-sm text-purple-300"
         >
           <Sparkles className="h-4 w-4" />
-          <span>Powered by advanced AI image generation</span>
+          <span>Impulsionado por tecnologia avançada de geração de imagens com IA</span>
         </motion.div>
 
         <motion.div

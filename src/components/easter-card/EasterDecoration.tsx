@@ -3,15 +3,6 @@
 import { motion } from "framer-motion"
 
 export function EasterDecoration() {
-  // Easter decoration elements
-  const decorations = [
-    { type: "bunny-ears", position: "top-0 left-10", delay: 0 },
-    { type: "egg", position: "top-20 right-10", delay: 0.2 },
-    { type: "flower", position: "bottom-20 left-20", delay: 0.4 },
-    { type: "bunny", position: "bottom-10 right-20", delay: 0.6 },
-    { type: "egg", position: "top-40 left-1/3", delay: 0.8 },
-    { type: "flower", position: "top-60 right-1/4", delay: 1 },
-  ]
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0">

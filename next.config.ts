@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactStrictMode: true,
   images: {
     domains: [
@@ -12,7 +11,10 @@ const nextConfig: NextConfig = {
       "www.framer.com",
       "threejs.org",
       "graphql.org",
-      "nodejs.org"
+      "nodejs.org",
+      "placehold.co",
+      "images.unsplash.com",
+      "oaidalleapiprodscus.blob.core.windows.net" 
     ],
   },
 };

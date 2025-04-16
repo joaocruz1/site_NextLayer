@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -28,56 +28,64 @@ export function EasterCardGenerator() {
   const [error, setError] = useState<string | null>(null)
   const cardRef = useRef<HTMLDivElement>(null)
 
+  // Carrega a imagem do cache local ao montar o componente
+  useEffect(() => {
+    const savedImage = localStorage.getItem('easterCardImage')
+    const savedPrompt = localStorage.getItem('easterCardPrompt')
+    if (savedImage) setGeneratedImage(savedImage)
+    if (savedPrompt) setGeneratedPrompt(savedPrompt)
+  }, [])
+
   const cardStyles = [
-    { value: "watercolor", label: "Watercolor" },
-    { value: "digital-art", label: "Digital Art" },
+    { value: "watercolor", label: "Aquarela" },
+    { value: "digital-art", label: "Arte Digital" },
     { value: "cartoon", label: "Cartoon" },
-    { value: "realistic", label: "Realistic" },
-    { value: "minimalist", label: "Minimalist" },
+    { value: "realistic", label: "Realista" },
+    { value: "minimalist", label: "Minimalista" },
   ]
 
   const cardThemes = [
-    { value: "traditional", label: "Traditional Easter" },
-    { value: "spring", label: "Spring Flowers" },
-    { value: "cute-animals", label: "Cute Animals" },
-    { value: "religious", label: "Religious" },
-    { value: "modern", label: "Modern & Abstract" },
+    { value: "traditional", label: "Páscoa tradicional" },
+    { value: "spring", label: "Flores da Primavera" },
+    { value: "cute-animals", label: "Animais Fofos" },
+    { value: "religious", label: "Religioso" },
+    { value: "modern", label: "Moderno & Abstrato" },
   ]
 
   const buildPrompt = () => {
-    const easterPrompts = {
-      traditional: "A beautiful traditional Easter card with decorated eggs, spring flowers, and a pastel color palette.",
-      spring: "A vibrant spring-themed Easter card with blooming flowers, butterflies, and fresh green foliage.",
-      "cute-animals": "An adorable Easter card featuring cute bunnies, chicks, and lambs in a playful spring setting.",
-      religious: "A meaningful Easter card with symbolic elements of resurrection, cross, and divine light.",
-      modern: "A contemporary Easter card with abstract shapes, modern typography, and a minimalist design approach.",
+    let basePrompt = ""
+
+    switch (theme) {
+      case "traditional":
+        basePrompt = "traditional Easter eggs and flowers"
+        break
+      case "spring":
+        basePrompt = "spring flowers and butterflies"
+        break
+      case "cute-animals":
+        basePrompt = "cute Easter bunnies and chicks"
+        break
+      case "religious":
+        basePrompt = "Easter cross and divine light"
+        break
+      case "modern":
+        basePrompt = "modern abstract Easter design"
+        break
+      default:
+        basePrompt = "Easter eggs and flowers"
     }
 
-    const styleDescriptions = {
-      watercolor: "painted in a soft watercolor style with gentle brush strokes and flowing colors",
-      "digital-art": "created with vibrant digital art techniques featuring bold colors and clean lines",
-      cartoon: "illustrated in a cheerful cartoon style with cute characters and playful elements",
-      realistic: "rendered in a realistic style with detailed textures and natural lighting",
-      minimalist: "designed with a minimalist approach using simple shapes and limited color palette",
+    if (style !== "watercolor") {
+      basePrompt += ` in ${style} style`
     }
 
-    const basePrompt = easterPrompts[theme as keyof typeof easterPrompts] || easterPrompts.traditional
-    const stylePrompt = styleDescriptions[style as keyof typeof styleDescriptions] || styleDescriptions.watercolor
+    if (includeElements) {
+      basePrompt += ", with Easter elements like eggs, bunnies and flowers"
+    }
 
-    const elementsPrompt = includeElements
-      ? "The design includes traditional Easter elements like decorated eggs, rabbits, and spring flowers."
-      : "The design focuses on a clean, elegant look without traditional Easter symbols."
+    basePrompt += `. Colorfulness level: ${colorfulness[0]}%`
 
-    const colorPrompt =
-      colorfulness[0] > 70
-        ? "The color palette is vibrant and cheerful with bright spring colors."
-        : colorfulness[0] > 30
-          ? "The color palette is balanced with medium-toned spring colors."
-          : "The color palette is subtle and muted with soft pastel tones."
-
-    const messagePrompt = `The card prominently displays the message: "${message}"${name ? ` and is signed from: ${name}` : ""}.`
-
-    return `${basePrompt} The artwork is ${stylePrompt}. ${elementsPrompt} ${colorPrompt} ${messagePrompt} The overall composition creates a warm, festive Easter atmosphere that conveys joy and celebration. Make this a high-quality, professional greeting card design.`
+    return basePrompt
   }
 
   const generateCard = async () => {
@@ -96,7 +104,12 @@ export function EasterCardGenerator() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompt }),
+        body: JSON.stringify({
+          prompt,
+          message,
+          name,
+          theme,
+        }),
       })
 
       if (!response.ok) {
@@ -106,6 +119,13 @@ export function EasterCardGenerator() {
 
       const data = await response.json()
       setGeneratedImage(data.imageUrl)
+      // Salva no localStorage
+      localStorage.setItem('easterCardImage', data.imageUrl)
+      localStorage.setItem('easterCardPrompt', prompt)
+
+      if (data.note) {
+        console.log(data.note)
+      }
     } catch (error: any) {
       console.error("Error generating card:", error)
       setError(error.message || "Failed to generate Easter card. Please try again.")
@@ -114,87 +134,37 @@ export function EasterCardGenerator() {
     }
   }
 
-  const downloadCard = () => {
-    if (!generatedImage) return;
-  
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-  
-    canvas.width = 1024;
-    canvas.height = 1024;
-  
-    const img = new (window as any).Image() as HTMLImageElement;
-    img.crossOrigin = "anonymous";
-    img.src = generatedImage;
-  
-    img.onload = () => {
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-  
-      ctx.fillStyle = "white";
-      ctx.font = "bold 48px Arial";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-  
-      const maxWidth = canvas.width * 0.8;
-      const words = message.split(" ");
-      const lines = [];
-      let currentLine = words[0];
-  
-      for (let i = 1; i < words.length; i++) {
-        const testLine = currentLine + " " + words[i];
-        const metrics = ctx.measureText(testLine);
-        if (metrics.width > maxWidth) {
-          lines.push(currentLine);
-          currentLine = words[i];
-        } else {
-          currentLine = testLine;
-        }
-      }
-      lines.push(currentLine);
-  
-      const lineHeight = 60;
-      const startY = canvas.height / 2 - ((lines.length - 1) * lineHeight) / 2;
-      lines.forEach((line, i) => {
-        ctx.fillText(line, canvas.width / 2, startY + i * lineHeight);
-      });
-  
-      if (name) {
-        ctx.font = "italic 36px Arial";
-        ctx.fillText(`From: ${name}`, canvas.width / 2, startY + lines.length * lineHeight + 60);
-      }
-  
-      try {
-        const dataUrl = canvas.toDataURL("image/png");
-        const link = document.createElement("a");
-        link.href = dataUrl;
-        link.download = "easter-card.png";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      } catch (e) {
-        console.error("Error creating downloadable image:", e);
-        const link = document.createElement("a");
-        link.href = generatedImage;
-        link.download = "easter-card.png";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }
-    };
-  
-    img.onerror = () => {
-      console.error("Error loading image for download");
-      const link = document.createElement("a");
-      link.href = generatedImage;
-      link.download = "easter-card.png";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    };
-  };
+  const downloadCard = async () => {
+    if (!generatedImage) return
+
+    try {
+      // Faz o download diretamente sem abrir nova aba
+      const response = await fetch(generatedImage)
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
+      
+      const link = document.createElement('a')
+      link.href = url
+      link.download = 'easter-card.png'
+      document.body.appendChild(link)
+      link.click()
+      
+      // Limpa após o download
+      setTimeout(() => {
+        document.body.removeChild(link)
+        window.URL.revokeObjectURL(url)
+      }, 100)
+    } catch (error) {
+      console.error('Error downloading image:', error)
+      // Fallback para o método anterior se houver erro
+      const link = document.createElement('a')
+      link.href = generatedImage
+      link.download = 'easter-card.png'
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    }
+  }
 
   const shareCard = async () => {
     if (!generatedImage) return
@@ -203,7 +173,7 @@ export function EasterCardGenerator() {
       try {
         await navigator.share({
           title: "My Easter Card",
-          text: `Check out this Easter card I created with the message: "${message}"`,
+          text: `Check out this Easter card I created with the message: "${message}"${name ? ` from ${name}` : ''}`,
           url: window.location.href,
         })
       } catch (error) {
@@ -214,23 +184,32 @@ export function EasterCardGenerator() {
     }
   }
 
+  // Limpa o cache quando gerar uma nova imagem
+  const clearCache = () => {
+    localStorage.removeItem('easterCardImage')
+    localStorage.removeItem('easterCardPrompt')
+    setGeneratedImage("")
+    setGeneratedPrompt("")
+    setActiveTab("customize")
+  }
+
   return (
     <section className="py-8 md:py-16">
       <div className="max-w-4xl mx-auto">
         <Tabs defaultValue="customize" value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-2 mb-8">
-            <TabsTrigger value="customize" className="data-[state=active]:bg-purple-600  text-black">
-              <Palette className="h-4 w-4 mr-2" />
-              Customize Your Card
+            <TabsTrigger value="customize" className="data-[state=active]:bg-purple-600 text-black">
+              <Palette className="h-4 w-4 mr-2 " />
+              Personalize seu cartão
             </TabsTrigger>
             <TabsTrigger value="result" className="data-[state=active]:bg-purple-600 text-black">
               <ImageIcon className="h-4 w-4 mr-2" />
-              Your Easter Card
+              Seu cartão de Páscoa
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="customize" className="space-y-8">
-            <motion.div
+            <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -239,34 +218,21 @@ export function EasterCardGenerator() {
               <div className="space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="message" className="text-sm text-purple-200">
-                    Your Easter Message
+                    Sua Mensagem do Cartão Páscoa
                   </Label>
                   <Textarea
                     id="message"
                     placeholder="Enter your Easter wishes here..."
-                    className="min-h-[120px] bg-purple-950/30 border-purple-300/20 focus:border-purple-400/50 placeholder:text-zinc-500"
+                    className="min-h-[120px] bg-purple-950/30 text-purple-200 border-purple-300/20 focus:border-purple-400/50 placeholder:text-zinc-500"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                   />
                 </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="name" className="text-sm text-purple-200">
-                    From (Optional)
-                  </Label>
-                  <Input
-                    id="name"
-                    placeholder="Your name"
-                    className="bg-purple-950/30 border-purple-300/20 focus:border-purple-400/50 placeholder:text-zinc-500"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
                 </div>
-              </div>
 
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <Label className="text-sm text-purple-200">Card Style</Label>
+                  <Label className="text-sm text-purple-200">Estilo do Cartão</Label>
                   <Select value={style} onValueChange={setStyle}>
                     <SelectTrigger className="bg-purple-950/30 border-purple-300/20 text-purple-200">
                       <SelectValue placeholder="Select style" />
@@ -282,7 +248,7 @@ export function EasterCardGenerator() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-sm text-purple-200">Easter Theme</Label>
+                  <Label className="text-sm text-purple-200">Tema de Páscoa</Label>
                   <Select value={theme} onValueChange={setTheme}>
                     <SelectTrigger className="bg-purple-950/20 border-purple-300/20 text-purple-200">
                       <SelectValue placeholder="Select theme" />
@@ -300,7 +266,7 @@ export function EasterCardGenerator() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <Label htmlFor="colorfulness" className="text-sm text-purple-200">
-                      Colorfulness
+                      Coloração do Cartão
                     </Label>
                     <span className="text-xs text-purple-300">{colorfulness[0]}%</span>
                   </div>
@@ -316,9 +282,13 @@ export function EasterCardGenerator() {
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <Switch id="include-elements" checked={includeElements} onCheckedChange={setIncludeElements} />
+                  <Switch 
+                    id="include-elements" 
+                    checked={includeElements} 
+                    onCheckedChange={setIncludeElements} 
+                  />
                   <Label htmlFor="include-elements" className="text-sm text-purple-200">
-                    Include Easter elements (eggs, bunnies, flowers)
+                    Inclua elementos de Páscoa (ovos, coelhos, flores)
                   </Label>
                 </div>
               </div>
@@ -339,12 +309,12 @@ export function EasterCardGenerator() {
                 {isGenerating ? (
                   <>
                     <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                    Generating...
+                    Gerando...
                   </>
                 ) : (
                   <>
                     <Sparkles className="mr-2 h-5 w-5" />
-                    Generate Easter Card
+                    Gerado o Cartão de Pascoa !
                   </>
                 )}
               </Button>
@@ -361,14 +331,14 @@ export function EasterCardGenerator() {
             ) : error ? (
               <Alert variant="destructive" className="bg-red-900/20 border-red-500/30">
                 <AlertCircle className="h-4 w-4" />
-                <AlertTitle>Error</AlertTitle>
+                <AlertTitle>Erro</AlertTitle>
                 <AlertDescription>{error}</AlertDescription>
                 <Button
                   onClick={() => setActiveTab("customize")}
                   variant="link"
                   className="text-red-300 hover:text-red-200 mt-2 p-0"
                 >
-                  Go back and try again
+                  Volte e tente novamente
                 </Button>
               </Alert>
             ) : generatedImage ? (
@@ -382,27 +352,23 @@ export function EasterCardGenerator() {
                   ref={cardRef}
                   className="relative mx-auto max-w-2xl overflow-hidden rounded-xl border-8 border-purple-300/20 shadow-2xl"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 via-pink-500/10 to-yellow-500/20 mix-blend-overlay" />
-
-                  <div className="relative aspect-[4/3] bg-gradient-to-b from-purple-900/50 to-purple-950/50">
+                  <div className="relative aspect-[4/3]">
                     <Image
-                      src={generatedImage || "/placeholder.svg"}
+                      src={generatedImage}
                       alt="Generated Easter Card"
                       fill
                       className="object-cover"
+                      unoptimized={true}
                     />
-
-                    <div className="absolute inset-0 flex items-center justify-center p-8">
-                      <div className="bg-black/30 backdrop-blur-sm p-6 rounded-xl max-w-md text-center">
-                        <p className="text-white text-xl md:text-2xl font-medium mb-4">{message}</p>
-                        {name && <p className="text-white text-lg">From: {name}</p>}
-                      </div>
-                    </div>
                   </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                  <Button onClick={downloadCard} className="bg-purple-600 hover:bg-purple-700 text-white" size="lg">
+                  <Button 
+                    onClick={downloadCard} 
+                    className="bg-purple-600 hover:bg-purple-700 text-white" 
+                    size="lg"
+                  >
                     <Download className="mr-2 h-5 w-5" />
                     Download Card
                   </Button>
@@ -414,17 +380,17 @@ export function EasterCardGenerator() {
                     size="lg"
                   >
                     <Share2 className="mr-2 h-5 w-5" />
-                    Share Card
+                    Compartilhar Cartão
                   </Button>
 
                   <Button
-                    onClick={() => setActiveTab("customize")}
+                    onClick={clearCache}
                     variant="ghost"
                     className="text-purple-300 hover:text-purple-200 hover:bg-purple-500/10"
                     size="lg"
                   >
                     <RefreshCw className="mr-2 h-5 w-5" />
-                    Create Another
+                    Criar Outro
                   </Button>
                 </div>
 
@@ -443,7 +409,7 @@ export function EasterCardGenerator() {
                   variant="link"
                   className="text-purple-400 hover:text-purple-300 mt-4"
                 >
-                  Create a card
+                  Criar um Cartão
                 </Button>
               </div>
             )}
