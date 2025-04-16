@@ -88,15 +88,15 @@ export function EasterCardGenerator() {
 
   const generateCard = async () => {
     if (!message) return
-
+  
     try {
       setIsGenerating(true)
       setActiveTab("result")
       setError(null)
-
+  
       const prompt = buildPrompt()
       setGeneratedPrompt(prompt)
-
+  
       const response = await fetch("/api/generate-easter-card", {
         method: "POST",
         headers: {
@@ -105,28 +105,46 @@ export function EasterCardGenerator() {
         body: JSON.stringify({
           prompt,
           message,
-          name,
           theme,
         }),
       })
-
-      if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData.error || "Failed to generate Easter card")
+  
+      const contentType = response.headers.get("content-type")
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error("Invalid response format from server")
       }
-
+  
       const data = await response.json()
+  
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to generate Easter card")
+      }
+  
+      if (!data.imageUrl) {
+        throw new Error("No image URL returned from API")
+      }
+  
       setGeneratedImage(data.imageUrl)
-      // Salva no localStorage
       localStorage.setItem('easterCardImage', data.imageUrl)
       localStorage.setItem('easterCardPrompt', prompt)
-
-      if (data.note) {
-        console.log(data.note)
-      }
-    } catch (error: unknown) {
+  
+    } catch (error) {
       console.error("Error generating card:", error)
-      setError(error instanceof Error ? error.message : "Failed to generate Easter card. Please try again.")
+      
+      let errorMessage = "Failed to generate Easter card. Please try again."
+      if (error instanceof Error) {
+        errorMessage = error.message
+        
+        // Se for um erro de JSON, mostre uma mensagem mais amigável
+        if (error.message.includes("JSON")) {
+          errorMessage = "Server response error. Please check your connection and try again."
+        }
+      }
+      
+      setError(errorMessage)
+      
+      // Fallback para imagem placeholder
+      setGeneratedImage(`https://placehold.co/1024/purple/white?text=Easter+Card+Error&font=montserrat`)
     } finally {
       setIsGenerating(false)
     }

@@ -3,8 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next"
 async function generateImageWithAI(prompt: string, message: string, name: string) {
   const apiKey = process.env.OPENAI_API_KEY
   if (!apiKey) {
-    console.error("OpenAI API key not configured")
-    throw new Error("Service configuration error")
+    throw new Error("OpenAI API key not configured")
   }
 
   try {
@@ -27,15 +26,14 @@ async function generateImageWithAI(prompt: string, message: string, name: string
       }),
     })
 
+    const data = await response.json()
+    
     if (!response.ok) {
-      const errorData = await response.json()
-      console.error("OpenAI API Error Details:", errorData)
-      throw new Error(errorData.error?.message || "API request failed")
+      console.error("OpenAI API Error Details:", data)
+      throw new Error(data.error?.message || "API request failed")
     }
 
-    const data = await response.json()
     return data.data[0].url
-
   } catch (error) {
     console.error("OpenAI API Error:", error)
     throw error
@@ -44,14 +42,15 @@ async function generateImageWithAI(prompt: string, message: string, name: string
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
-    return res.setHeader("Allow", ["POST"]).status(405).json({
+    res.setHeader("Allow", ["POST"])
+    return res.status(405).json({
       error: "Method not allowed",
       details: "Only POST requests are accepted"
     })
   }
 
   try {
-    const { prompt, message, name } = req.body
+    const { prompt, message, name, theme } = req.body
 
     if (!prompt || typeof prompt !== "string") {
       return res.status(400).json({
@@ -60,19 +59,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       })
     }
 
-    const imageUrl = await generateImageWithAI(prompt, message, name)
+    const imageUrl = await generateImageWithAI(prompt, message, name || "")
     return res.status(200).json({ imageUrl })
 
   } catch (error) {
     console.error("API Route Error:", error)
     
-    const fallbackUrl = `https://placehold.co/1024/purple/white?text=Easter+Card&font=montserrat`
-    
-    return res.status(200).json({
-      imageUrl: fallbackUrl,
-      prompt: req.body.prompt,
-      note: "Used fallback image",
-      warning: error instanceof Error ? error.message : "Image generation failed"
+    // Garante que sempre retornamos JSON
+    return res.status(500).json({
+      error: "Failed to generate image",
+      details: error instanceof Error ? error.message : "Unknown error",
+      fallbackUrl: `https://placehold.co/1024/purple/white?text=Easter+Card&font=montserrat`
     })
   }
 }
