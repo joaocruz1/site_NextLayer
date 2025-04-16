@@ -50,7 +50,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const { prompt, message, name, theme } = req.body
+    const { prompt, message, name} = req.body
 
     if (!prompt || typeof prompt !== "string") {
       return res.status(400).json({
