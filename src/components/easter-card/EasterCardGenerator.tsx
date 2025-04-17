@@ -1,3 +1,4 @@
+// components/EasterCardGenerator.tsx
 "use client"
 
 import { useState, useRef, useEffect } from "react"
@@ -26,7 +27,6 @@ export function EasterCardGenerator() {
   const [error, setError] = useState<string | null>(null)
   const cardRef = useRef<HTMLDivElement>(null)
 
-  // Carrega a imagem do cache local ao montar o componente
   useEffect(() => {
     const savedImage = localStorage.getItem('easterCardImage')
     const savedPrompt = localStorage.getItem('easterCardPrompt')
@@ -112,29 +112,24 @@ export function EasterCardGenerator() {
         }),
       })
   
-      // Verifica se a resposta é JSON
-      const contentType = response.headers.get("content-type")
-      if (!contentType?.includes("application/json")) {
-        const textResponse = await response.text()
-        console.error("Resposta não-JSON:", textResponse)
-        throw new Error("Resposta inválida do servidor")
-      }
-  
       const result = await response.json()
   
-      if (!response.ok) {
-        throw new Error(result.message || "Falha ao gerar o cartão")
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || result.error || "Falha ao gerar o cartão")
       }
   
-      // Usa fallback se imageUrl não estiver disponível
-      const imageUrl = result.imageUrl || result.fallbackUrl
+      // Acesso seguro aos dados com fallbacks
+      const imageUrl = result.data?.imageUrl || result.data?.fallbackUrl
+      const revisedPrompt = result.data?.revisedPrompt || prompt
+      
       if (!imageUrl) {
         throw new Error("Nenhuma imagem foi retornada")
       }
   
       setGeneratedImage(imageUrl)
+      setGeneratedPrompt(revisedPrompt)
       localStorage.setItem('easterCardImage', imageUrl)
-      localStorage.setItem('easterCardPrompt', prompt)
+      localStorage.setItem('easterCardPrompt', revisedPrompt)
   
     } catch (error) {
       console.error("Erro ao gerar cartão:", error)
@@ -142,9 +137,7 @@ export function EasterCardGenerator() {
       let errorMessage = "Ocorreu um erro ao gerar seu cartão. Por favor, tente novamente."
       
       if (error instanceof Error) {
-        errorMessage = error.message.includes("Resposta inválida") 
-          ? "Problema de comunicação com o servidor. Tente novamente mais tarde."
-          : error.message
+        errorMessage = error.message
       }
   
       setError(errorMessage)
@@ -159,7 +152,6 @@ export function EasterCardGenerator() {
     if (!generatedImage) return
 
     try {
-      // Faz o download diretamente sem abrir nova aba
       const response = await fetch(generatedImage)
       const blob = await response.blob()
       const url = window.URL.createObjectURL(blob)
@@ -170,14 +162,12 @@ export function EasterCardGenerator() {
       document.body.appendChild(link)
       link.click()
       
-      // Limpa após o download
       setTimeout(() => {
         document.body.removeChild(link)
         window.URL.revokeObjectURL(url)
       }, 100)
     } catch (error) {
       console.error('Error downloading image:', error)
-      // Fallback para o método anterior se houver erro
       const link = document.createElement('a')
       link.href = generatedImage
       link.download = 'easter-card.png'
@@ -194,18 +184,24 @@ export function EasterCardGenerator() {
       try {
         await navigator.share({
           title: "My Easter Card",
-          text: `Check out this Easter card I created with the message: "${message}": ''}`,
+          text: `Check out this Easter card I created with the message: "${message}"`,
           url: window.location.href,
         })
       } catch (error) {
         console.error("Error sharing:", error)
       }
     } else {
-      alert("Sharing is not supported in your browser. You can copy the URL manually.")
+      // Fallback para navegadores sem suporte à API de compartilhamento
+      try {
+        await navigator.clipboard.writeText(window.location.href)
+        alert("Link copiado para a área de transferência!")
+      } catch (error) {
+        alert("Compartilhe manualmente copiando o URL da página.")
+        console.error(error)
+      }
     }
   }
 
-  // Limpa o cache quando gerar uma nova imagem
   const clearCache = () => {
     localStorage.removeItem('easterCardImage')
     localStorage.removeItem('easterCardPrompt')
@@ -220,7 +216,7 @@ export function EasterCardGenerator() {
         <Tabs defaultValue="customize" value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-2 mb-8">
             <TabsTrigger value="customize" className="data-[state=active]:bg-purple-600 text-black">
-              <Palette className="h-4 w-4 mr-2 " />
+              <Palette className="h-4 w-4 mr-2" />
               Personalize seu cartão
             </TabsTrigger>
             <TabsTrigger value="result" className="data-[state=active]:bg-purple-600 text-black">
@@ -243,20 +239,20 @@ export function EasterCardGenerator() {
                   </Label>
                   <Textarea
                     id="message"
-                    placeholder="Enter your Easter wishes here..."
+                    placeholder="Digite seus votos de Páscoa aqui..."
                     className="min-h-[120px] bg-purple-950/30 text-purple-200 border-purple-300/20 focus:border-purple-400/50 placeholder:text-zinc-500"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                   />
                 </div>
-                </div>
+              </div>
 
               <div className="space-y-6">
                 <div className="space-y-2">
                   <Label className="text-sm text-purple-200">Estilo do Cartão</Label>
                   <Select value={style} onValueChange={setStyle}>
                     <SelectTrigger className="bg-purple-950/30 border-purple-300/20 text-purple-200">
-                      <SelectValue placeholder="Select style" />
+                      <SelectValue placeholder="Selecione o estilo" />
                     </SelectTrigger>
                     <SelectContent>
                       {cardStyles.map((cardStyle) => (
@@ -272,7 +268,7 @@ export function EasterCardGenerator() {
                   <Label className="text-sm text-purple-200">Tema de Páscoa</Label>
                   <Select value={theme} onValueChange={setTheme}>
                     <SelectTrigger className="bg-purple-950/20 border-purple-300/20 text-purple-200">
-                      <SelectValue placeholder="Select theme" />
+                      <SelectValue placeholder="Selecione o tema" />
                     </SelectTrigger>
                     <SelectContent>
                       {cardThemes.map((cardTheme) => (
@@ -309,7 +305,7 @@ export function EasterCardGenerator() {
                     onCheckedChange={setIncludeElements} 
                   />
                   <Label htmlFor="include-elements" className="text-sm text-purple-200">
-                    Inclua elementos de Páscoa (ovos, coelhos, flores)
+                    Incluir elementos de Páscoa (ovos, coelhos, flores)
                   </Label>
                 </div>
               </div>
@@ -335,7 +331,7 @@ export function EasterCardGenerator() {
                 ) : (
                   <>
                     <Sparkles className="mr-2 h-5 w-5" />
-                    Gerado o Cartão de Pascoa !
+                    Gerar Cartão de Páscoa
                   </>
                 )}
               </Button>
@@ -346,8 +342,8 @@ export function EasterCardGenerator() {
             {isGenerating ? (
               <div className="flex flex-col items-center justify-center py-20">
                 <Loader2 className="h-12 w-12 text-purple-400 animate-spin mb-4" />
-                <p className="text-purple-200 text-lg">Creating your magical Easter card...</p>
-                <p className="text-zinc-400 text-sm mt-2">This may take a few moments</p>
+                <p className="text-purple-200 text-lg">Criando seu cartão de Páscoa mágico...</p>
+                <p className="text-zinc-400 text-sm mt-2">Isso pode levar alguns momentos</p>
               </div>
             ) : error ? (
               <Alert variant="destructive" className="bg-red-900/20 border-red-500/30">
@@ -359,7 +355,7 @@ export function EasterCardGenerator() {
                   variant="link"
                   className="text-red-300 hover:text-red-200 mt-2 p-0"
                 >
-                  Volte e tente novamente
+                  Voltar e tentar novamente
                 </Button>
               </Alert>
             ) : generatedImage ? (
@@ -380,6 +376,7 @@ export function EasterCardGenerator() {
                       fill
                       className="object-cover"
                       unoptimized={true}
+                      priority
                     />
                   </div>
                 </div>
@@ -391,7 +388,7 @@ export function EasterCardGenerator() {
                     size="lg"
                   >
                     <Download className="mr-2 h-5 w-5" />
-                    Download Card
+                    Baixar Cartão
                   </Button>
 
                   <Button
@@ -401,7 +398,7 @@ export function EasterCardGenerator() {
                     size="lg"
                   >
                     <Share2 className="mr-2 h-5 w-5" />
-                    Compartilhar Cartão
+                    Compartilhar
                   </Button>
 
                   <Button
@@ -411,20 +408,20 @@ export function EasterCardGenerator() {
                     size="lg"
                   >
                     <RefreshCw className="mr-2 h-5 w-5" />
-                    Criar Outro
+                    Criar Novo
                   </Button>
                 </div>
 
                 <div className="mt-8 p-4 rounded-lg bg-purple-950/30 border border-purple-300/10">
-                  <p className="text-sm text-zinc-400 mb-2">Generated prompt:</p>
-                  <p className="text-xs text-zinc-500">{generatedPrompt}</p>
+                  <p className="text-sm text-zinc-400 mb-2">Prompt utilizado:</p>
+                  <p className="text-xs text-zinc-500 font-mono">{generatedPrompt}</p>
                 </div>
               </motion.div>
             ) : (
               <div className="flex flex-col items-center justify-center py-20">
                 <Egg className="h-12 w-12 text-purple-400 mb-4" />
-                <p className="text-purple-200 text-lg">No card generated yet</p>
-                <p className="text-zinc-400 text-sm mt-2">Go to the Customize tab to create your Easter card</p>
+                <p className="text-purple-200 text-lg">Nenhum cartão gerado ainda</p>
+                <p className="text-zinc-400 text-sm mt-2">Vá para a aba Personalizar para criar seu cartão</p>
                 <Button
                   onClick={() => setActiveTab("customize")}
                   variant="link"
