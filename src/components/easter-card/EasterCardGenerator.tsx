@@ -87,13 +87,16 @@ export function EasterCardGenerator() {
   }
 
   const generateCard = async () => {
-    if (!message) return
+    if (!message.trim()) {
+      setError("Por favor, insira uma mensagem para o cartão")
+      return
+    }
+  
+    setIsGenerating(true)
+    setError(null)
+    setActiveTab("result")
   
     try {
-      setIsGenerating(true)
-      setActiveTab("result")
-      setError(null)
-  
       const prompt = buildPrompt()
       setGeneratedPrompt(prompt)
   
@@ -105,46 +108,48 @@ export function EasterCardGenerator() {
         body: JSON.stringify({
           prompt,
           message,
-          theme,
+          theme
         }),
       })
   
+      // Verifica se a resposta é JSON
       const contentType = response.headers.get("content-type")
-      if (!contentType || !contentType.includes("application/json")) {
-        throw new Error("Invalid response format from server")
+      if (!contentType?.includes("application/json")) {
+        const textResponse = await response.text()
+        console.error("Resposta não-JSON:", textResponse)
+        throw new Error("Resposta inválida do servidor")
       }
   
-      const data = await response.json()
+      const result = await response.json()
   
       if (!response.ok) {
-        throw new Error(data.error || "Failed to generate Easter card")
+        throw new Error(result.message || "Falha ao gerar o cartão")
       }
   
-      if (!data.imageUrl) {
-        throw new Error("No image URL returned from API")
+      // Usa fallback se imageUrl não estiver disponível
+      const imageUrl = result.imageUrl || result.fallbackUrl
+      if (!imageUrl) {
+        throw new Error("Nenhuma imagem foi retornada")
       }
   
-      setGeneratedImage(data.imageUrl)
-      localStorage.setItem('easterCardImage', data.imageUrl)
+      setGeneratedImage(imageUrl)
+      localStorage.setItem('easterCardImage', imageUrl)
       localStorage.setItem('easterCardPrompt', prompt)
   
     } catch (error) {
-      console.error("Error generating card:", error)
+      console.error("Erro ao gerar cartão:", error)
       
-      let errorMessage = "Failed to generate Easter card. Please try again."
+      let errorMessage = "Ocorreu um erro ao gerar seu cartão. Por favor, tente novamente."
+      
       if (error instanceof Error) {
-        errorMessage = error.message
-        
-        // Se for um erro de JSON, mostre uma mensagem mais amigável
-        if (error.message.includes("JSON")) {
-          errorMessage = "Server response error. Please check your connection and try again."
-        }
+        errorMessage = error.message.includes("Resposta inválida") 
+          ? "Problema de comunicação com o servidor. Tente novamente mais tarde."
+          : error.message
       }
-      
+  
       setError(errorMessage)
+      setGeneratedImage("https://placehold.co/1024/red/white?text=Erro+ao+Gerar+Cartão&font=montserrat")
       
-      // Fallback para imagem placeholder
-      setGeneratedImage(`https://placehold.co/1024/purple/white?text=Easter+Card+Error&font=montserrat`)
     } finally {
       setIsGenerating(false)
     }
