@@ -1,6 +1,17 @@
 // pages/api/generate-easter-card.ts
 import type { NextApiRequest, NextApiResponse } from "next"
 
+// Configuração de timeout aumentada
+export const config = {
+  api: {
+    responseLimit: '10mb',
+    bodyParser: {
+      sizeLimit: '10mb',
+    },
+    externalResolver: true,
+  },
+}
+
 async function generateImageWithAI(prompt: string, message: string, name: string) {
   const apiKey = process.env.OPENAI_API_KEY
   if (!apiKey) {
@@ -8,6 +19,9 @@ async function generateImageWithAI(prompt: string, message: string, name: string
   }
 
   try {
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 30000) // 30 segundos timeout
+
     const safePrompt = `Professional Easter greeting card design featuring ${prompt}. The card should include the message: "${message}"${
       name ? ` and be from: ${name}` : ''
     }. Use beautiful colors and elegant design.`
@@ -25,22 +39,26 @@ async function generateImageWithAI(prompt: string, message: string, name: string
         response_format: "url",
         model: "dall-e-3",
       }),
+      signal: controller.signal
     })
+
+    clearTimeout(timeout)
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}))
+      console.error("OpenAI API Error Details:", errorData)
+      throw new Error(errorData.error?.message || "API request failed")
+    }
 
     const data = await response.json()
     
-    if (!response.ok) {
-      console.error("OpenAI API Error Details:", data)
-      throw new Error(data.error?.message || "API request failed")
-    }
-
     return {
-      imageUrl: data.data[0].url,
-      revisedPrompt: data.data[0].revised_prompt || safePrompt
+      imageUrl: data.data[0]?.url,
+      revisedPrompt: data.data[0]?.revised_prompt || safePrompt
     }
   } catch (error) {
     console.error("OpenAI API Error:", error)
-    throw error
+    throw error instanceof Error ? error : new Error("Failed to generate image")
   }
 }
 
@@ -48,8 +66,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method !== "POST") {
     res.setHeader("Allow", ["POST"])
     return res.status(405).json({
+      success: false,
       error: "Method not allowed",
-      details: "Only POST requests are accepted"
+      message: "Only POST requests are accepted"
     })
   }
 
@@ -58,14 +77,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (!prompt || typeof prompt !== "string") {
       return res.status(400).json({
+        success: false,
         error: "Invalid input",
-        details: "Prompt must be a non-empty string"
+        message: "Prompt must be a non-empty string"
       })
     }
 
     const { imageUrl, revisedPrompt } = await generateImageWithAI(prompt, message, name || "")
     
-    // Garante um formato de resposta consistente
     return res.status(200).json({ 
       success: true,
       data: {
@@ -78,6 +97,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } catch (error) {
     console.error("API Route Error:", error)
     
+    // Garante que sempre retornamos JSON válido
     return res.status(500).json({
       success: false,
       error: "Failed to generate image",

@@ -100,6 +100,9 @@ export function EasterCardGenerator() {
       const prompt = buildPrompt()
       setGeneratedPrompt(prompt)
   
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), 30000) // 30 segundos timeout
+
       const response = await fetch("/api/generate-easter-card", {
         method: "POST",
         headers: {
@@ -110,20 +113,30 @@ export function EasterCardGenerator() {
           message,
           theme
         }),
+        signal: controller.signal
       })
-  
+
+      clearTimeout(timeout)
+
+      // Verificação robusta do tipo de conteúdo
+      const contentType = response.headers.get('content-type')
+      if (!contentType?.includes('application/json')) {
+        const text = await response.text()
+        throw new Error(`Resposta inválida: ${text.slice(0, 100)}...`)
+      }
+
       const result = await response.json()
   
       if (!response.ok || !result.success) {
         throw new Error(result.message || result.error || "Falha ao gerar o cartão")
       }
   
-      // Acesso seguro aos dados com fallbacks
+      // Verificação mais segura dos dados
       const imageUrl = result.data?.imageUrl || result.data?.fallbackUrl
       const revisedPrompt = result.data?.revisedPrompt || prompt
       
       if (!imageUrl) {
-        throw new Error("Nenhuma imagem foi retornada")
+        throw new Error("Nenhuma URL de imagem válida foi retornada")
       }
   
       setGeneratedImage(imageUrl)
@@ -137,7 +150,12 @@ export function EasterCardGenerator() {
       let errorMessage = "Ocorreu um erro ao gerar seu cartão. Por favor, tente novamente."
       
       if (error instanceof Error) {
-        errorMessage = error.message
+        // Tratamento específico para timeout
+        if (error.name === 'AbortError') {
+          errorMessage = "A geração demorou muito. Tente com um prompt mais simples."
+        } else {
+          errorMessage = error.message
+        }
       }
   
       setError(errorMessage)
