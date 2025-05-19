@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useRef, useCallback } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -46,21 +46,32 @@ export function ValentineCardGenerator() {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const cardRef = useRef<HTMLDivElement>(null)
 
+  // Load saved card from localStorage on component mount
+  useEffect(() => {
+    const savedImage = localStorage.getItem("valentineCardImage")
+    const savedPrompt = localStorage.getItem("valentineCardPrompt")
+    const savedUploadedImage = localStorage.getItem("valentineUploadedImage")
+
+    if (savedImage) setGeneratedImage(savedImage)
+    if (savedPrompt) setGeneratedPrompt(savedPrompt)
+    if (savedUploadedImage) setUploadedImage(savedUploadedImage)
+  }, [])
+
   const cardStyles = [
     { value: "cartoon", label: "Cartoon" },
-    { value: "watercolor", label: "Watercolor" },
-    { value: "digital-art", label: "Digital Art" },
-    { value: "oil-painting", label: "Oil Painting" },
+    { value: "watercolor", label: "Aquarela" },
+    { value: "digital-art", label: "Arte Digital" },
+    { value: "oil-painting", label: "Pintura a Óleo" },
     { value: "pop-art", label: "Pop Art" },
     { value: "anime", label: "Anime" },
   ]
 
   const cardThemes = [
-    { value: "romantic", label: "Romantic" },
-    { value: "vintage", label: "Vintage Love" },
-    { value: "modern", label: "Modern & Sleek" },
-    { value: "fantasy", label: "Fantasy" },
-    { value: "minimalist", label: "Minimalist" },
+    { value: "romantic", label: "Romântico" },
+    { value: "vintage", label: "Amor Vintage" },
+    { value: "modern", label: "Moderno & Elegante" },
+    { value: "fantasy", label: "Fantasia" },
+    { value: "minimalist", label: "Minimalista" },
   ]
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,11 +85,13 @@ export function ValentineCardGenerator() {
     if (file.type.startsWith("image/")) {
       const reader = new FileReader()
       reader.onload = (e) => {
-        setUploadedImage(e.target?.result as string)
+        const result = e.target?.result as string
+        setUploadedImage(result)
+        localStorage.setItem("valentineUploadedImage", result)
       }
       reader.readAsDataURL(file)
     } else {
-      setError("Please upload an image file (JPEG, PNG, etc.)")
+      setError("Por favor, envie um arquivo de imagem (JPEG, PNG, etc.)")
     }
   }
 
@@ -105,164 +118,215 @@ export function ValentineCardGenerator() {
     fileInputRef.current?.click()
   }
 
+  // Melhorar a função buildPrompt para criar prompts mais detalhados e eficazes
   const buildPrompt = () => {
     if (!uploadedImage) return ""
 
-    let basePrompt = `Transform this couple photo into a ${style} style Valentine's Day card`
+    let basePrompt = `Create a beautiful Valentine's Day card transformation of this couple photo. Use ${style} style`
 
-    // Add theme
+    // Add theme with more detailed descriptions
     switch (theme) {
       case "romantic":
-        basePrompt += " with a romantic atmosphere"
+        basePrompt +=
+          " with a warm, intimate romantic atmosphere. Add soft lighting, rose petals, and a dreamy background."
         break
       case "vintage":
-        basePrompt += " with a vintage love letter aesthetic"
+        basePrompt +=
+          " with a nostalgic vintage love letter aesthetic. Include aged paper texture, classic typography, and sepia tones."
         break
       case "modern":
-        basePrompt += " with a modern, sleek design"
+        basePrompt +=
+          " with a clean, contemporary design. Use bold typography, minimalist elements, and elegant composition."
         break
       case "fantasy":
-        basePrompt += " with a fantasy, magical atmosphere"
+        basePrompt +=
+          " with a magical, enchanted atmosphere. Add fantasy elements like glowing particles, ethereal lighting, and dreamlike scenery."
         break
       case "minimalist":
-        basePrompt += " with a clean, minimalist design"
+        basePrompt +=
+          " with a refined, elegant minimalist design. Focus on negative space, subtle colors, and essential elements only."
         break
     }
 
-    // Add names if provided
+    // Add names with artistic direction
     if (name1 && name2) {
-      basePrompt += ` featuring the names ${name1} and ${name2}`
+      basePrompt += `. Artistically incorporate the names "${name1}" and "${name2}" in an elegant, integrated way that complements the design.`
     }
 
-    // Add hearts if selected
+    // Add message if provided
+    if (message && message.trim()) {
+      basePrompt += ` Include the message: "${message}" in a way that stands out yet harmonizes with the overall design.`
+    }
+
+    // Add hearts and Valentine's elements with more specificity
     if (includeHearts) {
-      basePrompt += ", include hearts and Valentine's Day symbols"
+      basePrompt +=
+        " Incorporate romantic Valentine's Day symbols like hearts, cupid arrows, roses, or love birds in a tasteful, non-overwhelming way."
     }
 
-    // Add colorfulness
+    // Add colorfulness with more artistic direction
     if (colorfulness[0] > 80) {
-      basePrompt += ", very colorful and vibrant"
-    } else if (colorfulness[0] < 30) {
-      basePrompt += ", subtle and muted colors"
+      basePrompt +=
+        " Use a vibrant, rich color palette with high saturation and contrast to create a visually striking card."
+    } else if (colorfulness[0] > 50) {
+      basePrompt +=
+        " Use a balanced, moderately colorful palette that creates a harmonious, pleasant visual experience."
+    } else {
+      basePrompt +=
+        " Use a subtle, muted color palette with soft tones and gentle contrasts for an understated, elegant look."
     }
+
+    // Add composition guidance
+    basePrompt +=
+      " Ensure the couple remains the focal point of the composition. Create a balanced, professional design suitable for a high-quality Valentine's Day card."
 
     return basePrompt
   }
 
-  const generateCard = async () => {
-    if (!uploadedImage) {
-      setError("Please upload a couple photo first")
-      return
-    }
+  // Melhorar a função downloadCard para garantir o download direto
+  const downloadCard = async () => {
+    if (!generatedImage) return
 
     try {
-      setIsGenerating(true)
-      setActiveTab("result")
-      setError(null)
+      // Criar um elemento temporário para o download
+      const link = document.createElement("a")
 
-      const prompt = buildPrompt()
-      setGeneratedPrompt(prompt)
+      // Verificar se a URL é uma data URL ou uma URL remota
+      if (generatedImage.startsWith("data:")) {
+        // Se já for uma data URL, use-a diretamente
+        link.href = generatedImage
+      } else {
+        // Se for uma URL remota, busque a imagem e converta para blob
+        try {
+          const response = await fetch(generatedImage)
+          const blob = await response.blob()
+          link.href = URL.createObjectURL(blob)
+        } catch (error) {
+          console.error("Erro ao buscar imagem remota:", error)
+          // Fallback: usar a URL diretamente
+          link.href = generatedImage
+        }
+      }
 
-      // In a real implementation, you would send the image and prompt to your API
-      // For this demo, we'll simulate the API call and use the uploaded image as the result
+      // Configurar o nome do arquivo
+      link.download = `valentine-card-${name1}-${name2}.png`
 
-      // Simulate API call delay
-      await new Promise((resolve) => setTimeout(resolve, 3000))
+      // Adicionar à página, clicar e remover
+      document.body.appendChild(link)
+      link.click()
 
-      // In a real implementation, this would be the response from your API
-      // For now, we'll just use the uploaded image as a placeholder
-      setGeneratedImage(uploadedImage)
-    } catch (error: any) {
-      console.error("Error generating card:", error)
-      setError(error.message || "Failed to generate Valentine's card. Please try again.")
-    } finally {
-      setIsGenerating(false)
+      // Pequeno atraso antes de remover o link e revogar o objeto URL
+      setTimeout(() => {
+        document.body.removeChild(link)
+        if (!generatedImage.startsWith("data:")) {
+          URL.revokeObjectURL(link.href)
+        }
+      }, 100)
+    } catch (error) {
+      console.error("Erro ao baixar o cartão:", error)
+      alert("Ocorreu um erro ao baixar o cartão. Por favor, tente novamente.")
     }
   }
 
-  const downloadCard = () => {
-    if (!generatedImage) return
-
-    const canvas = document.createElement("canvas")
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
-
-    canvas.width = 1024
-    canvas.height = 1024
-
-    const img = new window.Image()
-    img.crossOrigin = "anonymous"
-    img.src = generatedImage
-
-    img.onload = () => {
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-      ctx.fillStyle = "rgba(0, 0, 0, 0.3)"
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-      ctx.fillStyle = "white"
-      ctx.font = "bold 48px Arial"
-      ctx.textAlign = "center"
-      ctx.textBaseline = "middle"
-
-      // Draw message
-      if (message) {
-        const maxWidth = canvas.width * 0.8
-        const words = message.split(" ")
-        const lines = []
-        let currentLine = words[0]
-
-        for (let i = 1; i < words.length; i++) {
-          const testLine = currentLine + " " + words[i]
-          const metrics = ctx.measureText(testLine)
-          if (metrics.width > maxWidth) {
-            lines.push(currentLine)
-            currentLine = words[i]
-          } else {
-            currentLine = testLine
-          }
-        }
-        lines.push(currentLine)
-
-        const lineHeight = 60
-        const startY = canvas.height / 2 - ((lines.length - 1) * lineHeight) / 2
-        lines.forEach((line, i) => {
-          ctx.fillText(line, canvas.width / 2, startY + i * lineHeight)
-        })
-      }
-
-      // Draw names
-      if (name1 && name2) {
-        ctx.font = "italic 36px Arial"
-        ctx.fillText(`${name1} & ${name2}`, canvas.width / 2, canvas.height - 100)
-      }
-
-      try {
-        const dataUrl = canvas.toDataURL("image/png")
-        const link = document.createElement("a")
-        link.href = dataUrl
-        link.download = "valentine-card.png"
-        document.body.appendChild(link)
-        link.click()
-        document.body.removeChild(link)
-      } catch (e) {
-        console.error("Error creating downloadable image:", e)
-        const link = document.createElement("a")
-        link.href = generatedImage
-        link.download = "valentine-card.png"
-        document.body.appendChild(link)
-        link.click()
-        document.body.removeChild(link)
-      }
+  // Melhorar o armazenamento em cache local
+  const generateCard = async () => {
+    if (!uploadedImage) {
+      setError("Por favor, envie uma foto do casal primeiro")
+      return
     }
 
-    img.onerror = () => {
-      console.error("Error loading image for download")
-      const link = document.createElement("a")
-      link.href = generatedImage
-      link.download = "valentine-card.png"
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
+    if (!name1 || !name2) {
+      setError("Por favor, insira os nomes do casal")
+      return
+    }
+
+    setIsGenerating(true)
+    setError(null)
+    setActiveTab("result")
+
+    try {
+      const prompt = buildPrompt()
+      setGeneratedPrompt(prompt)
+
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), 30000) // 30 segundos timeout
+
+      const response = await fetch("/api/generate-valentine-card", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          imageData: uploadedImage,
+          prompt,
+          name1,
+          name2,
+          message,
+          style,
+          theme,
+        }),
+        signal: controller.signal,
+      })
+
+      clearTimeout(timeout)
+
+      // Verificação robusta do tipo de conteúdo
+      const contentType = response.headers.get("content-type")
+      if (!contentType?.includes("application/json")) {
+        const text = await response.text()
+        throw new Error(`Resposta inválida: ${text.slice(0, 100)}...`)
+      }
+
+      const result = await response.json()
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || result.error || "Falha ao gerar o cartão")
+      }
+
+      // Verificação mais segura dos dados
+      const imageUrl = result.data?.imageUrl || result.data?.fallbackUrl
+      const revisedPrompt = result.data?.revisedPrompt || prompt
+
+      if (!imageUrl) {
+        throw new Error("Nenhuma URL de imagem válida foi retornada")
+      }
+
+      // Salvar no estado e no localStorage
+      setGeneratedImage(imageUrl)
+      setGeneratedPrompt(revisedPrompt)
+
+      // Salvar dados completos no localStorage
+      try {
+        localStorage.setItem("valentineCardImage", imageUrl)
+        localStorage.setItem("valentineCardPrompt", revisedPrompt)
+        localStorage.setItem("valentineCardNames", JSON.stringify({ name1, name2 }))
+        localStorage.setItem("valentineCardMessage", message || "")
+        localStorage.setItem("valentineCardStyle", style)
+        localStorage.setItem("valentineCardTheme", theme)
+        localStorage.setItem("valentineCardDate", new Date().toISOString())
+      } catch (storageError) {
+        console.error("Erro ao salvar no localStorage:", storageError)
+        // Continuar mesmo se o localStorage falhar
+      }
+    } catch (error) {
+      console.error("Erro ao gerar cartão:", error)
+
+      let errorMessage = "Ocorreu um erro ao gerar seu cartão. Por favor, tente novamente."
+
+      if (error instanceof Error) {
+        // Tratamento específico para timeout
+        if (error.name === "AbortError") {
+          errorMessage = "A geração demorou muito. Tente com um prompt mais simples."
+        } else {
+          errorMessage = error.message
+        }
+      }
+
+      setError(errorMessage)
+      // Usar a imagem original como fallback
+      setGeneratedImage(uploadedImage)
+    } finally {
+      setIsGenerating(false)
     }
   }
 
@@ -272,16 +336,33 @@ export function ValentineCardGenerator() {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: "My Valentine's Day Card",
-          text: `Check out this Valentine's card I created for ${name1} & ${name2}`,
+          title: "Meu Cartão de Dia dos Namorados",
+          text: `Veja este cartão de Dia dos Namorados que criei para ${name1} & ${name2}`,
           url: window.location.href,
         })
       } catch (error) {
         console.error("Error sharing:", error)
       }
     } else {
-      alert("Sharing is not supported in your browser. You can copy the URL manually.")
+      // Fallback para navegadores sem suporte à API de compartilhamento
+      try {
+        await navigator.clipboard.writeText(window.location.href)
+        alert("Link copiado para a área de transferência!")
+      } catch (error) {
+        alert("Compartilhe manualmente copiando o URL da página.")
+        console.error(error)
+      }
     }
+  }
+
+  const clearCache = () => {
+    localStorage.removeItem("valentineCardImage")
+    localStorage.removeItem("valentineCardPrompt")
+    localStorage.removeItem("valentineUploadedImage")
+    setGeneratedImage("")
+    setGeneratedPrompt("")
+    setUploadedImage(null)
+    setActiveTab("customize")
   }
 
   return (
@@ -291,11 +372,11 @@ export function ValentineCardGenerator() {
           <TabsList className="grid w-full grid-cols-2 mb-8">
             <TabsTrigger value="customize" className="data-[state=active]:bg-pink-600 text-black">
               <Palette className="h-4 w-4 mr-2" />
-              Customize Your Card
+              Personalize seu cartão
             </TabsTrigger>
             <TabsTrigger value="result" className="data-[state=active]:bg-pink-600 text-black">
               <ImageIcon className="h-4 w-4 mr-2" />
-              Your Valentine's Card
+              Seu cartão de Dia dos Namorados
             </TabsTrigger>
           </TabsList>
 
@@ -332,20 +413,21 @@ export function ValentineCardGenerator() {
                         <div className="relative w-full aspect-square rounded-lg overflow-hidden">
                           <Image
                             src={uploadedImage || "/placeholder.svg"}
-                            alt="Uploaded couple"
+                            alt="Foto do casal"
                             fill
                             className="object-cover"
+                            unoptimized={true}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end justify-center p-4">
-                            <p className="text-white text-sm">Click or drag to change photo</p>
+                            <p className="text-white text-sm">Clique ou arraste para trocar a foto</p>
                           </div>
                         </div>
                       ) : (
                         <>
                           <Upload className="h-12 w-12 text-pink-300" />
                           <div className="text-center">
-                            <p className="text-pink-200 font-medium">Upload your couple photo</p>
-                            <p className="text-zinc-400 text-sm mt-1">Drag & drop or click to browse</p>
+                            <p className="text-pink-200 font-medium">Envie a foto do casal</p>
+                            <p className="text-zinc-400 text-sm mt-1">Arraste e solte ou clique para procurar</p>
                           </div>
                         </>
                       )}
@@ -355,12 +437,12 @@ export function ValentineCardGenerator() {
 
                 <div className="space-y-2">
                   <Label htmlFor="message" className="text-sm text-pink-200">
-                    Your Valentine's Message (Optional)
+                    Sua Mensagem de Amor (Opcional)
                   </Label>
                   <Textarea
                     id="message"
-                    placeholder="Enter your Valentine's wishes here..."
-                    className="min-h-[120px] bg-pink-950/30 border-pink-300/20 focus:border-pink-400/50 placeholder:text-zinc-500"
+                    placeholder="Digite sua mensagem de amor aqui..."
+                    className="min-h-[120px] bg-pink-950/30 border-pink-300/20 focus:border-pink-400/50 placeholder:text-zinc-500 text-pink-200"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                   />
@@ -371,24 +453,24 @@ export function ValentineCardGenerator() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="name1" className="text-sm text-pink-200">
-                      First Name
+                      Primeiro Nome
                     </Label>
                     <Input
                       id="name1"
-                      placeholder="First person's name"
-                      className="bg-pink-950/30 border-pink-300/20 focus:border-pink-400/50 placeholder:text-zinc-500"
+                      placeholder="Nome da primeira pessoa"
+                      className="bg-pink-950/30 border-pink-300/20 focus:border-pink-400/50 placeholder:text-zinc-500 text-pink-200"
                       value={name1}
                       onChange={(e) => setName1(e.target.value)}
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="name2" className="text-sm text-pink-200">
-                      Second Name
+                      Segundo Nome
                     </Label>
                     <Input
                       id="name2"
-                      placeholder="Second person's name"
-                      className="bg-pink-950/30 border-pink-300/20 focus:border-pink-400/50 placeholder:text-zinc-500"
+                      placeholder="Nome da segunda pessoa"
+                      className="bg-pink-950/30 border-pink-300/20 focus:border-pink-400/50 placeholder:text-zinc-500 text-pink-200"
                       value={name2}
                       onChange={(e) => setName2(e.target.value)}
                     />
@@ -396,10 +478,10 @@ export function ValentineCardGenerator() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-sm text-pink-200">Card Style</Label>
+                  <Label className="text-sm text-pink-200">Estilo do Cartão</Label>
                   <Select value={style} onValueChange={setStyle}>
                     <SelectTrigger className="bg-pink-950/30 border-pink-300/20 text-pink-200">
-                      <SelectValue placeholder="Select style" />
+                      <SelectValue placeholder="Selecione o estilo" />
                     </SelectTrigger>
                     <SelectContent>
                       {cardStyles.map((cardStyle) => (
@@ -412,10 +494,10 @@ export function ValentineCardGenerator() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-sm text-pink-200">Valentine's Theme</Label>
+                  <Label className="text-sm text-pink-200">Tema do Dia dos Namorados</Label>
                   <Select value={theme} onValueChange={setTheme}>
                     <SelectTrigger className="bg-pink-950/20 border-pink-300/20 text-pink-200">
-                      <SelectValue placeholder="Select theme" />
+                      <SelectValue placeholder="Selecione o tema" />
                     </SelectTrigger>
                     <SelectContent>
                       {cardThemes.map((cardTheme) => (
@@ -430,7 +512,7 @@ export function ValentineCardGenerator() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <Label htmlFor="colorfulness" className="text-sm text-pink-200">
-                      Colorfulness
+                      Coloração do Cartão
                     </Label>
                     <span className="text-xs text-pink-300">{colorfulness[0]}%</span>
                   </div>
@@ -448,7 +530,7 @@ export function ValentineCardGenerator() {
                 <div className="flex items-center space-x-2">
                   <Switch id="include-hearts" checked={includeHearts} onCheckedChange={setIncludeHearts} />
                   <Label htmlFor="include-hearts" className="text-sm text-pink-200">
-                    Include hearts and Valentine's symbols
+                    Incluir corações e símbolos do Dia dos Namorados
                   </Label>
                 </div>
               </div>
@@ -462,19 +544,19 @@ export function ValentineCardGenerator() {
             >
               <Button
                 onClick={generateCard}
-                disabled={!uploadedImage || isGenerating}
+                disabled={!uploadedImage || !name1 || !name2 || isGenerating}
                 className="bg-gradient-to-r from-pink-500 to-rose-700 hover:from-pink-600 hover:to-rose-800 text-white px-8 py-6"
                 size="lg"
               >
                 {isGenerating ? (
                   <>
                     <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                    Generating...
+                    Gerando...
                   </>
                 ) : (
                   <>
                     <Sparkles className="mr-2 h-5 w-5" />
-                    Generate Valentine's Card
+                    Gerar Cartão de Dia dos Namorados
                   </>
                 )}
               </Button>
@@ -485,20 +567,20 @@ export function ValentineCardGenerator() {
             {isGenerating ? (
               <div className="flex flex-col items-center justify-center py-20">
                 <Loader2 className="h-12 w-12 text-pink-400 animate-spin mb-4" />
-                <p className="text-pink-200 text-lg">Creating your romantic Valentine's card...</p>
-                <p className="text-zinc-400 text-sm mt-2">This may take a few moments</p>
+                <p className="text-pink-200 text-lg">Criando seu cartão romântico de Dia dos Namorados...</p>
+                <p className="text-zinc-400 text-sm mt-2">Isso pode levar alguns momentos</p>
               </div>
             ) : error ? (
               <Alert variant="destructive" className="bg-red-900/20 border-red-500/30">
                 <AlertCircle className="h-4 w-4" />
-                <AlertTitle>Error</AlertTitle>
+                <AlertTitle>Erro</AlertTitle>
                 <AlertDescription>{error}</AlertDescription>
                 <Button
                   onClick={() => setActiveTab("customize")}
                   variant="link"
                   className="text-red-300 hover:text-red-200 mt-2 p-0"
                 >
-                  Go back and try again
+                  Voltar e tentar novamente
                 </Button>
               </Alert>
             ) : generatedImage ? (
@@ -512,14 +594,14 @@ export function ValentineCardGenerator() {
                   ref={cardRef}
                   className="relative mx-auto max-w-2xl overflow-hidden rounded-xl border-8 border-pink-300/20 shadow-2xl"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/20 via-rose-500/10 to-pink-500/20 mix-blend-overlay" />
-
-                  <div className="relative aspect-[4/3] bg-gradient-to-b from-pink-900/50 to-pink-950/50">
+                  <div className="relative aspect-[4/3]">
                     <Image
                       src={generatedImage || "/placeholder.svg"}
                       alt="Generated Valentine's Card"
                       fill
                       className="object-cover"
+                      unoptimized={true}
+                      priority
                     />
 
                     <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
@@ -542,7 +624,7 @@ export function ValentineCardGenerator() {
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <Button onClick={downloadCard} className="bg-pink-600 hover:bg-pink-700 text-white" size="lg">
                     <Download className="mr-2 h-5 w-5" />
-                    Download Card
+                    Baixar Cartão
                   </Button>
 
                   <Button
@@ -552,36 +634,36 @@ export function ValentineCardGenerator() {
                     size="lg"
                   >
                     <Share2 className="mr-2 h-5 w-5" />
-                    Share Card
+                    Compartilhar
                   </Button>
 
                   <Button
-                    onClick={() => setActiveTab("customize")}
+                    onClick={clearCache}
                     variant="ghost"
                     className="text-pink-300 hover:text-pink-200 hover:bg-pink-500/10"
                     size="lg"
                   >
                     <RefreshCw className="mr-2 h-5 w-5" />
-                    Create Another
+                    Criar Novo
                   </Button>
                 </div>
 
                 <div className="mt-8 p-4 rounded-lg bg-pink-950/30 border border-pink-300/10">
-                  <p className="text-sm text-zinc-400 mb-2">Generated prompt:</p>
-                  <p className="text-xs text-zinc-500">{generatedPrompt}</p>
+                  <p className="text-sm text-zinc-400 mb-2">Prompt utilizado:</p>
+                  <p className="text-xs text-zinc-500 font-mono">{generatedPrompt}</p>
                 </div>
               </motion.div>
             ) : (
               <div className="flex flex-col items-center justify-center py-20">
                 <Heart className="h-12 w-12 text-pink-400 mb-4" />
-                <p className="text-pink-200 text-lg">No card generated yet</p>
-                <p className="text-zinc-400 text-sm mt-2">Go to the Customize tab to create your Valentine's card</p>
+                <p className="text-pink-200 text-lg">Nenhum cartão gerado ainda</p>
+                <p className="text-zinc-400 text-sm mt-2">Vá para a aba Personalizar para criar seu cartão</p>
                 <Button
                   onClick={() => setActiveTab("customize")}
                   variant="link"
                   className="text-pink-400 hover:text-pink-300 mt-4"
                 >
-                  Create a card
+                  Criar um Cartão
                 </Button>
               </div>
             )}
