@@ -24,7 +24,18 @@ export default async function handler(
         from: process.env.EMAIL_FROM, // Remetente
         to: email,                     // Destinatário
         subject: 'Seu código de verificação',
-        html: `<h1>Seu código de verificação é: ${verificationCode}</h1>`,
+        html: `
+              <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333;">
+                <h2 style="color: #0056b3;">Seu Código de Verificação</h2>
+                <p>Olá,</p>
+                <p>Obrigado por se registrar. Use o código abaixo para confirmar seu endereço de e-mail:</p>
+                <p style="font-size: 24px; font-weight: bold; letter-spacing: 4px; color: #0056b3; margin: 20px 0;">
+                  ${verificationCode}
+                </p>
+                <p>Este código expira em 10 minutos.</p>
+                <hr style="border: 0; border-top: 1px solid #eee;" />
+                <p style="font-size: 12px; color: #888;">Se você не solicitou este código, por favor, ignore este e-mail.</p>
+              </div>`,
       };
 
       // Envia o e-mail
