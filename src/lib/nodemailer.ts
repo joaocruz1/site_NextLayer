@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 
-const user = process.env.EMAIL_USER;
-const pass = process.env.EMAIL_PASS;
+const user = process.env.EMAIL_SERVER_USER;
+const pass = process.env.EMAIL_SERVER_PASSWORD;
 const host = process.env.EMAIL_SERVER_HOST;
 const port = process.env.EMAIL_SERVER_PORT;
 
