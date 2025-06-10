@@ -24,8 +24,7 @@ export default async function handler(
         from: process.env.EMAIL_FROM, // Remetente
         to: email,                     // Destinatário
         subject: 'Seu código de verificação',
-        html: `
-              <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333;">
+        html: `<div style="font-family: Arial, sans-serif; font-size: 16px; color: #333;">
                 <h2 style="color: #0056b3;">Seu Código de Verificação</h2>
                 <p>Olá,</p>
                 <p>Obrigado por se registrar. Use o código abaixo para confirmar seu endereço de e-mail:</p>
