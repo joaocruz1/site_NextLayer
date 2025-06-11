@@ -20,14 +20,21 @@ export default async function handler(
       // ATENÇÃO: É ALTAMENTE RECOMENDADO USAR process.env.BRAZMOVEL_PARTNER_TOKEN AQUI
       // E NÃO COLOCAR O TOKEN DIRETAMENTE NO CÓDIGO FONTE POR SEGURANÇA.
       // Usei o token fixo como solicitado, mas reconsidere essa prática em produção.
-      const fixedToken = process.env.TOKEN_BRAZ_MOVEL;
+      const fixedToken = process.env.TOKEN_BRAZ_MOVEL; // Agora usando a variável de ambiente
+      
+      // Adição de verificação para o token, caso ele não esteja definido
+      if (!fixedToken) {
+        console.error('Erro de configuração: TOKEN_BRAZ_MOVEL não está definido nas variáveis de ambiente.');
+        return res.status(500).json({ message: 'Erro de configuração do servidor: Token da Braz Móvel não encontrado.' });
+      }
+
       const authorizationHeader = `Bearer ${fixedToken}`;
 
       // 3. A URL completa da API da Braz Móvel
       const brazmovelApiUrl = `http://api.brazmovel.com.br/v1/customer/cpf/${cpf}`;
 
       console.log('DEBUG - Proxying GET request to BrazMovel URL (using fetch):', brazmovelApiUrl);
-      console.log('DEBUG - Proxy Headers Authorization:', authorizationHeader);
+      console.log('DEBUG - Proxy Headers Authorization:', `Bearer ${fixedToken.substring(0, 10)}...`); // Log parcial por segurança
       console.log('DEBUG - Proxy Headers Content-Type:', 'application/json');
 
       // 4. Faça a requisição GET para a API da Braz Móvel usando a fetch API
@@ -36,17 +43,21 @@ export default async function handler(
         headers: {
           'Authorization': authorizationHeader,
           'Content-Type': 'application/json',
+          // Opcional: Adicione User-Agent e Accept se necessário, como discutido anteriormente
+          // 'Accept': '*/*',
+          // 'User-Agent': 'SeuApp/1.0', // Ou 'Thunder Client (https://www.thunderclient.com)' para teste
         },
       });
 
       // 5. Verifique se a requisição foi bem-sucedida (status 2xx)
       if (!response.ok) {
         // Se a resposta não for OK, tente ler o corpo do erro da API externa
-        const errorData = await response.json().catch(() => ({ message: 'Erro desconhecido da API externa' }));
-        console.error('API Error (BrazMovel Proxy - fetch):', response.status, errorData);
+        // e propague o status original da resposta da Braz Móvel
+        const errorDetails = await response.json().catch(() => ({ message: 'Erro desconhecido da API externa' }));
+        console.error('API Error (BrazMovel Proxy - fetch):', response.status, errorDetails);
         return res.status(response.status).json({
-          message: errorData.message || `Erro ao consultar o cliente na Braz Móvel. Status: ${response.status}`,
-          details: errorData,
+          message: errorDetails.message || `Erro ao consultar o cliente na Braz Móvel. Status: ${response.status}`,
+          details: errorDetails,
         });
       }
 
@@ -57,10 +68,21 @@ export default async function handler(
       console.log('DEBUG - Resposta da API BrazMovel (fetch):', response.status, data);
       return res.status(response.status).json(data);
 
-    } catch (error: any) { // Usamos 'any' aqui para facilitar o tratamento de erros genéricos de fetch
+    } catch (error) { // Removido ': any'
+      // No TypeScript, o tipo de 'error' em um bloco catch é 'unknown' por padrão
+      // Precisamos verificar o tipo antes de acessar suas propriedades
       console.error('Unhandled Proxy Error (fetch):', error);
-      // Erros aqui geralmente são de rede ou problemas antes de receber uma resposta HTTP
-      return res.status(500).json({ message: 'Ocorreu um erro inesperado no servidor proxy (fetch).' });
+
+      let errorMessage = 'Ocorreu um erro inesperado no servidor proxy (fetch).';
+      if (error instanceof Error) {
+        // Se for uma instância de Error (como Network Error)
+        errorMessage = error.message;
+      } else if (typeof error === 'object' && error !== null && 'message' in error) {
+        // Para objetos genéricos com uma propriedade 'message'
+        errorMessage = (error as { message: string }).message;
+      }
+      
+      return res.status(500).json({ message: errorMessage });
     }
   } else {
     // Se o método da requisição não for GET, retorna 405 Method Not Allowed
