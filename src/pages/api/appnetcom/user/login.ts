@@ -30,22 +30,18 @@ export default async function handler(
 
       const authorizationHeader = `Bearer ${fixedToken}`;
 
-      // 3. A URL completa da API da Braz Móvel
-      const brazmovelApiUrl = `http://api.brazmovel.com.br/v1/customer/cpf/${cpf}`;
+
+      const brazmovelApiUrl = `https://api.brazmovel.com.br/v1/customer/cpf/${cpf}`;
 
       console.log('DEBUG - Proxying GET request to BrazMovel URL (using fetch):', brazmovelApiUrl);
-      console.log('DEBUG - Proxy Headers Authorization:', `Bearer ${fixedToken.substring(0, 10)}...`); // Log parcial por segurança
+      console.log('DEBUG - Proxy Headers Authorization:', `Bearer ${fixedToken}`); 
       console.log('DEBUG - Proxy Headers Content-Type:', 'application/json');
 
-      // 4. Faça a requisição GET para a API da Braz Móvel usando a fetch API
       const response = await fetch(brazmovelApiUrl, {
-        method: 'GET', // O método HTTP
+        method: 'GET', 
         headers: {
-          'Authorization': authorizationHeader,
+
           'Content-Type': 'application/json',
-          // Opcional: Adicione User-Agent e Accept se necessário, como discutido anteriormente
-          // 'Accept': '*/*',
-          // 'User-Agent': 'SeuApp/1.0', // Ou 'Thunder Client (https://www.thunderclient.com)' para teste
         },
       });
 
