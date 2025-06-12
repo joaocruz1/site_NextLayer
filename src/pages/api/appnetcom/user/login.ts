@@ -28,7 +28,7 @@ export default async function handler(
         return res.status(500).json({ message: 'Erro de configuração do servidor: Token da Braz Móvel não encontrado.' });
       }
 
-      const authorizationHeader = `Bearer ${fixedToken}`;
+    // const authorizationHeader = `Bearer ${fixedToken}`;
 
 
       const brazmovelApiUrl = `https://api.brazmovel.com.br/v1/customer/cpf/${cpf}`;

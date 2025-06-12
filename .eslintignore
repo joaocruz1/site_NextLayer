@@ -1,0 +1,3 @@
+# .eslintignore
+# Ignore the entire generated Prisma client directory
+src/generated/
