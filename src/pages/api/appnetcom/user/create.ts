@@ -65,7 +65,7 @@ export default async function handler(
       }else{*/
 
     const newUserPayloadPrisma = {
-      id :"1212233a068b589-4c93-40ef-b3d5-d0005c461465",
+      id :"22eb0fa0-c2e6-4275-b0be-2ac4952a4024",
       email,
       cpf,
       name,
