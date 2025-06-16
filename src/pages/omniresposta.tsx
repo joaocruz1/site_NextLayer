@@ -30,7 +30,7 @@ export default function OmniRespostaPage() {
           content="Automatize e eleve seu atendimento com IA de ponta. Suporte multicanal com áudio, imagem e texto."
         />
       </Head>
-      <div ref={containerRef} className="relative min-h-screen bg-[#0D0620]">
+      <div ref={containerRef} className="relative min-h-screen bg-[#0D0620] overflow-x-hidden">
         {/* Enhanced animated background with purple effects */}
         <motion.div
           className="fixed inset-0 pointer-events-none overflow-hidden"
@@ -42,10 +42,10 @@ export default function OmniRespostaPage() {
           {[...Array(3)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-[800px] h-[800px] rounded-full bg-gradient-to-b from-purple-500/[0.05] to-transparent blur-3xl"
+              className="absolute w-[400px] h-[400px] md:w-[800px] md:h-[800px] rounded-full bg-gradient-to-b from-purple-500/[0.05] to-transparent blur-3xl"
               animate={{
-                x: ["0%", "100%", "0%"],
-                y: ["0%", "100%", "0%"],
+                x: ["0%", "50%", "0%"],
+                y: ["0%", "50%", "0%"],
                 scale: [1, 1.2, 1],
                 opacity: [0.3, 0.6, 0.3],
               }}
@@ -62,13 +62,13 @@ export default function OmniRespostaPage() {
           ))}
 
           {/* Enhanced purple particle effects */}
-          {[...Array(30)].map((_, i) => (
+          {[...Array(15)].map((_, i) => (
             <motion.div
               key={`particle-${i}`}
               className="absolute w-1 h-1 rounded-full bg-purple-400/30"
               animate={{
                 y: [0, -1000],
-                x: Math.sin(i) * 200,
+                x: Math.sin(i) * 100,
                 opacity: [0, 1, 0],
                 scale: [0, 1.5, 0],
               }}
@@ -87,10 +87,10 @@ export default function OmniRespostaPage() {
           ))}
 
           {/* Glowing lines */}
-          {[...Array(5)].map((_, i) => (
+          {[...Array(3)].map((_, i) => (
             <motion.div
               key={`line-${i}`}
-              className="absolute h-px w-[200px] bg-gradient-to-r from-transparent via-purple-500/20 to-transparent"
+              className="absolute h-px w-[100px] md:w-[200px] bg-gradient-to-r from-transparent via-purple-500/20 to-transparent"
               animate={{
                 x: ["-100%", "200%"],
                 opacity: [0, 1, 0],
@@ -111,9 +111,9 @@ export default function OmniRespostaPage() {
         </motion.div>
 
         {/* Content */}
-        <div className="relative z-10">
+        <div className="relative z-10 w-full overflow-x-hidden">
           <Header />
-          <main>
+          <main className="w-full">
             <OmniHeroSection />
             <OmniFeaturesSection />
             <OmniAdvantagesSection />
@@ -137,7 +137,7 @@ export default function OmniRespostaPage() {
         {/* Enhanced purple glow effects */}
         <div className="fixed inset-0 pointer-events-none">
           <motion.div
-            className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px]"
+            className="absolute top-0 left-1/4 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-purple-500/10 rounded-full blur-[100px]"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.3, 0.5, 0.3],
@@ -149,7 +149,7 @@ export default function OmniRespostaPage() {
             }}
           />
           <motion.div
-            className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[100px]"
+            className="absolute bottom-0 right-1/4 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-purple-600/10 rounded-full blur-[100px]"
             animate={{
               scale: [1.2, 1, 1.2],
               opacity: [0.5, 0.3, 0.5],

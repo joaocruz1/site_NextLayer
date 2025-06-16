@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Send, Bot, Mic, ImageIcon, FileText } from "lucide-react"
+import { Send, Bot, Mic, ImageIcon, FileText, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -16,37 +16,29 @@ interface Message {
   type?: "text" | "audio" | "image"
 }
 
-const predefinedResponses = [
-  "Olá! Como posso ajudar você hoje?",
-  "Entendi sua solicitação. Vou verificar isso para você.",
-  "Baseado nas informações que tenho, posso te ajudar com isso.",
-  "Perfeito! Encontrei a resposta para sua pergunta.",
-  "Posso processar textos, áudios e imagens. Como prefere se comunicar?",
-  "Sua solicitação foi processada com sucesso!",
-]
-
+// Mensagens de demonstração para antes do chat se tornar interativo
 const demoMessages: Message[] = [
   {
     id: "1",
-    text: "Olá! Tenho uma dúvida sobre meu pedido.",
+    text: "Olá! Gostaria de saber mais sobre o Omni Chat.",
     sender: "user",
     timestamp: new Date(),
   },
   {
     id: "2",
-    text: "Olá! Claro, posso ajudar. Qual o número do seu pedido?",
+    text: "Olá! Eu sou o assistente virtual do Omni Chat, uma solução da Next Layer. O Omni Chat é uma solução completa para automatizar e aprimorar o atendimento ao cliente usando inteligência artificial de ponta. Como posso ajudar você a conhecer mais sobre nossa revolução do atendimento inteligente?",
     sender: "bot",
     timestamp: new Date(),
   },
   {
     id: "3",
-    text: "É 123456. Gostaria de saber o status.",
+    text: "Quais são os principais diferenciais?",
     sender: "user",
     timestamp: new Date(),
   },
   {
     id: "4",
-    text: "Seu pedido está a caminho! A previsão de entrega é para amanhã às 14h.",
+    text: "Nossos principais diferenciais incluem: atendimento multicanal verdadeiro (texto, áudio e imagem), IA com banco de dados vetorial para precisão inigualável, automação inteligente e humanizada, e escalabilidade massiva. Gostaria de saber mais sobre algum desses pontos específicos?",
     sender: "bot",
     timestamp: new Date(),
   },
@@ -57,9 +49,9 @@ export function InteractiveChat() {
   const [inputValue, setInputValue] = useState("")
   const [isTyping, setIsTyping] = useState(false)
   const [isInteractive, setIsInteractive] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  // Modifique a função scrollToBottom para limitar o scroll apenas ao container de mensagens
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
@@ -70,11 +62,33 @@ export function InteractiveChat() {
     scrollToBottom()
   }, [messages])
 
-  // Modifique o handleSendMessage para prevenir o comportamento padrão
+  const sendMessageToAPI = async (message: string): Promise<string> => {
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message }),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || "Failed to get response")
+      }
+
+      const data = await response.json()
+      return data.response
+    } catch (error) {
+      console.error("Error sending message:", error)
+      return "Desculpe, estou com dificuldades técnicas no momento. O Omni Chat é uma solução de atendimento inteligente da Next Layer. Tente novamente em alguns instantes."
+    }
+  }
+
   const handleSendMessage = async (e?: React.FormEvent) => {
     if (e) e.preventDefault()
 
-    if (!inputValue.trim()) return
+    if (!inputValue.trim() || isLoading) return
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -84,28 +98,60 @@ export function InteractiveChat() {
     }
 
     setMessages((prev) => [...prev, userMessage])
+    const messageToSend = inputValue // A mensagem é o texto puro do input
     setInputValue("")
     setIsTyping(true)
+    setIsLoading(true)
 
-    // Simulate bot response
-    setTimeout(() => {
-      const botResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        text: predefinedResponses[Math.floor(Math.random() * predefinedResponses.length)],
-        sender: "bot",
-        timestamp: new Date(),
-      }
-      setMessages((prev) => [...prev, botResponse])
-      setIsTyping(false)
-    }, 1500)
+    try {
+      // Enviar mensagem para a API
+      const botResponseText = await sendMessageToAPI(messageToSend)
+
+      // Simular um pequeno delay para parecer mais natural
+      setTimeout(() => {
+        const botResponse: Message = {
+          id: (Date.now() + 1).toString(),
+          text: botResponseText,
+          sender: "bot",
+          timestamp: new Date(),
+        }
+        setMessages((prev) => [...prev, botResponse])
+        setIsTyping(false)
+        setIsLoading(false)
+      }, 1000) // Reduzi o delay para 1s para uma resposta mais rápida
+    } catch (error) {
+      setTimeout(() => {
+        const errorResponse: Message = {
+          id: (Date.now() + 1).toString(),
+          text: "Desculpe, ocorreu um erro. O Omni Chat é nossa solução de IA para atendimento inteligente. Tente novamente ou solicite uma demonstração com nossos especialistas.",
+          sender: "bot",
+          timestamp: new Date(),
+        }
+        setMessages((prev) => [...prev, errorResponse])
+        setIsTyping(false)
+        setIsLoading(false)
+      }, 1000)
+    }
   }
 
-  // Modifique o handleKeyPress para usar a mesma função handleSendMessage
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
       e.preventDefault()
       handleSendMessage()
     }
+  }
+
+  const startInteractiveChat = () => {
+    setIsInteractive(true)
+    // Limpar mensagens demo e começar com saudação oficial
+    setMessages([
+      {
+        id: "welcome",
+        text: "Olá! Eu sou o assistente virtual do Omni Chat, uma solução da Next Layer. Como posso ajudar você a conhecer a revolução do atendimento inteligente hoje?",
+        sender: "bot",
+        timestamp: new Date(),
+      },
+    ])
   }
 
   return (
@@ -117,8 +163,8 @@ export function InteractiveChat() {
             <Bot className="w-6 h-6" />
           </div>
           <div>
-            <h3 className="font-semibold">Agente OmniResposta</h3>
-            <p className="text-sm opacity-90">Online</p>
+            <h3 className="font-semibold">Assistente Omni Chat</h3>
+            <p className="text-sm opacity-90">Next Layer • Online</p>
           </div>
           <div className="ml-auto">
             <motion.div
@@ -148,7 +194,7 @@ export function InteractiveChat() {
                       : "bg-purple-950/50 text-white shadow-sm rounded-bl-sm border border-purple-200/10"
                   }`}
                 >
-                  <p className="text-sm">{message.text}</p>
+                  <p className="text-sm leading-relaxed">{message.text}</p>
                 </div>
               </motion.div>
             ))}
@@ -184,11 +230,8 @@ export function InteractiveChat() {
         {/* Input Area */}
         <div className="p-4 border-t border-purple-200/10 bg-purple-950/20">
           {!isInteractive ? (
-            <Button
-              onClick={() => setIsInteractive(true)}
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white"
-            >
-              Clique para testar o chat interativo
+            <Button onClick={startInteractiveChat} className="w-full bg-purple-600 hover:bg-purple-700 text-white">
+              💬 Conversar com o Assistente Omni Chat
             </Button>
           ) : (
             <div className="space-y-3">
@@ -197,31 +240,32 @@ export function InteractiveChat() {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Digite sua mensagem..."
+                  placeholder="Pergunte sobre o Omni Chat..."
                   className="flex-1 bg-purple-950/50 border-purple-300/20 focus:border-purple-400/50 placeholder:text-zinc-500"
+                  disabled={isLoading}
                 />
                 <Button
                   type="submit"
-                  disabled={!inputValue.trim()}
+                  disabled={!inputValue.trim() || isLoading}
                   size="icon"
                   className="bg-purple-600 hover:bg-purple-700"
                 >
-                  <Send className="w-4 h-4" />
+                  {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                 </Button>
               </form>
 
               {/* Media options */}
               <div className="flex justify-center space-x-4">
-                <Button variant="ghost" size="sm" className="text-zinc-400 hover:text-purple-300">
-                  <Mic className="w-4 h-4 mr-1" />
+                <Button variant="ghost" size="sm" className="text-zinc-400 hover:text-purple-300 text-xs">
+                  <Mic className="w-3 h-3 mr-1" />
                   Áudio
                 </Button>
-                <Button variant="ghost" size="sm" className="text-zinc-400 hover:text-purple-300">
-                  <ImageIcon className="w-4 h-4 mr-1" />
+                <Button variant="ghost" size="sm" className="text-zinc-400 hover:text-purple-300 text-xs">
+                  <ImageIcon className="w-3 h-3 mr-1" />
                   Imagem
                 </Button>
-                <Button variant="ghost" size="sm" className="text-zinc-400 hover:text-purple-300">
-                  <FileText className="w-4 h-4 mr-1" />
+                <Button variant="ghost" size="sm" className="text-zinc-400 hover:text-purple-300 text-xs">
+                  <FileText className="w-3 h-3 mr-1" />
                   Texto
                 </Button>
               </div>
