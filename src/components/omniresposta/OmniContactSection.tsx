@@ -18,7 +18,6 @@ export function OmniContactSection() {
     email: "",
     telefone: "",
     empresa: "",
-    genero: "",
     interesses: "",
     mensagem: "",
   })
@@ -109,15 +108,6 @@ export function OmniContactSection() {
                 </div>
               </div>
             </div>
-
-            <div className="pt-8">
-              <h4 className="font-semibold text-white mb-4">Horário de Atendimento</h4>
-              <div className="space-y-2 text-zinc-400">
-                <p>Segunda a Sexta: 9h às 18h</p>
-                <p>Sábado: 9h às 12h</p>
-                <p>Domingo: Fechado</p>
-              </div>
-            </div>
           </motion.div>
 
           {/* Contact Form */}
@@ -203,43 +193,6 @@ export function OmniContactSection() {
                       />
                     </div>
                   </div>
-
-                  <div>
-                    <Label className="text-purple-200 font-medium mb-4 block">Gênero</Label>
-                    <RadioGroup
-                      value={formData.genero}
-                      onValueChange={(value) => handleInputChange("genero", value)}
-                      className="flex flex-wrap gap-6"
-                    >
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem
-                          value="masculino"
-                          id="masculino"
-                          className="border-purple-300/30 text-purple-400"
-                        />
-                        <Label htmlFor="masculino" className="text-zinc-300">
-                          Masculino
-                        </Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem
-                          value="feminino"
-                          id="feminino"
-                          className="border-purple-300/30 text-purple-400"
-                        />
-                        <Label htmlFor="feminino" className="text-zinc-300">
-                          Feminino
-                        </Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="outro" id="outro" className="border-purple-300/30 text-purple-400" />
-                        <Label htmlFor="outro" className="text-zinc-300">
-                          Outro
-                        </Label>
-                      </div>
-                    </RadioGroup>
-                  </div>
-
                   <div>
                     <Label className="text-purple-200 font-medium">Área de Interesse</Label>
                     <Select
