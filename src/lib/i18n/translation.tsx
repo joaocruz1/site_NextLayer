@@ -15,7 +15,7 @@ export const translations = {
             process: "Process",
             portfolio: "Portfolio",
             contact: "Contact",
-            omniresposta: "OmniResposta",
+            omniresposta: "OmniResponse",
             startProject: "Start Project",
         },
         footer : {
@@ -1693,7 +1693,7 @@ export const translations = {
             process: "Processo",
             portfolio: "Portfólio",
             contact: "Contato",
-            omniresposta: "OmniResponse",
+            omniresposta: "OmniResposta",
             startProject: "Iniciar Projeto",
         },
         footer: {
