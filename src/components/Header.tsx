@@ -40,6 +40,7 @@ export const Header: React.FC = () => {
     { name: `${t.nav.solutions}`, href: "/solutions" },
     { name: `${t.nav.process}`, href: "/process" },
     { name: `${t.nav.portfolio}`, href: "/portfolio" },
+    { name: `${t.nav.omniresposta}`, href: "/omniresposta" }
   ]
 
   return (
