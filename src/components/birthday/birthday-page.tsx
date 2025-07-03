@@ -279,20 +279,17 @@ export default function BirthdayPage() {
             </div>
 
             <div className="space-y-5 text-gray-700 leading-relaxed">
-              <p className="animate-fade-in text-lg" style={{ animationDelay: "1s" }}>
-                Hoje celebramos você e tudo o que torna sua presença tão especial em nossas vidas. Sua bondade, alegria
-                e autenticidade iluminam os dias de todos ao seu redor de uma forma única e especial.
-              </p>
+            <p className="animate-fade-in text-lg" style={{ animationDelay: "1s" }}>
+                Sophia, hoje o dia é todinho seu! É um prazer celebrar a pessoa maravilhosa que você é e tudo o que sua presença significa em nossas vidas. Sua bondade genuína, a alegria que irradia e sua autenticidade pura são um presente para todos nós.
+            </p>
 
-              <p className="animate-fade-in text-lg" style={{ animationDelay: "1.3s" }}>
-                Que este novo ano seja repleto de momentos significativos, conquistas que tragam satisfação genuína e
-                experiências que enriqueçam ainda mais sua jornada de vida.
-              </p>
+            <p className="animate-fade-in text-lg" style={{ animationDelay: "1.3s" }}>
+                Que este novo ano seja recheado de experiências marcantes, daquelas que aquecem a alma, de realizações que te tragam um sorriso no rosto e de muita, muita satisfação!
+            </p>
 
-              <p className="animate-fade-in text-lg" style={{ animationDelay: "1.6s" }}>
-                Continue sendo essa pessoa incrível que inspira e toca corações. Você merece toda a felicidade, todo o
-                amor e todas as realizações que a vida pode oferecer.
-              </p>
+            <p className="animate-fade-in text-lg" style={{ animationDelay: "1.6s" }}>
+                Siga sendo essa pessoa que a gente tanto admira, inspirando e encantando a todos. Você merece um mundo de felicidade, amor transbordante e que cada um dos seus desejos se torne realidade!
+            </p>
             </div>
 
             <div className="mt-8 flex items-center justify-center space-x-3">
