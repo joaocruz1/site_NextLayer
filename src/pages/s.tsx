@@ -1,5 +1,5 @@
-import BirthdayPage from "@/components/birthday/birthday-page"
+
 
 export default function Page() {
-  return <h1>Not Found<h1>
+  return <h1>Not found</h1>
 }
